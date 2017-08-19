@@ -1,0 +1,19 @@
+<div id="main_container">
+    <div id="login_form_container">
+      <div id="login_form">
+            <div id="login_form_contents">
+            <div id="logo_text">Layer Two</div>
+            <div id="login_form_fields">
+            <%= form_for  @conn, "/", [as: :login_form], fn form_data -> %>
+            <%= email_input form_data, :email, placeholder: "E-mail", class: "input_fields", required: "true" %>
+            <br>
+            <%= password_input form_data, :password, placeholder: "Password", class: "input_fields", required: "true" %>
+            <br>
+            <%= submit "Enter", id: "submit_button" %>
+            <% end %>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div id="copyright_container"><h6 id="copyright_text">Copyright &copy; 2016-<%= DateTime.utc_now.year %></h6></div>
+</div>

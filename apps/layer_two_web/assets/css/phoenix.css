@@ -1,0 +1,83 @@
+/* Phoenix flash messages */
+.alert:empty { display: none; }
+
+@font-face {
+    font-family: "Anaheim";
+    src: url("/fonts/Anaheim-Regular.ttf") format("truetype");
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  letter-spacing: 0.1em;
+}
+
+html {
+  font-family: 'Anaheim', sans-serif;
+}
+
+.input_fields {
+  width: 14em;
+  font-family: 'Anaheim', sans-serif;
+  padding-left: 0.3em;
+  margin-top: 0.5vh;
+  margin-bottom: 0.5vh;
+}
+
+#main_container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#login_form_container {
+  display: flex;
+  flex-grow: 1;
+}
+
+#login_form {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#login_form_fields {
+  margin-top: 0.3em;
+}
+
+
+#logo_text {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+#submit_button {
+  margin-top: 0.15em;
+  font-family: 'Anaheim', sans-serif;
+  color: white;
+  font-size: 0.9em;
+  font-weight: bold;
+  border-radius: 0.1em;
+  background: DodgerBlue;
+  border-color: DodgerBlue;
+  border-style: double;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+  padding-top: 0.08em;
+  padding-bottom: 0.025em;
+  transition: background 0.3s;
+}
+
+#submit_button:hover {
+  background: DeepSkyBlue;
+  border-color: DeepSkyBlue;
+}
+
+#copyright_container {
+  text-align: center;
+}
+
+#copyright_text {
+  font-size: 0.7em;
+}

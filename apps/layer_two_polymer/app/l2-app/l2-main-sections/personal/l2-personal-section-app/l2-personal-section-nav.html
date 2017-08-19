@@ -1,0 +1,37 @@
+<link rel="import" href="../../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="l2-personal-section-elements/personal-section-nav-buttons/l2-personal-section-nav-button.html">
+
+
+<dom-module id="l2-personal-section-nav">
+
+
+    <template>
+        <l2-personal-section-nav-button name="Events"></l2-personal-section-nav-button>
+        <l2-personal-section-nav-button name="Finances"></l2-personal-section-nav-button>
+        <l2-personal-section-nav-button name="Education"></l2-personal-section-nav-button>
+        <l2-personal-section-nav-button name="Jobs"></l2-personal-section-nav-button>
+        <l2-personal-section-nav-button name="Health"></l2-personal-section-nav-button>
+
+        <style>
+             :host {
+                display: flex;
+                flex-direction: column;
+                min-width: 6em;
+                background: green;
+            }
+        </style>
+    </template>
+
+
+    <script>
+        class L2_personal_section_nav extends Polymer.Element {
+            static get is() {
+                return "l2-personal-section-nav";
+            }
+        }
+
+        customElements.define(L2_personal_section_nav.is, L2_personal_section_nav)
+    </script>
+
+
+</dom-module>

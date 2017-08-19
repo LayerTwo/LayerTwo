@@ -1,0 +1,66 @@
+<link rel="import" href="../../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="l2-country-section-sections/country-authorities/l2-country-section-country-authorities.html">
+<link rel="import" href="l2-country-section-sections/country-economy/l2-country-section-country-economy.html">
+<link rel="import" href="l2-country-section-sections/country-updates/l2-country-section-country-updates.html">
+<link rel="import" href="l2-country-section-sections/country-forum/l2-country-section-country-forum.html">
+<link rel="import" href="l2-country-section-sections/country-projects/l2-country-section-country-projects.html">
+
+<dom-module id="l2-country-section-display">
+
+
+    <template>
+        <div id="country_container_display"></div>
+        <style>
+             :host,
+            #country_container_display {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 1;
+                background: blue;
+                margin: 0px;
+                padding: 0px;
+            }
+        </style>
+    </template>
+
+
+    <script>
+        class L2_country_section_display extends Polymer.Element {
+            static get is() {
+                return "l2-country-section-display";
+            }
+
+            static get observedAttributes() { return ["country-active-section"]; }
+
+            attributeChangedCallback(attribute_name, old_value, country_selected_section) {
+                if (attribute_name === "country-active-section") {
+                    this.render_selected_section(country_selected_section);
+                }
+            }
+
+            render_selected_section(country_selected_section) {
+                let country_container_display = this.$.country_container_display;
+
+                let selected_section_split_array = country_selected_section.split(" ");
+
+
+                if (selected_section_split_array.length > 1) {
+                    country_selected_section = country_selected_section.split(" ").join("-").toLowerCase();
+                } else {
+                    country_selected_section = country_selected_section.toLowerCase();
+                }
+
+
+                if (country_container_display.firstChild) {
+                    country_container_display.removeChild(country_container_display.firstChild);
+                }
+
+                country_container_display.appendChild(document.createElement("l2-country-section-" + country_selected_section));
+            }
+        }
+
+        customElements.define(L2_country_section_display.is, L2_country_section_display)
+    </script>
+
+
+</dom-module>

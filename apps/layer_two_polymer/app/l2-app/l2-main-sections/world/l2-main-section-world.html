@@ -1,0 +1,65 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="l2-world-section-app/l2-world-section-nav.html">
+<link rel="import" href="l2-world-section-app/l2-world-section-display.html">
+
+<dom-module id="l2-main-section-world">
+
+
+    <template>
+        <l2-world-section-nav></l2-world-section-nav>
+        <l2-world-section-display world-active-section$="[[world_selected_section]]"></l2-world-section-display>
+        <style>
+             :host {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 1;
+                background: orange;
+                margin: 0px;
+                padding: 0px;
+            }
+        </style>
+    </template>
+
+
+    <script>
+        class L2_main_section_world extends Polymer.Element {
+            static get is() {
+                return "l2-main-section-world";
+            }
+
+            display_world_content_World_Updates() {
+                this.world_selected_section = "World Updates";
+            }
+            display_world_content_World_Forum() {
+                this.world_selected_section = "World Forum";
+            }
+            display_world_content_World_Goals() {
+                this.world_selected_section = "World Goals";
+            }
+            display_world_content_World_Projects() {
+                this.world_selected_section = "World Projects";
+            }
+            display_world_content_World_Assemblies() {
+                this.world_selected_section = "World Assemblies";
+            }
+
+            connectedCallback(){
+                super.connectedCallback();
+                this.world_selected_section = "World Projects";
+            }
+
+            constructor() {
+                super();
+                this.addEventListener("world-section-nav-button World Updates", this.display_world_content_World_Updates);
+                this.addEventListener("world-section-nav-button World Forum", this.display_world_content_World_Forum);
+                this.addEventListener("world-section-nav-button World Goals", this.display_world_content_World_Goals);
+                this.addEventListener("world-section-nav-button World Projects", this.display_world_content_World_Projects);
+                this.addEventListener("world-section-nav-button World Assemblies", this.display_world_content_World_Assemblies);
+            }
+        }
+
+        customElements.define(L2_main_section_world.is, L2_main_section_world)
+    </script>
+
+
+</dom-module>

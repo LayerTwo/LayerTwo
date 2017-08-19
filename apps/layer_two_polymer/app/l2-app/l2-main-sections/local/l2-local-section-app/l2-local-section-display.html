@@ -1,0 +1,67 @@
+<link rel="import" href="../../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="l2-local-section-sections/local-authorities/l2-local-section-local-authorities.html">
+<link rel="import" href="l2-local-section-sections/local-businesses/l2-local-section-local-businesses.html">
+<link rel="import" href="l2-local-section-sections/local-forum/l2-local-section-local-forum.html">
+<link rel="import" href="l2-local-section-sections/local-updates/l2-local-section-local-updates.html">
+<link rel="import" href="l2-local-section-sections/local-projects/l2-local-section-local-projects.html">
+
+
+<dom-module id="l2-local-section-display">
+
+
+    <template>
+        <div id="local_container_display"></div>
+        <style>
+             :host,
+            #local_container_display {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 1;
+                background: blue;
+                margin: 0px;
+                padding: 0px;
+            }
+        </style>
+    </template>
+
+
+    <script>
+        class L2_local_section_display extends Polymer.Element {
+            static get is() {
+                return "l2-local-section-display";
+            }
+
+            static get observedAttributes() { return ["local-active-section"]; }
+
+            attributeChangedCallback(attribute_name, old_value, local_selected_section) {
+                if (attribute_name === "local-active-section") {
+                    this.render_selected_section(local_selected_section);
+                }
+            }
+
+            render_selected_section(local_selected_section) {
+                let local_container_display = this.$.local_container_display;
+                
+                let selected_section_split_array = local_selected_section.split(" ");
+
+
+                if (selected_section_split_array.length > 1) {
+                    local_selected_section = local_selected_section.split(" ").join("-").toLowerCase();
+                } else {
+                    local_selected_section = local_selected_section.toLowerCase();
+                }
+
+
+                if (local_container_display.firstChild) {
+                    local_container_display.removeChild(local_container_display.firstChild);
+                }
+
+                local_container_display.appendChild(document.createElement("l2-local-section-" + local_selected_section));
+            }
+        }
+
+        customElements.define(L2_local_section_display.is, L2_local_section_display)
+    </script>
+
+
+</dom-module>

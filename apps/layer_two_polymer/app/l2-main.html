@@ -1,0 +1,66 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="l2-app/l2-main-section-nav.html">
+<link rel="import" href="l2-app/l2-main-section-display.html">
+
+
+<dom-module id="l2-main">
+    <template>
+        <l2-main-section-nav></l2-main-section-nav>
+        <l2-main-section-display main-active-section$="[[main_selected_section]]"></l2-main-section-display>
+
+        <style>
+            :host {
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+                background: red;
+                margin: 0px;
+                padding: 0px;
+            }
+
+        </style>
+    </template>
+
+
+    <script>
+        class L2_main extends Polymer.Element {
+            static get is() {
+                return "l2-main";
+            }
+
+            display_main_content_Personal() {
+                this.main_selected_section = "Personal";
+            }
+            display_main_content_Social() {
+                this.main_selected_section = "Social";
+            }
+            display_main_content_Local() {
+                this.main_selected_section = "Local";
+            }
+            display_main_content_Country() {
+                this.main_selected_section = "Country";
+            }
+            display_main_content_World() {
+                this.main_selected_section = "World";
+            }
+
+            connectedCallback(){
+                super.connectedCallback();
+                this.main_selected_section = "Personal";
+            }
+            
+            constructor() {
+                super();
+                this.addEventListener("main-nav-button Personal", this.display_main_content_Personal);
+                this.addEventListener("main-nav-button Social", this.display_main_content_Social);
+                this.addEventListener("main-nav-button Local", this.display_main_content_Local);
+                this.addEventListener("main-nav-button Country", this.display_main_content_Country);
+                this.addEventListener("main-nav-button World", this.display_main_content_World);
+            }
+        }
+
+        customElements.define(L2_main.is, L2_main)
+    </script>
+
+
+</dom-module>

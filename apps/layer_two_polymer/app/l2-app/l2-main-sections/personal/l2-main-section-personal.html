@@ -1,0 +1,65 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="l2-personal-section-app/l2-personal-section-nav.html">
+<link rel="import" href="l2-personal-section-app/l2-personal-section-display.html">
+
+<dom-module id="l2-main-section-personal">
+
+
+    <template>
+        <l2-personal-section-nav></l2-personal-section-nav>
+        <l2-personal-section-display personal-active-section$="[[personal_selected_section]]"></l2-personal-section-display>
+        <style>
+             :host {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 1;
+                background: orange;
+                margin: 0px;
+                padding: 0px;
+            }
+        </style>
+    </template>
+
+
+    <script>
+        class L2_main_section_personal extends Polymer.Element {
+            static get is() {
+                return "l2-main-section-personal";
+            }
+
+            display_personal_content_Education() {
+                this.personal_selected_section = "Personal Education";
+            }
+            display_personal_content_Personal_Events() {
+                this.personal_selected_section = "Personal Events";
+            }
+            display_personal_content_Finances() {
+                this.personal_selected_section = "Personal Finances";
+            }
+            display_personal_content_Health() {
+                this.personal_selected_section = "Personal Health";
+            }
+            display_personal_content_Jobs() {
+                this.personal_selected_section = "Personal Jobs";
+            }
+
+            connectedCallback(){
+                super.connectedCallback();
+                this.personal_selected_section = "Personal Education";
+            }
+
+            constructor() {
+                super();
+                this.addEventListener("personal-section-nav-button Personal Education", this.display_personal_content_Education);
+                this.addEventListener("personal-section-nav-button Personal Events", this.display_personal_content_Personal_Events);
+                this.addEventListener("personal-section-nav-button Personal Finances", this.display_personal_content_Finances);
+                this.addEventListener("personal-section-nav-button Personal Health", this.display_personal_content_Health);
+                this.addEventListener("personal-section-nav-button Personal Jobs", this.display_personal_content_Jobs);
+            }
+        }
+
+        customElements.define(L2_main_section_personal.is, L2_main_section_personal)
+    </script>
+
+
+</dom-module>

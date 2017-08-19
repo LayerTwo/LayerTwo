@@ -1,0 +1,66 @@
+<link rel="import" href="../../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="l2-personal-section-sections/education/l2-personal-section-personal-education.html">
+<link rel="import" href="l2-personal-section-sections/personal-events/l2-personal-section-personal-events.html">
+<link rel="import" href="l2-personal-section-sections/finances/l2-personal-section-personal-finances.html">
+<link rel="import" href="l2-personal-section-sections/health/l2-personal-section-personal-health.html">
+<link rel="import" href="l2-personal-section-sections/jobs/l2-personal-section-personal-jobs.html">
+
+
+<dom-module id="l2-personal-section-display">
+
+
+    <template>
+        <div id="personal_container_display"></div>
+        <style>
+             :host,
+            #personal_container_display {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 1;
+                background: blue;
+                margin: 0px;
+                padding: 0px;
+            }
+        </style>
+    </template>
+
+
+    <script>
+        class L2_personal_section_display extends Polymer.Element {
+            static get is() {
+                return "l2-personal-section-display";
+            }
+
+            static get observedAttributes() { return ["personal-active-section"]; }
+
+            attributeChangedCallback(attribute_name, old_value, personal_selected_section) {
+                if (attribute_name === "personal-active-section") {
+                    this.render_selected_section(personal_selected_section);
+                }
+            }
+
+            render_selected_section(personal_selected_section) {
+                let personal_container_display = this.$.personal_container_display;
+
+                let selected_section_split_array = personal_selected_section.split(" ");
+
+                if (selected_section_split_array.length > 1) {
+                    personal_selected_section = personal_selected_section.split(" ").join("-").toLowerCase();
+                } else {
+                    personal_selected_section = personal_selected_section.toLowerCase();
+                }
+
+
+                if (personal_container_display.firstChild) {
+                    personal_container_display.removeChild(personal_container_display.firstChild);
+                }
+
+                personal_container_display.appendChild(document.createElement("l2-personal-section-" + personal_selected_section));
+            }
+        }
+
+        customElements.define(L2_personal_section_display.is, L2_personal_section_display)
+    </script>
+
+
+</dom-module>

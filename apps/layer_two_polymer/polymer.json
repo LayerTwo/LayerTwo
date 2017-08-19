@@ -1,0 +1,10 @@
+{
+  "entrypoint": "index.html",
+  "builds": [{
+    "bundle": true,
+    "inlineScripts": "true",
+    "js": {"minify": true},
+    "css": {"minify": true},
+    "html": {"minify": true}
+  }]
+}
