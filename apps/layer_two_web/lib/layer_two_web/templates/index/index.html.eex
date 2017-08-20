@@ -15,5 +15,5 @@
           </div>
       </div>
     </div>
-    <div id="copyright_container"><h6 id="copyright_text">Copyright &copy; 2016-<%= DateTime.utc_now.year %></h6></div>
+    <div id="copyright_container"><h6 id="copyright_text"><a target= "_blank" href="https://github.com/LayerTwo/LayerTwo">Source Code</a> Copyright &copy; 2016-<%= DateTime.utc_now.year %></h6></div>
 </div>
