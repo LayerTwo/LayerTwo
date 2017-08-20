@@ -43,12 +43,20 @@
             display_main_content_World() {
                 this.main_selected_section = "World";
             }
+            display_main_content_Space() {
+                this.main_selected_section = "Space";
+            }
+            display_main_content_Visit() {
+                this.main_selected_section = "Visit";
+            }
+
 
             connectedCallback(){
                 super.connectedCallback();
                 this.main_selected_section = "Personal";
             }
             
+
             constructor() {
                 super();
                 this.addEventListener("main-nav-button Personal", this.display_main_content_Personal);
@@ -56,6 +64,8 @@
                 this.addEventListener("main-nav-button Local", this.display_main_content_Local);
                 this.addEventListener("main-nav-button Country", this.display_main_content_Country);
                 this.addEventListener("main-nav-button World", this.display_main_content_World);
+                this.addEventListener("main-nav-button Space", this.display_main_content_Space);
+                this.addEventListener("main-nav-button Visit", this.display_main_content_Visit);
             }
         }
 

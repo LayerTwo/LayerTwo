@@ -1,0 +1,65 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="l2-space-section-app/l2-space-section-nav.html">
+<link rel="import" href="l2-space-section-app/l2-space-section-display.html">
+
+<dom-module id="l2-main-section-space">
+
+
+    <template>
+        <l2-space-section-nav></l2-space-section-nav>
+        <l2-space-section-display space-active-section$="[[space_selected_section]]"></l2-space-section-display>
+        <style>
+             :host {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 1;
+                background: orange;
+                margin: 0px;
+                padding: 0px;
+            }
+        </style>
+    </template>
+
+
+    <script>
+        class L2_main_section_space extends Polymer.Element {
+            static get is() {
+                return "l2-main-section-space";
+            }
+
+            display_space_content_Space_Updates() {
+                this.space_selected_section = "Space Updates";
+            }
+            display_space_content_Space_Forum() {
+                this.space_selected_section = "Space Forum";
+            }
+            display_space_content_Space_Goals() {
+                this.space_selected_section = "Space Goals";
+            }
+            display_space_content_Space_Projects() {
+                this.space_selected_section = "Space Projects";
+            }
+            display_space_content_Space_Assemblies() {
+                this.space_selected_section = "Space Assemblies";
+            }
+
+            connectedCallback(){
+                super.connectedCallback();
+                this.space_selected_section = "Space Projects";
+            }
+
+            constructor() {
+                super();
+                this.addEventListener("space-section-nav-button Space Updates", this.display_space_content_Space_Updates);
+                this.addEventListener("space-section-nav-button Space Forum", this.display_space_content_Space_Forum);
+                this.addEventListener("space-section-nav-button Space Goals", this.display_space_content_Space_Goals);
+                this.addEventListener("space-section-nav-button Space Projects", this.display_space_content_Space_Projects);
+                this.addEventListener("space-section-nav-button Space Assemblies", this.display_space_content_Space_Assemblies);
+            }
+        }
+
+        customElements.define(L2_main_section_space.is, L2_main_section_space)
+    </script>
+
+
+</dom-module>

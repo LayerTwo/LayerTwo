@@ -1,0 +1,66 @@
+<link rel="import" href="../../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="l2-visit-section-sections/visit-updates/l2-visit-section-visit-updates.html">
+<link rel="import" href="l2-visit-section-sections/visit-forum/l2-visit-section-visit-forum.html">
+<link rel="import" href="l2-visit-section-sections/visit-goals/l2-visit-section-visit-goals.html">
+<link rel="import" href="l2-visit-section-sections/visit-projects/l2-visit-section-visit-projects.html">
+<link rel="import" href="l2-visit-section-sections/visit-assemblies/l2-visit-section-visit-assemblies.html">
+
+<dom-module id="l2-visit-section-display">
+
+
+    <template>
+        <div id="visit_container_display"></div>
+        <style>
+             :host,
+            #visit_container_display {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 1;
+                background: blue;
+                margin: 0px;
+                padding: 0px;
+            }
+        </style>
+    </template>
+
+
+    <script>
+        class L2_visit_section_display extends Polymer.Element {
+            static get is() {
+                return "l2-visit-section-display";
+            }
+
+            static get observedAttributes() { return ["visit-active-section"]; }
+
+            attributeChangedCallback(attribute_name, old_value, visit_selected_section) {
+                if (attribute_name === "visit-active-section") {
+                    this.render_selected_section(visit_selected_section);
+                }
+            }
+
+            render_selected_section(visit_selected_section) {
+                let visit_container_display = this.$.visit_container_display;
+
+                let selected_section_split_array = visit_selected_section.split(" ");
+
+
+                if (selected_section_split_array.length > 1) {
+                    visit_selected_section = visit_selected_section.split(" ").join("-").toLowerCase();
+                } else {
+                    visit_selected_section = visit_selected_section.toLowerCase();
+                }
+
+
+                if (visit_container_display.firstChild) {
+                    visit_container_display.removeChild(visit_container_display.firstChild);
+                }
+
+                visit_container_display.appendChild(document.createElement("l2-visit-section-" + visit_selected_section));
+            }
+        }
+
+        customElements.define(L2_visit_section_display.is, L2_visit_section_display)
+    </script>
+
+
+</dom-module>

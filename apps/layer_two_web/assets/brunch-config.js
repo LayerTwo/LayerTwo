@@ -50,7 +50,7 @@ exports.config = {
       ignore: [/vendor/]      
     },
     afterBrunch: [
-      "polymer-bundler ../../layer_two_polymer/build/default/index.html > ../lib/layer_two_web/templates/index/main.hmtl.eex"
+      "polymer-bundler --strip-comments ../../layer_two_polymer/build/default/index.html > ../lib/layer_two_web/templates/index/main.html.eex"
     ]
   },
 
