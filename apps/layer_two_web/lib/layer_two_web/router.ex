@@ -17,9 +17,8 @@ defmodule LayerTwoWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", IndexController, :render_index_page
-
-    post "/", IndexController, :handle_login
     
+    post "/", IndexController, :handle_login
   end
 
   # Other scopes may use custom stacks.

@@ -9,7 +9,7 @@ defmodule LayerTwoWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/", from: :layer_two_web, gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -35,9 +35,8 @@ defmodule LayerTwoWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_layer_two_web_key",
-    signing_salt: System.get_env("layertwo_session_salt"),
-    encryption_salt: System.get_env("layertwo_session_cookie_encrypt_salt")
+    key: System.get_env("layertwo_session_salt"),
+    signing_salt: System.get_env("layertwo_session_cookie_encrypt_salt")
 
   plug LayerTwoWeb.Router
 
