@@ -1,7 +1,6 @@
 import uglify from 'rollup-plugin-uglify';
 import {minify} from 'uglify-es';
 
-
 export default {
     input: 'layer_two_web_app/l2-main.js',
     output: { 
