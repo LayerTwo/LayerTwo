@@ -12,7 +12,7 @@ Layer Two is a social collaboration platform for modern communities.
 [<img src="https://raw.githubusercontent.com/phoenixframework/phoenix/master/priv/static/phoenix.png" height= 25>](http://www.phoenixframework.org/)
 </br>
 </br>
-[<img src="https://raw.githubusercontent.com/webcomponents/webcomponents-icons/master/logo/logo_256x256.png" height= 40>](https://developer.mozilla.org/en-US/docs/Web/Web_Components) [Web Components]((https://developer.mozilla.org/en-US/docs/Web/Web_Components "Web Components")
+[<img src="https://raw.githubusercontent.com/webcomponents/webcomponents-icons/master/logo/logo_256x256.png" height= 40>](https://developer.mozilla.org/en-US/docs/Web/Web_Components) [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components "Web Components")
 </br>
 </br>
 [<img src="https://neo4j.com/wp-content/themes/neo4jweb/assets/images/neo4j-logo-2015.png" height= 35>](https://neo4j.com/)
