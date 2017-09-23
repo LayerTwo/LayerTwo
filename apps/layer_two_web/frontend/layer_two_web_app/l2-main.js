@@ -48,7 +48,7 @@ export class l2_main extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
-    l2_main_style(){
+    l2_main_default_style(){
         return `<style>
         :host {
             display: flex;
@@ -64,7 +64,7 @@ export class l2_main extends HTMLElement {
         <l2-main-nav></l2-main-nav>
         <l2-main-stage></l2-main-stage>
         <l2-main-copyright></l2-main-copyright>
-        ` + this.l2_main_style();
+        ` + this.l2_main_default_style();
     }
 
 }

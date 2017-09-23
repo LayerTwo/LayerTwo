@@ -1,5 +1,8 @@
 import uglify from 'rollup-plugin-uglify';
 import {minify} from 'uglify-es';
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+
 
 export default {
     input: 'layer_two_web_app/l2-main.js',
@@ -12,6 +15,8 @@ export default {
         useChokidar: false
     },    
     plugins: [
+        resolve(),
+        commonjs(),
         uglify({}, minify)
     ]
 }

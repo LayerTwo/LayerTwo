@@ -10,7 +10,7 @@ export class l2_main_nav extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
-    l2_main_nav_style(){
+    l2_main_nav_default_style(){
         return `<style>
         :host {
            display: flex;
@@ -37,7 +37,7 @@ export class l2_main_nav extends HTMLElement {
         <l2-main-nav-button nav-section="l2-main-nav" name="World"></l2-main-nav-button>
         <l2-main-nav-button nav-section="l2-main-nav" name="Space"></l2-main-nav-button>
         <l2-main-nav-button nav-section="l2-main-nav" name="Visit"></l2-main-nav-button>
-        ` + this.l2_main_nav_style();
+        ` + this.l2_main_nav_default_style();
     }
 
 }

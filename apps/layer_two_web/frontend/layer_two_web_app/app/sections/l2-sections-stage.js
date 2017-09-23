@@ -19,51 +19,51 @@ export class l2_sections_stage extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'section-display' && newValue === 'Personal') {
             this.shadowRoot.querySelector('l2-personal-stage').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-personal-stage').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-personal-stage').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-personal-stage').style.display = 'none';
+            this.shadowRoot.querySelector('l2-personal-stage').setAttribute('show-template', 'false');
         }
 
         if (name === 'section-display' && newValue === 'Social') {
             this.shadowRoot.querySelector('l2-social-stage').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-social-stage').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-social-stage').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-social-stage').style.display = 'none';
+            this.shadowRoot.querySelector('l2-social-stage').setAttribute('show-template', 'false');
         }
 
         if (name === 'section-display' && newValue === 'Local') {
             this.shadowRoot.querySelector('l2-local-stage').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-local-stage').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-local-stage').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-local-stage').style.display = 'none';
+            this.shadowRoot.querySelector('l2-local-stage').setAttribute('show-template', 'false');
         }
 
         if (name === 'section-display' && newValue === 'Country') {
             this.shadowRoot.querySelector('l2-country-stage').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-country-stage').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-country-stage').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-country-stage').style.display = 'none';
+            this.shadowRoot.querySelector('l2-country-stage').setAttribute('show-template', 'false');
         }
 
         if (name === 'section-display' && newValue === 'World') {
             this.shadowRoot.querySelector('l2-world-stage').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-world-stage').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-world-stage').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-world-stage').style.display = 'none';
+            this.shadowRoot.querySelector('l2-world-stage').setAttribute('show-template', 'false');
         }
 
         if (name === 'section-display' && newValue === 'Space') {
             this.shadowRoot.querySelector('l2-space-stage').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-space-stage').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-space-stage').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-space-stage').style.display = 'none';
+            this.shadowRoot.querySelector('l2-space-stage').setAttribute('show-template', 'false');
         }
 
         if (name === 'section-display' && newValue === 'Visit') {
             this.shadowRoot.querySelector('l2-visit-stage').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-visit-stage').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-visit-stage').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-visit-stage').style.display = 'none';
+            this.shadowRoot.querySelector('l2-visit-stage').setAttribute('show-template', 'false');
         }
     }
 
@@ -71,8 +71,8 @@ export class l2_sections_stage extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
-    sections_stage_style() {
-        return `<style>
+    sections_stage_default_style() {
+        return `
         :host {
             display: flex;
             flex-direction: column;
@@ -80,8 +80,7 @@ export class l2_sections_stage extends HTMLElement {
             background: white;
             padding-left: 1em;
             padding-right: 1em;
-        }
-        </style>`;
+        }`;
     }
 
     template() {
@@ -93,7 +92,8 @@ export class l2_sections_stage extends HTMLElement {
         <l2-world-stage></l2-world-stage>
         <l2-space-stage></l2-space-stage>
         <l2-visit-stage></l2-visit-stage>
-        ` + this.sections_stage_style();
+        <style>${this.sections_stage_default_style()}</style>
+        `;
     }
 
 }

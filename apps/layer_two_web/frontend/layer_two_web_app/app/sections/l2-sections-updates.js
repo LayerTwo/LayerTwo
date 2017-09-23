@@ -19,51 +19,51 @@ export class l2_sections_updates extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'section-display' && newValue === 'Personal') {
             this.shadowRoot.querySelector('l2-personal-updates').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-personal-updates').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-personal-updates').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-personal-updates').style.display = 'none';
+            this.shadowRoot.querySelector('l2-personal-updates').setAttribute('show-template', 'false');
         }
 
         if (name === 'section-display' && newValue === 'Social') {
             this.shadowRoot.querySelector('l2-social-updates').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-social-updates').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-social-updates').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-social-updates').style.display = 'none';
+            this.shadowRoot.querySelector('l2-social-updates').setAttribute('show-template', 'false');
         }
 
         if (name === 'section-display' && newValue === 'Local') {
             this.shadowRoot.querySelector('l2-local-updates').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-local-updates').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-local-updates').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-local-updates').style.display = 'none';
+            this.shadowRoot.querySelector('l2-local-updates').setAttribute('show-template', 'false');
         }
 
         if (name === 'section-display' && newValue === 'Country') {
             this.shadowRoot.querySelector('l2-country-updates').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-country-updates').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-country-updates').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-country-updates').style.display = 'none';
+            this.shadowRoot.querySelector('l2-country-updates').setAttribute('show-template', 'false');
         }
 
         if (name === 'section-display' && newValue === 'World') {
             this.shadowRoot.querySelector('l2-world-updates').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-world-updates').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-world-updates').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-world-updates').style.display = 'none';
+            this.shadowRoot.querySelector('l2-world-updates').setAttribute('show-template', 'false');
         }
 
         if (name === 'section-display' && newValue === 'Space') {
             this.shadowRoot.querySelector('l2-space-updates').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-space-updates').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-space-updates').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-space-updates').style.display = 'none';
+            this.shadowRoot.querySelector('l2-space-updates').setAttribute('show-template', 'false');
         }
 
         if (name === 'section-display' && newValue === 'Visit') {
             this.shadowRoot.querySelector('l2-visit-updates').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-visit-updates').style.display = 'flex';
+            this.shadowRoot.querySelector('l2-visit-updates').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-visit-updates').style.display = 'none';
+            this.shadowRoot.querySelector('l2-visit-updates').setAttribute('show-template', 'false');
         }
     }
 
@@ -71,16 +71,15 @@ export class l2_sections_updates extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
-    sections_updates_style() {
-        return `<style>
+    sections_updates_default_style() {
+        return `
         :host {
             display: flex;
             flex-direction: column;
             background: white;
             padding-left: 1em;
             padding-right: 1em;
-        }
-        </style>`;
+        }`;
     }
 
     template() {
@@ -92,7 +91,7 @@ export class l2_sections_updates extends HTMLElement {
         <l2-world-updates></l2-world-updates>
         <l2-space-updates></l2-space-updates>
         <l2-visit-updates></l2-visit-updates>
-        ` + this.sections_updates_style();
+        <style>${this.sections_updates_default_style()}</style>`;
     }
 
 }

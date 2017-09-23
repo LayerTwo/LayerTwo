@@ -13,7 +13,7 @@ export class l2_basic_button extends HTMLElement {
         this.dispatchEvent(new CustomEvent(this.button_nav_section + " " + this.button_name, { bubble: true, composed: true }));
     }
 
-    button_style() {
+    button_default_style() {
         return `
         <style>
         :host {
@@ -59,7 +59,7 @@ export class l2_basic_button extends HTMLElement {
     template() {
         return `
         <input type="button" value="${this.button_name}">
-        ` + this.button_style();
+        ` + this.button_default_style();
     }
 
 }

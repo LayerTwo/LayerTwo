@@ -25,7 +25,7 @@ export class l2_main_stage extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
-    l2_main_stage_style(){
+    l2_main_stage_default_style(){
         return `<style>
         :host {
             display: flex;
@@ -43,7 +43,7 @@ export class l2_main_stage extends HTMLElement {
         <l2-sections-nav></l2-sections-nav>
         <l2-sections-stage></l2-sections-stage>
         <l2-sections-updates></l2-sections-updates>
-        ` + this.l2_main_stage_style();
+        ` + this.l2_main_stage_default_style();
     }
 
 }

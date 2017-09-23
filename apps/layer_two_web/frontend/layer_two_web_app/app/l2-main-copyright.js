@@ -8,7 +8,7 @@ export class l2_main_copyright extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
-    l2_main_copyright_style(){
+    l2_main_copyright_default_style(){
         return `<style>
         :host {
            display: flex;
@@ -29,7 +29,7 @@ export class l2_main_copyright extends HTMLElement {
     template() {
         return `
         <div id="copyright_text"><a target= "_blank" href="https://github.com/LayerTwo/LayerTwo">Source Code</a> Copyright &copy; Dimitar Yosifov 2016-${new Date().getFullYear()}</div>
-        ` + this.l2_main_copyright_style();
+        ` + this.l2_main_copyright_default_style();
     }
 
 }

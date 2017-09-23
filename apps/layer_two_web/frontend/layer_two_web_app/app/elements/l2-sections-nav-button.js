@@ -1,7 +1,7 @@
 import {l2_basic_button} from "../prototypes/l2-basic-button.js"
 
 export class l2_sections_nav_button extends l2_basic_button{
-    button_style(){
+    button_default_style(){
         return `
         <style>
         :host {
