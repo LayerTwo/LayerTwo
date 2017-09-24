@@ -20,27 +20,27 @@ export class l2_basic_leaflet_map extends HTMLElement {
     leaflet_map_init(){
         this.map_container = this.shadowRoot.querySelector("#l2-basic-leaflet-map");
         this.leaflet_map = L.map(this.map_container);
-        L.tileLayer("https://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=8799bf259cc546a997a57ca4d638996e", {maxZoom: 18}).addTo(this.leaflet_map);
+        L.tileLayer("https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png", {attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 18}).addTo(this.leaflet_map);
         this.leaflet_map.setView([51.505, -0.09], 13);
     }
 
     basic_map_custom_style(){
-        return `#l2-basic-leaflet-map {
+        return `
+        :host {
+            display: flex;
+            flex-grow: 1;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #l2-basic-leaflet-map {
              flex-grow: 1;
          }`
      }
  
      basic_map_default_style() {
          return `
-          :host {
-             display: flex;
-             flex-grow: 1;
-             margin: 0px;
-             padding: 0px;
-         }
- 
          ${this.basic_map_custom_style()}
- 
          .leaflet-pane,
          .leaflet-tile,
          .leaflet-marker-icon,
