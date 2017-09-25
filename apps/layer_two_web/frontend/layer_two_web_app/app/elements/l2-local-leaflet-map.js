@@ -16,14 +16,14 @@ export class l2_local_leaflet_map extends l2_basic_leaflet_map {
             flex-grow: 1;
             margin: 0px;
             padding: 0px;
-            perspective: 55em;
+            perspective: 85em;
         }
 
         #l2-basic-leaflet-map {
              border-radius: 1em;
              flex-grow: 1;
-             transform: rotatex(54deg);
-             transform-origin: center 40em;
+             transform: rotatex(50deg);
+             transform-origin: bottom;
          }`
      }
 }
