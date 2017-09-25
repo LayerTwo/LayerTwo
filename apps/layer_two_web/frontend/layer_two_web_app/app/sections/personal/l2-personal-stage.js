@@ -44,7 +44,8 @@ export class l2_personal_stage extends HTMLElement {
         return `
         :host {
             display: none;
-            flex-direction: column;
+            flex-grow: 1;
+            flex-direction: column-reverse;
             background: white;
         }
         `;
@@ -54,7 +55,8 @@ export class l2_personal_stage extends HTMLElement {
         return `
         :host {
             display: flex;
-            flex-direction: column;
+            flex-grow: 1;
+            flex-direction: column-reverse;
             background: white;
         }`
         ;
@@ -64,7 +66,8 @@ export class l2_personal_stage extends HTMLElement {
         return `
         :host {
             display: none;
-            flex-direction: column;
+            flex-grow: 1;
+            flex-direction: column-reverse;
             background: white;
         }
         `;

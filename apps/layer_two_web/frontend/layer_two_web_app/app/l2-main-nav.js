@@ -16,13 +16,13 @@ export class l2_main_nav extends HTMLElement {
            display: flex;
            flex-direction: row;
            flex-wrap: wrap;
-           justify-content: center;
+           justify-content: flex-start;
            align-items: center;
            background: white;
            margin: 0px;
-           padding-top: 1.5em;
+           padding-top: 2vh;
            padding-bottom: 0.5em;
-           padding-left: 1em;
+           padding-left: 1vw;
            padding-right: 1em;
        }
        </style>`;

@@ -70,8 +70,9 @@ export class l2_sections_nav extends HTMLElement {
             display: flex;
             flex-direction: column;
             background: white;
-            padding-left: 1em;
-            padding-right: 1em;
+            padding-left: 1vw;
+            padding-right: 1vw;
+            padding-top: 2vh;
         }`;
     }
 

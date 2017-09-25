@@ -34,10 +34,10 @@ export class l2_basic_button extends HTMLElement {
             border-style: double;
             background: white;
             border-color: rgba(225, 225, 225, 1);
-            padding-top: 0.1em;
-            padding-bottom: 0.15em;
-            margin-right: 0.2em;
-            margin-left: 0.2em;
+            padding-top: 1.2vh;
+            padding-bottom: 1.25vh;
+            margin-right: 0.8vw;
+            margin-left: 0.8vw;
             transition: background 0.3s;
         }
 

@@ -22,12 +22,12 @@ export class l2_sections_nav_button extends l2_basic_button{
             border-style: double;
             background: white;
             border-color: rgba(225, 225, 225, 1);
-            padding-top: 0.1em;
-            padding-bottom: 0.15em;
-            margin-right: 0.2em;
-            margin-left: 0.2em;
-            margin-top: 0.2em;
-            margin-bottom: 0.2em;
+            padding-top: 1vh;
+            padding-bottom: 1vh;
+            margin-right: 0.8vw;
+            margin-left: 0.8vw;
+            margin-top: 1.5vh;
+            margin-bottom: 1.5vh;
             transition: background 0.3s;
         }
 
