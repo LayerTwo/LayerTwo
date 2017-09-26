@@ -32,6 +32,7 @@ export class l2_basic_button extends HTMLElement {
             font-family: 'Open Sans SemiBold', sans-serif;
             color: black;
             border-style: double;
+            border-radius: 3px;
             background: white;
             border-color: rgba(225, 225, 225, 1);
             padding-top: 1.2vh;

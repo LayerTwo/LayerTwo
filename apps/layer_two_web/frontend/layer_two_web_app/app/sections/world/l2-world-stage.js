@@ -57,6 +57,10 @@ export class l2_world_stage extends HTMLElement {
             flex-grow: 1;
             flex-direction: column-reverse;
             background: white;
+        }
+        
+        #world_stage_svg {
+            margin-bottom: 1vh;
         }`
         ;
     }
@@ -75,7 +79,7 @@ export class l2_world_stage extends HTMLElement {
     template() {
         return `<template id="l2-world-stage-template">
         <style>${this.l2_world_stage_default_style()}</style>
-        <svg id="earth_stage_svg" version="1.1" viewBox="0 0 1120.3 478.59" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg id="world_stage_svg" version="1.1" viewBox="0 0 1120.3 478.59" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <ellipse cx="561.33" cy="216.42" rx="275.82" ry="93.36" style="fill:none;opacity:.98;stroke-dasharray:3, 3;stroke-width:3;stroke:#969696"
         />
         <ellipse cx="561.42" cy="239.46" rx="398.64" ry="150.24" style="fill:none;opacity:.98;stroke-dasharray:3, 3;stroke-width:3;stroke:#969696"

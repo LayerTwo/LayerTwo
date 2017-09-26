@@ -24,6 +24,8 @@ export class l2_country_leaflet_map extends l2_basic_leaflet_map {
              flex-grow: 1;
              transform: rotatex(50deg);
              transform-origin: bottom;
+             box-shadow: 0px 0px 5px black;
+             margin-bottom: 1vh;
          }`
      }
 }

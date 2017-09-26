@@ -58,6 +58,10 @@ export class l2_personal_stage extends HTMLElement {
             flex-grow: 1;
             flex-direction: column-reverse;
             background: white;
+        }
+        
+        #personal_stage_svg {
+            margin-bottom: 1vh;
         }`
         ;
     }
@@ -76,11 +80,11 @@ export class l2_personal_stage extends HTMLElement {
     template() {
         return `<template id="l2-personal-stage-template">
         <style>${this.l2_personal_stage_default_style()}</style>
-        <svg id="personal_stage_svg" version="1.1" viewBox="0 0 1120.3 551.89" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="561.33" cy="289.72" rx="275.82" ry="93.36" style="fill:none;opacity:.98;stroke-dasharray:3, 3;stroke-width:3;stroke:#969696"/>
-        <ellipse cx="561.42" cy="312.76" rx="398.64" ry="150.24" style="fill:none;opacity:.98;stroke-dasharray:3, 3;stroke-width:3;stroke:#969696"/>
-        <ellipse cx="560.17" cy="345.3" rx="558.67" ry="205.09" style="fill:none;opacity:.98;stroke-dasharray:3, 3;stroke-width:3;stroke:#989898"/>
-        <path d="m513.5 296.9c-1.9643-32.517-3.3605-64.565-23.692-87.453-5.2223-9.8564-10.257-23.281-12.459-36.208 20.355-12.787 44.327-22.179 63.023-29.598v-18.223c-6.7303-9.4042-10.509-14.824-15.635-22.399-2.8164-13.396-5.7741-25.018-8.9314-39.047-3.3687-14.969 0.0689-30.47 9.0857-44.079 13.228-19.79 35.264-18.889 35.264-18.889s22.036-0.90091 35.264 18.889c9.0168 13.61 12.454 29.111 9.0857 44.079-3.1573 14.028-6.115 25.65-8.9314 39.047-5.1257 7.5747-8.9049 12.995-15.635 22.399v18.223c18.696 7.4187 42.667 16.811 63.023 29.598-2.2017 12.928-7.2367 26.352-12.459 36.208-20.332 22.889-21.728 54.936-23.692 87.453-10.349 11.89-23.793 17.422-46.655 18.048-22.861-0.62652-36.306-6.1586-46.655-18.048z" style="fill:#fff;stroke-width:1.5;stroke:#000" />
+        <svg id="personal_stage_svg" version="1.1" viewBox="0 0 1120.3 547.64" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="560.17" cy="285.47" rx="275.82" ry="93.36" style="fill:none;opacity:.98;stroke-dasharray:3, 3;stroke-width:3;stroke:#969696"/>
+        <ellipse cx="560.17" cy="308.51" rx="398.64" ry="150.24" style="fill:none;opacity:.98;stroke-dasharray:3, 3;stroke-width:3;stroke:#969696"/>
+        <ellipse cx="560.17" cy="341.05" rx="558.67" ry="205.09" style="fill:none;opacity:.98;stroke-dasharray:3, 3;stroke-width:3;stroke:#989898"/>
+        <path d="m606.95 292.42c0.44633-31.298 3.682-57.092 22.776-78.588 8.7126-14.467 13.093-28.521 14.094-40.961-23.029-14.466-42.462-25.09-63.612-33.485v-18.305c7.614-10.639 11.889-16.771 17.688-25.34 3.1862-15.155 5.6531-31.683 7.8478-45.679s-1.4101-25.452-13.644-36.857c-12.234-11.406-31.928-11.644-31.928-11.644s-19.694 0.238-31.928 11.644c-12.234 11.405-15.839 22.861-13.644 36.857s4.6616 30.524 7.8478 45.679c5.799 8.569 10.074 14.701 17.688 25.34v18.305c-21.15 8.395-40.583 19.019-63.612 33.485 1.001 12.44 5.3814 26.494 14.094 40.961 19.094 21.496 22.33 47.29 22.776 78.588 9.292 11.807 25.178 18.659 46.778 18.033 21.6 0.62607 37.486-6.2263 46.778-18.033z" style="fill:#fff;stroke-width:3.1285;stroke:#000"/>
         </svg>
         </template>
         `;

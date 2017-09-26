@@ -28,7 +28,7 @@ export class l2_main_copyright extends HTMLElement {
 
     template() {
         return `
-        <div id="copyright_text"><a target= "_blank" href="https://github.com/LayerTwo/LayerTwo">Source Code</a> Copyright &copy; Dimitar Yosifov 2016-${new Date().getFullYear()}</div>
+        <div id="copyright_text">Copyright &copy; Dimitar Yosifov 2016-${new Date().getFullYear()} <a target= "_blank" href="https://github.com/LayerTwo/LayerTwo">Source Code</a></div>
         ` + this.l2_main_copyright_default_style();
     }
 
