@@ -9,27 +9,24 @@ export class l2_main_copyright extends HTMLElement {
     }
 
     l2_main_copyright_default_style(){
-        return `<style>
+        return `
         :host {
-           display: flex;
-           flex-direction: row;
-           flex-wrap: nowrap;
+           display: grid;
            justify-content: center;
-           align-items: center;
            background: white;
            margin: 0px;
        }
 
        #copyright_text{
-           font-size: 0.7em;
-       }
-       </style>`;
+           font-size: 0.5em;
+       }`;
     }
 
     template() {
         return `
+        <style>${this.l2_main_copyright_default_style()}</style>
         <div id="copyright_text">Copyright &copy; Dimitar Yosifov 2016-${new Date().getFullYear()} <a target= "_blank" href="https://github.com/LayerTwo/LayerTwo">Source Code</a></div>
-        ` + this.l2_main_copyright_default_style();
+        `;
     }
 
 }

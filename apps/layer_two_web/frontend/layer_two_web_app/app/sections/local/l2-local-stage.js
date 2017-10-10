@@ -1,15 +1,20 @@
-import {l2_local_leaflet_map} from "../../elements/l2-local-leaflet-map.js"
+import { l2_local_authorities_view } from "./authorities/l2-local-authorities-view.js"
+import { l2_local_businesses_view } from "./businesses/l2-local-businesses-view.js"
+import { l2_local_events_view } from "./events/l2-local-events-view.js"
+import { l2_local_goals_view } from "./goals/l2-local-goals-view.js"
+import { l2_local_problems_view } from "./problems/l2-local-problems-view.js"
+import { l2_local_projects_view } from "./projects/l2-local-projects-view.js"
+import { l2_local_status_view } from "./status/l2-local-status-view.js"
+
 
 export class l2_local_stage extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.setAttribute("render-template", "false");
-        this.setAttribute("show-template", "false");
     }
 
     static get observedAttributes() {
-        return ['render-template', 'show-template'];
+        return ['display-view'];
     }
 
     connectedCallback() {
@@ -17,59 +22,76 @@ export class l2_local_stage extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
-            this.render_template();
-            window.dispatchEvent(new Event('resize'));
+        if (name === 'display-view' && newValue === 'Authorities') {
+            this.shadowRoot.querySelector('l2-local-authorities-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-local-authorities-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-local-authorities-view').setAttribute('show-template', 'false');
         }
-        if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
-            this.show_template();
-            window.dispatchEvent(new Event('resize'));
+
+        if (name === 'display-view' && newValue === 'Businesses') {
+            this.shadowRoot.querySelector('l2-local-businesses-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-local-businesses-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-local-businesses-view').setAttribute('show-template', 'false');
         }
-        if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
-            this.hide_template();
+
+        if (name === 'display-view' && newValue === 'Events') {
+            this.shadowRoot.querySelector('l2-local-events-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-local-events-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-local-events-view').setAttribute('show-template', 'false');
+        }
+
+        if (name === 'display-view' && newValue === 'Goals') {
+            this.shadowRoot.querySelector('l2-local-goals-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-local-goals-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-local-goals-view').setAttribute('show-template', 'false');
+        }
+
+        if (name === 'display-view' && newValue === 'Problems') {
+            this.shadowRoot.querySelector('l2-local-problems-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-local-problems-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-local-problems-view').setAttribute('show-template', 'false');
+        }
+
+        if (name === 'display-view' && newValue === 'Projects') {
+            this.shadowRoot.querySelector('l2-local-projects-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-local-projects-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-local-projects-view').setAttribute('show-template', 'false');
+        }
+
+        if (name === 'display-view' && newValue === 'Status') {
+            this.shadowRoot.querySelector('l2-local-status-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-local-status-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-local-status-view').setAttribute('show-template', 'false');
         }
     }
 
-    render_template(){
-        let content = document.importNode(this.shadowRoot.querySelector("#l2-local-stage-template").content, true);
-        this.shadowRoot.appendChild(content);
-        this.shadowRoot.querySelector("style").innerHTML = this.l2_local_stage_style_show();
-    }
-
-    hide_template(){
-        this.shadowRoot.querySelector("style").innerHTML = this.l2_local_stage_style_hide();
-    }
-
-    show_template(){
-        this.shadowRoot.querySelector("style").innerHTML = this.l2_local_stage_style_show();
-    }
-
-    l2_local_stage_style_hide(){
-        return `
-        :host {
-            display: none;
-            flex-direction: column;
-            background: white;
-        }
-        `;
-    }
 
     l2_local_stage_style_show(){
         return `
         :host {
-            display: flex;
-            flex-grow: 1;
-            flex-direction: column;
+            height: 100%;
             background: white;
         }`
         ;
     }
 
     template() {
-        return `<template id="l2-local-stage-template">
+        return `
         <style>${this.l2_local_stage_style_show()}</style>
-        <l2-local-leaflet-map></l2-local-leaflet-map>
-        </template>
+        <l2-local-authorities-view></l2-local-authorities-view>
+        <l2-local-businesses-view></l2-local-businesses-view>
+        <l2-local-events-view></l2-local-events-view>
+        <l2-local-goals-view></l2-local-goals-view>
+        <l2-local-problems-view></l2-local-problems-view>
+        <l2-local-projects-view></l2-local-projects-view>
+        <l2-local-status-view></l2-local-status-view>
         `;
     }
 

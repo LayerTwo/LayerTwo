@@ -4,50 +4,19 @@ export class l2_personal_nav extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.setAttribute("show-template", "false");
-    }
-
-    static get observedAttributes() {
-        return ['show-template'];
     }
 
     connectedCallback() {
         this.shadowRoot.innerHTML = this.template();
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
-            this.show_template();
-        }
-        if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
-            this.hide_template();
-        }
-    }
-
-    hide_template(){
-        this.shadowRoot.querySelector("style").innerHTML = this.l2_personal_nav_style_hide();
-    }
-
-    show_template(){
-        this.shadowRoot.querySelector("style").innerHTML = this.l2_personal_nav_style_show();
-    }
-
-    l2_personal_nav_style_hide(){
-        return `
-        :host {
-            display: none;
-            flex-direction: column;
-            background: white;
-        }
-        `;
-    }
-
     l2_personal_nav_style_show(){
         return `
         :host {
-            display: flex;
-            flex-grow: 1;
-            flex-direction: column;
+            display: grid;
+            z-index: 500;
+            grid-template-rows: 0.2fr repeat(7, min-content) 0.2fr;
+            grid-gap: 1.5vh;
             background: white;
         }`
         ;
@@ -55,13 +24,15 @@ export class l2_personal_nav extends HTMLElement {
 
     template() {
         return `
+        <style>${this. l2_personal_nav_style_show()}</style>
+        <div></div>
         <l2-sections-nav-button nav-section="l2-personal-nav" name="Status"></l2-sections-nav-button>
         <l2-sections-nav-button nav-section="l2-personal-nav" name="Events"></l2-sections-nav-button>
         <l2-sections-nav-button nav-section="l2-personal-nav" name="Finances"></l2-sections-nav-button>
         <l2-sections-nav-button nav-section="l2-personal-nav" name="Education"></l2-sections-nav-button>
         <l2-sections-nav-button nav-section="l2-personal-nav" name="Health"></l2-sections-nav-button>
         <l2-sections-nav-button nav-section="l2-personal-nav" name="Jobs"></l2-sections-nav-button>
-        <style>${this. l2_personal_nav_style_hide()}</style>`;
+        `;
     }
 
 }

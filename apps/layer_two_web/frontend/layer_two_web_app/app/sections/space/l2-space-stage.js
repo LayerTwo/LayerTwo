@@ -1,13 +1,16 @@
+import { l2_space_goals_view } from "./goals/l2-space-goals-view.js"
+import { l2_space_missions_view } from "./missions/l2-space-missions-view.js"
+import { l2_space_projects_view } from "./projects/l2-space-projects-view.js"
+import { l2_space_status_view } from "./status/l2-space-status-view.js"
+
 export class l2_space_stage extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.setAttribute("render-template", "false");
-        this.setAttribute("show-template", "false");
     }
 
     static get observedAttributes() {
-        return ['render-template', 'show-template'];
+        return ['display-view'];
     }
 
     connectedCallback() {
@@ -15,66 +18,50 @@ export class l2_space_stage extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
-            this.render_template();
+        if (name === 'display-view' && newValue === 'Goals') {
+            this.shadowRoot.querySelector('l2-space-goals-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-space-goals-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-space-goals-view').setAttribute('show-template', 'false');
         }
-        if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
-            this.show_template();
-        }
-        if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
-            this.hide_template();
-        }
-    }
 
-    render_template(){
-        let content = document.importNode(this.shadowRoot.querySelector("#l2-space-stage-template").content, true);
-        this.shadowRoot.appendChild(content);
-        this.shadowRoot.querySelector("style").innerHTML = this.l2_space_stage_style_show();
-        
-    }
-    hide_template(){
-        this.shadowRoot.querySelector("style").innerHTML = this.l2_space_stage_style_hide();
-    }
-
-    show_template(){
-        this.shadowRoot.querySelector("style").innerHTML = this.l2_space_stage_style_show();
-    }
-
-    l2_space_stage_style_hide(){
-        return `
-        :host {
-            display: none;
-            flex-direction: column;
-            background: white;
+        if (name === 'display-view' && newValue === 'Missions') {
+            this.shadowRoot.querySelector('l2-space-missions-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-space-missions-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-space-missions-view').setAttribute('show-template', 'false');
         }
-        `;
+
+        if (name === 'display-view' && newValue === 'Projects') {
+            this.shadowRoot.querySelector('l2-space-projects-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-space-projects-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-space-projects-view').setAttribute('show-template', 'false');
+        }
+
+        if (name === 'display-view' && newValue === 'Status') {
+            this.shadowRoot.querySelector('l2-space-status-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-space-status-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-space-status-view').setAttribute('show-template', 'false');
+        }
     }
 
     l2_space_stage_style_show(){
         return `
         :host {
-            display: flex;
-            flex-direction: column;
+            height: 100%;
             background: white;
-        }`
-        ;
-    }
-
-    l2_space_stage_default_style(){
-        return `
-        :host {
-            display: none;
-            flex-direction: column;
-            background: white;
-        }
-        `;
+        }`;
     }
 
     template() {
-        return `<template id="l2-space-stage-template">
-        <style>${this.l2_space_stage_default_style()}</style>
-        <h1>Space Stage</h1>
-        </template>
+        return `
+        <style>${this.l2_space_stage_style_show()}</style>
+        <l2-space-goals-view></l2-space-goals-view>
+        <l2-space-missions-view></l2-space-missions-view>
+        <l2-space-projects-view></l2-space-projects-view>
+        <l2-space-status-view></l2-space-status-view>
         `;
     }
 

@@ -23,6 +23,15 @@
         
       html {
         font-family: 'Open Sans SemiBold', sans-serif;
+        height: 100%;
+        }
+
+      body {
+          height: 100%;
+        }
+
+      main {
+          height: 100%;
         }
         
       .input_fields {
@@ -72,9 +81,8 @@
         color: black;
         font-size: 0.9em;
         background: white;
-        border-color: rgba(225, 225, 225, 1);
-        border-style: double;
-        border-width: 0.1em;
+        box-shadow: 0 0 1px 0px;
+        border-style: none;
         padding-left: 0.7em;
         padding-right: 0.7em;
         padding-bottom: 0.025em;

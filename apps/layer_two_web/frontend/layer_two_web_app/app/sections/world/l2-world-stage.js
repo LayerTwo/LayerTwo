@@ -1,13 +1,18 @@
+import { l2_world_assemblies_view } from "./assemblies/l2-world-assemblies-view.js"
+import { l2_world_events_view } from "./events/l2-world-events-view.js"
+import { l2_world_goals_view } from "./goals/l2-world-goals-view.js"
+import { l2_world_problems_view } from "./problems/l2-world-problems-view.js"
+import { l2_world_projects_view } from "./projects/l2-world-projects-view.js"
+import { l2_world_status_view } from "./status/l2-world-status-view.js"
+
 export class l2_world_stage extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.setAttribute("render-template", "false");
-        this.setAttribute("show-template", "false");
     }
 
     static get observedAttributes() {
-        return ['render-template', 'show-template'];
+        return ['display-view'];
     }
 
     connectedCallback() {
@@ -15,82 +20,66 @@ export class l2_world_stage extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
-            this.render_template();
+        if (name === 'display-view' && newValue === 'Assemblies') {
+            this.shadowRoot.querySelector('l2-world-assemblies-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-world-assemblies-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-world-assemblies-view').setAttribute('show-template', 'false');
         }
-        if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
-            this.show_template();
-        }
-        if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
-            this.hide_template();
-        }
-    }
 
-    render_template(){
-        let content = document.importNode(this.shadowRoot.querySelector("#l2-world-stage-template").content, true);
-        this.shadowRoot.appendChild(content);
-        this.shadowRoot.querySelector("style").innerHTML = this.l2_world_stage_style_show();        
-    }
-    hide_template(){
-        this.shadowRoot.querySelector("style").innerHTML = this.l2_world_stage_style_hide();
-    }
-
-    show_template(){
-        this.shadowRoot.querySelector("style").innerHTML = this.l2_world_stage_style_show();
-    }
-
-    l2_world_stage_style_hide(){
-        return `
-        :host {
-            display: none;
-            flex-grow: 1;
-            flex-direction: column-reverse;
-            background: white;
+        if (name === 'display-view' && newValue === 'Events') {
+            this.shadowRoot.querySelector('l2-world-events-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-world-events-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-world-events-view').setAttribute('show-template', 'false');
         }
-        `;
+
+        if (name === 'display-view' && newValue === 'Goals') {
+            this.shadowRoot.querySelector('l2-world-goals-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-world-goals-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-world-goals-view').setAttribute('show-template', 'false');
+        }
+
+        if (name === 'display-view' && newValue === 'Problems') {
+            this.shadowRoot.querySelector('l2-world-problems-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-world-problems-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-world-problems-view').setAttribute('show-template', 'false');
+        }
+
+        if (name === 'display-view' && newValue === 'Projects') {
+            this.shadowRoot.querySelector('l2-world-projects-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-world-projects-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-world-projects-view').setAttribute('show-template', 'false');
+        }
+
+        if (name === 'display-view' && newValue === 'Status') {
+            this.shadowRoot.querySelector('l2-world-status-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-world-status-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-world-status-view').setAttribute('show-template', 'false');
+        }
     }
 
     l2_world_stage_style_show(){
         return `
         :host {
-            display: flex;
-            flex-grow: 1;
-            flex-direction: column-reverse;
+            height: 100%;
             background: white;
-        }
-        
-        #world_stage_svg {
-            margin-bottom: 1vh;
-        }`
-        ;
-    }
-
-    l2_world_stage_default_style(){
-        return `
-        :host {
-            display: none;
-            flex-grow: 1;
-            flex-direction: column-reverse;
-            background: white;
-        }
-        `;
+        }`;
     }
 
     template() {
-        return `<template id="l2-world-stage-template">
-        <style>${this.l2_world_stage_default_style()}</style>
-        <svg id="world_stage_svg" version="1.1" viewBox="0 0 1120.3 478.59" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <ellipse cx="561.33" cy="216.42" rx="275.82" ry="93.36" style="fill:none;opacity:.98;stroke-dasharray:3, 3;stroke-width:3;stroke:#969696"
-        />
-        <ellipse cx="561.42" cy="239.46" rx="398.64" ry="150.24" style="fill:none;opacity:.98;stroke-dasharray:3, 3;stroke-width:3;stroke:#969696"
-        />
-        <ellipse cx="560.17" cy="272" rx="558.67" ry="205.09" style="fill:none;opacity:.98;stroke-dasharray:3, 3;stroke-width:3;stroke:#989898"
-        />
-        <image x="410.17" width="300" height="300" xlink:href="/images/EarthAnimation.gif" />
-        <ellipse cx="560.17" cy="150" rx="139.49" ry="140.96" style="fill:none;opacity:.98;stroke-width:1.8799;stroke:#000" />
-        <ellipse cx="560.17" cy="150" rx="147.34" ry="148.9" style="fill:none;opacity:.98;stroke-width:1.5144;stroke:#969696" />
-        </svg>
-        </template>
+        return `
+        <style>${this.l2_world_stage_style_show()}</style>
+        <l2-world-assemblies-view></l2-world-assemblies-view>
+        <l2-world-events-view></l2-world-events-view>
+        <l2-world-goals-view></l2-world-goals-view>
+        <l2-world-problems-view></l2-world-problems-view>
+        <l2-world-projects-view></l2-world-projects-view>
+        <l2-world-status-view></l2-world-status-view>
         `;
     }
 

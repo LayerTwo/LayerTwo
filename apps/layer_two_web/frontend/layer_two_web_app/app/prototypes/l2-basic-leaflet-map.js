@@ -27,18 +27,13 @@ export class l2_basic_leaflet_map extends HTMLElement {
     basic_map_custom_style(){
         return `
         :host {
-            display: flex;
-            flex-grow: 1;
+            height: 100%
             margin: 0px;
             padding: 0px;
-        }
-
-        #l2-basic-leaflet-map {
-             flex-grow: 1;
-         }`
+        }`;
      }
  
-     basic_map_default_style() {
+    basic_map_default_style() {
          return `
          ${this.basic_map_custom_style()}
          .leaflet-pane,
@@ -450,7 +445,7 @@ export class l2_basic_leaflet_map extends HTMLElement {
              }
          .leaflet-container .leaflet-control-attribution,
          .leaflet-container .leaflet-control-scale {
-             font-size: 11px;
+             font-size: 0.7vw;
              }
          .leaflet-left .leaflet-control-scale {
              margin-left: 5px;

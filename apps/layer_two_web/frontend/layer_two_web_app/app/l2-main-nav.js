@@ -11,33 +11,29 @@ export class l2_main_nav extends HTMLElement {
     }
 
     l2_main_nav_default_style(){
-        return `<style>
+        return `
         :host {
-           display: flex;
-           flex-direction: row;
-           flex-wrap: wrap;
-           justify-content: flex-start;
-           align-items: center;
+           z-index: 700;
+           display: grid;
+           grid-template-columns: 0.4fr repeat(8, minmax(min-content, auto)) 0.4fr;
+           grid-gap: 0.7vw;
            background: white;
-           margin: 0px;
-           padding-top: 2vh;
-           padding-bottom: 0.5em;
-           padding-left: 1vw;
-           padding-right: 1em;
-       }
-       </style>`;
+       }`;
     }
 
     template() {
         return `
+        <style>${this.l2_main_nav_default_style()}</style>
+        <div id="grid spacer"></div>
         <l2-main-nav-button nav-section="l2-main-nav" name="Personal"></l2-main-nav-button>
         <l2-main-nav-button nav-section="l2-main-nav" name="Social"></l2-main-nav-button>
         <l2-main-nav-button nav-section="l2-main-nav" name="Local"></l2-main-nav-button>
+        <l2-main-nav-button nav-section="l2-main-nav" name="City"></l2-main-nav-button>
         <l2-main-nav-button nav-section="l2-main-nav" name="Country"></l2-main-nav-button>
         <l2-main-nav-button nav-section="l2-main-nav" name="World"></l2-main-nav-button>
         <l2-main-nav-button nav-section="l2-main-nav" name="Space"></l2-main-nav-button>
         <l2-main-nav-button nav-section="l2-main-nav" name="Visit"></l2-main-nav-button>
-        ` + this.l2_main_nav_default_style();
+        `;
     }
 
 }

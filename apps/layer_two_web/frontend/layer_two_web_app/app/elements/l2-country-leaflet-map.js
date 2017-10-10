@@ -12,20 +12,14 @@ export class l2_country_leaflet_map extends l2_basic_leaflet_map {
     basic_map_custom_style(){
         return `
         :host {
-            display: flex;
-            flex-grow: 1;
             margin: 0px;
             padding: 0px;
-            perspective: 85em;
         }
 
         #l2-basic-leaflet-map {
-             border-radius: 1em;
-             flex-grow: 1;
-             transform: rotatex(50deg);
-             transform-origin: bottom;
-             box-shadow: 0px 0px 5px black;
-             margin-bottom: 1vh;
+            height: 100%;
+            border-radius: 1em;
+            box-shadow: 0px 0px 5px black;
          }`
      }
 }

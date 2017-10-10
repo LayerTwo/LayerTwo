@@ -9,6 +9,7 @@ export class l2_main extends HTMLElement {
         this.addEventListener("l2-main-nav Personal", this.show_main_stage_personal);
         this.addEventListener("l2-main-nav Social", this.show_main_stage_social);
         this.addEventListener("l2-main-nav Local", this.show_main_stage_local);
+        this.addEventListener("l2-main-nav City", this.show_main_stage_city);
         this.addEventListener("l2-main-nav Country", this.show_main_stage_country);
         this.addEventListener("l2-main-nav World", this.show_main_stage_world);
         this.addEventListener("l2-main-nav Space", this.show_main_stage_space);
@@ -16,31 +17,35 @@ export class l2_main extends HTMLElement {
     }
 
     show_main_stage_personal() {
-        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-stage-display", "Personal");
+        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-section-display", "Personal");
     }
 
     show_main_stage_social() {
-        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-stage-display", "Social");
+        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-section-display", "Social");
     }
 
     show_main_stage_local() {
-        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-stage-display", "Local");
+        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-section-display", "Local");
+    }
+
+    show_main_stage_city() {
+        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-section-display", "City");
     }
 
     show_main_stage_country() {
-        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-stage-display", "Country");
+        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-section-display", "Country");
     }
 
     show_main_stage_world() {
-        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-stage-display", "World");
+        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-section-display", "World");
     }
 
     show_main_stage_space() {
-        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-stage-display", "Space");
+        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-section-display", "Space");
     }
 
     show_main_stage_visit() {
-        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-stage-display", "Visit");
+        this.shadowRoot.querySelector("l2-main-stage").setAttribute( "main-section-display", "Visit");
     }
 
 
@@ -49,22 +54,23 @@ export class l2_main extends HTMLElement {
     }
 
     l2_main_default_style(){
-        return `<style>
+        return `
         :host {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: minmax(auto, max-content) auto minmax(auto, max-content);
+            height: 100%;
             background: white;
-        }
-        </style>`;
+        }`;
     }
 
     template() {
         return `
+        <style>${this.l2_main_default_style()}</style>
         <l2-main-nav></l2-main-nav>
         <l2-main-stage></l2-main-stage>
         <l2-main-copyright></l2-main-copyright>
-        ` + this.l2_main_default_style();
+        `;
     }
 
 }
