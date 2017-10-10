@@ -128,9 +128,9 @@ export class l2_sections_nav_button extends l2_basic_button{
             display: grid;
             justify-items:start;
             box-shadow: 0 0 7px -1px grey;
-            background: white;
+            ${this.button_background_color}
             transition: background 0.3s;
-        }`
+        }`;
     }
 
     basic_button_name_style(){
@@ -139,7 +139,7 @@ export class l2_sections_nav_button extends l2_basic_button{
             font-family: 'Open Sans SemiBold';
             font-size: 1.3vw;
             margin-right: 0.4vw;
-        }`
+        }`;
     }
 
     render_initial_button() {

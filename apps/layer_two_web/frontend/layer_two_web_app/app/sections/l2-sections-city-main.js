@@ -43,34 +43,42 @@ export class l2_sections_city_main extends HTMLElement {
     
     show_city_view_authorities() {
         this.shadowRoot.querySelector("l2-city-stage").setAttribute( "display-view", "Authorities");
+        this.shadowRoot.querySelector("l2-city-nav").setAttribute( "selected-button", "Authorities");
     }
 
     show_city_view_businesses() {
         this.shadowRoot.querySelector("l2-city-stage").setAttribute( "display-view", "Businesses");
+        this.shadowRoot.querySelector("l2-city-nav").setAttribute( "selected-button", "Businesses");
     }
 
     show_city_view_events() {
         this.shadowRoot.querySelector("l2-city-stage").setAttribute( "display-view", "Events");
+        this.shadowRoot.querySelector("l2-city-nav").setAttribute( "selected-button", "Events");
     }
 
     show_city_view_goals() {
         this.shadowRoot.querySelector("l2-city-stage").setAttribute( "display-view", "Goals");
+        this.shadowRoot.querySelector("l2-city-nav").setAttribute( "selected-button", "Goals");
     }
 
     show_city_view_leisure() {
         this.shadowRoot.querySelector("l2-city-stage").setAttribute( "display-view", "Leisure");
+        this.shadowRoot.querySelector("l2-city-nav").setAttribute( "selected-button", "Leisure");
     }
 
     show_city_view_problems() {
         this.shadowRoot.querySelector("l2-city-stage").setAttribute( "display-view", "Problems");
+        this.shadowRoot.querySelector("l2-city-nav").setAttribute( "selected-button", "Problems");
     }
 
     show_city_view_projects() {
         this.shadowRoot.querySelector("l2-city-stage").setAttribute( "display-view", "Projects");
+        this.shadowRoot.querySelector("l2-city-nav").setAttribute( "selected-button", "Projects");
     }
 
     show_city_view_status() {
         this.shadowRoot.querySelector("l2-city-stage").setAttribute( "display-view", "Status");
+        this.shadowRoot.querySelector("l2-city-nav").setAttribute( "selected-button", "Status");
     }
     
 

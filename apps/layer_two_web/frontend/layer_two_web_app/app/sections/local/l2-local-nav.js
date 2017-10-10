@@ -10,6 +10,54 @@ export class l2_local_nav extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
+    static get observedAttributes() {
+        return ['selected-button'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'selected-button' && newValue === 'Authorities') {
+            this.shadowRoot.querySelector("#l2-local-nav-Authorities").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-local-nav-Authorities").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Businesses') {
+            this.shadowRoot.querySelector("#l2-local-nav-Businesses").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-local-nav-Businesses").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Events') {
+            this.shadowRoot.querySelector("#l2-local-nav-Events").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-local-nav-Events").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Goals') {
+            this.shadowRoot.querySelector("#l2-local-nav-Goals").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-local-nav-Goals").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Problems') {
+            this.shadowRoot.querySelector("#l2-local-nav-Problems").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-local-nav-Problems").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Projects') {
+            this.shadowRoot.querySelector("#l2-local-nav-Projects").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-local-nav-Projects").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Status') {
+            this.shadowRoot.querySelector("#l2-local-nav-Status").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-local-nav-Status").setAttribute("selected", "false");
+        }
+    }
+
     l2_local_nav_style_show(){
         return `
         :host {

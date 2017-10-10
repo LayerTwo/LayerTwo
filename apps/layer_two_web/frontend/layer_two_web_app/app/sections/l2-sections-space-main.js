@@ -39,18 +39,22 @@ export class l2_sections_space_main extends HTMLElement {
     
     show_space_view_goals() {
         this.shadowRoot.querySelector("l2-space-stage").setAttribute( "display-view", "Goals");
+        this.shadowRoot.querySelector("l2-space-nav").setAttribute( "selected-button", "Goals");
     }
 
     show_space_view_missions() {
         this.shadowRoot.querySelector("l2-space-stage").setAttribute( "display-view", "Missions");
+        this.shadowRoot.querySelector("l2-space-nav").setAttribute( "selected-button", "Missions");
     }
 
     show_space_view_projects() {
         this.shadowRoot.querySelector("l2-space-stage").setAttribute( "display-view", "Projects");
+        this.shadowRoot.querySelector("l2-space-nav").setAttribute( "selected-button", "Projects");
     }
 
     show_space_view_status() {
         this.shadowRoot.querySelector("l2-space-stage").setAttribute( "display-view", "Status");
+        this.shadowRoot.querySelector("l2-space-nav").setAttribute( "selected-button", "Status");
     }
     
 

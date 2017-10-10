@@ -39,18 +39,22 @@ export class l2_sections_visit_main extends HTMLElement {
     
     show_visit_view_eco() {
         this.shadowRoot.querySelector("l2-visit-stage").setAttribute( "display-view", "Eco");
+        this.shadowRoot.querySelector("l2-visit-nav").setAttribute( "selected-button", "Eco");
     }
 
     show_visit_view_historic() {
         this.shadowRoot.querySelector("l2-visit-stage").setAttribute( "display-view", "Historic");
+        this.shadowRoot.querySelector("l2-visit-nav").setAttribute( "selected-button", "Historic");
     }
 
     show_visit_view_islands() {
         this.shadowRoot.querySelector("l2-visit-stage").setAttribute( "display-view", "Islands");
+        this.shadowRoot.querySelector("l2-visit-nav").setAttribute( "selected-button", "Islands");
     }
 
     show_visit_view_mountains() {
         this.shadowRoot.querySelector("l2-visit-stage").setAttribute( "display-view", "Mountains");
+        this.shadowRoot.querySelector("l2-visit-nav").setAttribute( "selected-button", "Mountains");
     }
     
 

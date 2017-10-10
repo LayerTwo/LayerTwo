@@ -41,26 +41,32 @@ export class l2_sections_world_main extends HTMLElement {
     
     show_world_view_assemblies() {
         this.shadowRoot.querySelector("l2-world-stage").setAttribute( "display-view", "Assemblies");
+        this.shadowRoot.querySelector("l2-world-nav").setAttribute( "selected-button", "Assemblies");
     }
 
     show_world_view_events() {
         this.shadowRoot.querySelector("l2-world-stage").setAttribute( "display-view", "Events");
+        this.shadowRoot.querySelector("l2-world-nav").setAttribute( "selected-button", "Events");
     }
 
     show_world_view_goals() {
         this.shadowRoot.querySelector("l2-world-stage").setAttribute( "display-view", "Goals");
+        this.shadowRoot.querySelector("l2-world-nav").setAttribute( "selected-button", "Goals");
     }
 
     show_world_view_problems() {
         this.shadowRoot.querySelector("l2-world-stage").setAttribute( "display-view", "Problems");
+        this.shadowRoot.querySelector("l2-world-nav").setAttribute( "selected-button", "Problems");
     }
 
     show_world_view_projects() {
         this.shadowRoot.querySelector("l2-world-stage").setAttribute( "display-view", "Projects");
+        this.shadowRoot.querySelector("l2-world-nav").setAttribute( "selected-button", "Projects");
     }
 
     show_world_view_status() {
         this.shadowRoot.querySelector("l2-world-stage").setAttribute( "display-view", "Status");
+        this.shadowRoot.querySelector("l2-world-nav").setAttribute( "selected-button", "Status");
     }
     
 

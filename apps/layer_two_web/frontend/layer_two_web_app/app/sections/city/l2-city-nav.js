@@ -10,6 +10,60 @@ export class l2_city_nav extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
+    static get observedAttributes() {
+        return ['selected-button'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'selected-button' && newValue === 'Authorities') {
+            this.shadowRoot.querySelector("#l2-city-nav-Authorities").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-city-nav-Authorities").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Businesses') {
+            this.shadowRoot.querySelector("#l2-city-nav-Businesses").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-city-nav-Businesses").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Events') {
+            this.shadowRoot.querySelector("#l2-city-nav-Events").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-city-nav-Events").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Goals') {
+            this.shadowRoot.querySelector("#l2-city-nav-Goals").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-city-nav-Goals").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Leisure') {
+            this.shadowRoot.querySelector("#l2-city-nav-Leisure").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-city-nav-Leisure").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Problems') {
+            this.shadowRoot.querySelector("#l2-city-nav-Problems").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-city-nav-Problems").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Projects') {
+            this.shadowRoot.querySelector("#l2-city-nav-Projects").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-city-nav-Projects").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Status') {
+            this.shadowRoot.querySelector("#l2-city-nav-Status").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-city-nav-Status").setAttribute("selected", "false");
+        }
+    }
+
     l2_city_nav_style_show(){
         return `
         :host {

@@ -10,6 +10,60 @@ export class l2_main_nav extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
+    static get observedAttributes() {
+        return ['selected-button'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'selected-button' && newValue === 'City') {
+            this.shadowRoot.querySelector("#l2-main-nav-City").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-main-nav-City").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Country') {
+            this.shadowRoot.querySelector("#l2-main-nav-Country").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-main-nav-Country").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Local') {
+            this.shadowRoot.querySelector("#l2-main-nav-Local").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-main-nav-Local").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Personal') {
+            this.shadowRoot.querySelector("#l2-main-nav-Personal").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-main-nav-Personal").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Social') {
+            this.shadowRoot.querySelector("#l2-main-nav-Social").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-main-nav-Social").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Space') {
+            this.shadowRoot.querySelector("#l2-main-nav-Space").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-main-nav-Space").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Visit') {
+            this.shadowRoot.querySelector("#l2-main-nav-Visit").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-main-nav-Visit").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'World') {
+            this.shadowRoot.querySelector("#l2-main-nav-World").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-main-nav-World").setAttribute("selected", "false");
+        }
+    }
+
     l2_main_nav_default_style(){
         return `
         :host {

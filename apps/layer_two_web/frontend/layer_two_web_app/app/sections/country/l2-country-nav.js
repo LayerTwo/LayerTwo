@@ -10,6 +10,54 @@ export class l2_country_nav extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
+    static get observedAttributes() {
+        return ['selected-button'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'selected-button' && newValue === 'Authorities') {
+            this.shadowRoot.querySelector("#l2-country-nav-Authorities").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-country-nav-Authorities").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Economy') {
+            this.shadowRoot.querySelector("#l2-country-nav-Economy").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-country-nav-Economy").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Events') {
+            this.shadowRoot.querySelector("#l2-country-nav-Events").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-country-nav-Events").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Goals') {
+            this.shadowRoot.querySelector("#l2-country-nav-Goals").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-country-nav-Goals").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Problems') {
+            this.shadowRoot.querySelector("#l2-country-nav-Problems").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-country-nav-Problems").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Projects') {
+            this.shadowRoot.querySelector("#l2-country-nav-Projects").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-country-nav-Projects").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Status') {
+            this.shadowRoot.querySelector("#l2-country-nav-Status").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-country-nav-Status").setAttribute("selected", "false");
+        }
+    }
+
     l2_country_nav_style_show(){
         return `
         :host {

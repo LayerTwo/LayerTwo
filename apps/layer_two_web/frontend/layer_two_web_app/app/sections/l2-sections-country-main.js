@@ -41,31 +41,39 @@ export class l2_sections_country_main extends HTMLElement {
 
     show_country_view_authorities() {
         this.shadowRoot.querySelector("l2-country-stage").setAttribute( "display-view", "Authorities");
+        this.shadowRoot.querySelector("l2-country-nav").setAttribute( "selected-button", "Authorities");
     }
 
     show_country_view_economy() {
         this.shadowRoot.querySelector("l2-country-stage").setAttribute( "display-view", "Economy");
+        this.shadowRoot.querySelector("l2-country-nav").setAttribute( "selected-button", "Economy");
     }
 
     show_country_view_events() {
         this.shadowRoot.querySelector("l2-country-stage").setAttribute( "display-view", "Events");
+        this.shadowRoot.querySelector("l2-country-nav").setAttribute( "selected-button", "Events");
     }
 
     show_country_view_goals() {
         this.shadowRoot.querySelector("l2-country-stage").setAttribute( "display-view", "Goals");
+        this.shadowRoot.querySelector("l2-country-nav").setAttribute( "selected-button", "Goals");
     }
 
     show_country_view_problems() {
         this.shadowRoot.querySelector("l2-country-stage").setAttribute( "display-view", "Problems");
+        this.shadowRoot.querySelector("l2-country-nav").setAttribute( "selected-button", "Problems");
     }
 
     show_country_view_projects() {
         this.shadowRoot.querySelector("l2-country-stage").setAttribute( "display-view", "Projects");
+        this.shadowRoot.querySelector("l2-country-nav").setAttribute( "selected-button", "Projects");
     }
 
     show_country_view_status() {
         this.shadowRoot.querySelector("l2-country-stage").setAttribute( "display-view", "Status");
+        this.shadowRoot.querySelector("l2-country-nav").setAttribute( "selected-button", "Status");
     }
+
 
     render_template(){
         let content = document.importNode(this.shadowRoot.querySelector("#l2-sections-country-stage-template").content, true);

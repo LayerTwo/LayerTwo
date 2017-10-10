@@ -10,6 +10,48 @@ export class l2_social_nav extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
+    static get observedAttributes() {
+        return ['selected-button'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'selected-button' && newValue === 'Channels') {
+            this.shadowRoot.querySelector("#l2-social-nav-Channels").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-social-nav-Channels").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Events') {
+            this.shadowRoot.querySelector("#l2-social-nav-Events").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-social-nav-Events").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Friends') {
+            this.shadowRoot.querySelector("#l2-social-nav-Friends").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-social-nav-Friends").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Interests') {
+            this.shadowRoot.querySelector("#l2-social-nav-Interests").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-social-nav-Interests").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Status') {
+            this.shadowRoot.querySelector("#l2-social-nav-Status").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-social-nav-Status").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Views') {
+            this.shadowRoot.querySelector("#l2-social-nav-Views").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-social-nav-Views").setAttribute("selected", "false");
+        }
+    }
+
     l2_social_nav_style_show(){
         return `
         :host {

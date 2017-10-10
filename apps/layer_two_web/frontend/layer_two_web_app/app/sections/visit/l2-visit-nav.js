@@ -10,6 +10,36 @@ export class l2_visit_nav extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
+    static get observedAttributes() {
+        return ['selected-button'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'selected-button' && newValue === 'Eco') {
+            this.shadowRoot.querySelector("#l2-visit-nav-Eco").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-visit-nav-Eco").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Historic') {
+            this.shadowRoot.querySelector("#l2-visit-nav-Historic").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-visit-nav-Historic").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Islands') {
+            this.shadowRoot.querySelector("#l2-visit-nav-Islands").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-visit-nav-Islands").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Mountains') {
+            this.shadowRoot.querySelector("#l2-visit-nav-Mountains").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-visit-nav-Mountains").setAttribute("selected", "false");
+        }
+    }
+
     l2_visit_nav_style_show(){
         return `
         :host {

@@ -11,6 +11,36 @@ export class l2_space_nav extends HTMLElement {
         this.shadowRoot.innerHTML = this.template();
     }
 
+        static get observedAttributes() {
+        return ['selected-button'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'selected-button' && newValue === 'Goals') {
+            this.shadowRoot.querySelector("#l2-space-nav-Goals").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-space-nav-Goals").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Missions') {
+            this.shadowRoot.querySelector("#l2-space-nav-Missions").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-space-nav-Missions").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Projects') {
+            this.shadowRoot.querySelector("#l2-space-nav-Projects").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-space-nav-Projects").setAttribute("selected", "false");
+        }
+
+        if (name === 'selected-button' && newValue === 'Status') {
+            this.shadowRoot.querySelector("#l2-space-nav-Status").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-space-nav-Status").setAttribute("selected", "false");
+        }
+    }
+
     l2_space_nav_style_show(){
         return `
         :host {

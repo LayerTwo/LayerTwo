@@ -41,26 +41,32 @@ export class l2_sections_personal_main extends HTMLElement {
     
     show_personal_view_education() {
         this.shadowRoot.querySelector("l2-personal-stage").setAttribute( "display-view", "Education");
+        this.shadowRoot.querySelector("l2-personal-nav").setAttribute( "selected-button", "Education");
     }
 
     show_personal_view_events() {
         this.shadowRoot.querySelector("l2-personal-stage").setAttribute( "display-view", "Events");
+        this.shadowRoot.querySelector("l2-personal-nav").setAttribute( "selected-button", "Events");
     }
 
     show_personal_view_finances() {
         this.shadowRoot.querySelector("l2-personal-stage").setAttribute( "display-view", "Finances");
+        this.shadowRoot.querySelector("l2-personal-nav").setAttribute( "selected-button", "Finances");
     }
 
     show_personal_view_health() {
         this.shadowRoot.querySelector("l2-personal-stage").setAttribute( "display-view", "Health");
+        this.shadowRoot.querySelector("l2-personal-nav").setAttribute( "selected-button", "Health");
     }
 
     show_personal_view_jobs() {
         this.shadowRoot.querySelector("l2-personal-stage").setAttribute( "display-view", "Jobs");
+        this.shadowRoot.querySelector("l2-personal-nav").setAttribute( "selected-button", "Jobs");
     }
 
     show_personal_view_status() {
         this.shadowRoot.querySelector("l2-personal-stage").setAttribute( "display-view", "Status");
+        this.shadowRoot.querySelector("l2-personal-nav").setAttribute( "selected-button", "Status");
     }
     
 

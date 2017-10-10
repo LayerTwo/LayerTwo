@@ -41,26 +41,32 @@ export class l2_sections_social_main extends HTMLElement {
     
     show_social_view_channels() {
         this.shadowRoot.querySelector("l2-social-stage").setAttribute( "display-view", "Channels");
+        this.shadowRoot.querySelector("l2-social-nav").setAttribute( "selected-button", "Channels");
     }
 
     show_social_view_events() {
         this.shadowRoot.querySelector("l2-social-stage").setAttribute( "display-view", "Events");
+        this.shadowRoot.querySelector("l2-social-nav").setAttribute( "selected-button", "Events");
     }
 
     show_social_view_friends() {
         this.shadowRoot.querySelector("l2-social-stage").setAttribute( "display-view", "Friends");
+        this.shadowRoot.querySelector("l2-social-nav").setAttribute( "selected-button", "Friends");
     }
 
     show_social_view_interests() {
         this.shadowRoot.querySelector("l2-social-stage").setAttribute( "display-view", "Interests");
+        this.shadowRoot.querySelector("l2-social-nav").setAttribute( "selected-button", "Interests");
     }
 
     show_social_view_views() {
         this.shadowRoot.querySelector("l2-social-stage").setAttribute( "display-view", "Views");
+        this.shadowRoot.querySelector("l2-social-nav").setAttribute( "selected-button", "Views");
     }
 
     show_social_view_status() {
         this.shadowRoot.querySelector("l2-social-stage").setAttribute( "display-view", "Status");
+        this.shadowRoot.querySelector("l2-social-nav").setAttribute( "selected-button", "Status");
     }
     
 
