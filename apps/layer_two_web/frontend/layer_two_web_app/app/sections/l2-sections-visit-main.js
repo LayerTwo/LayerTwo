@@ -25,34 +25,58 @@ export class l2_sections_visit_main extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
             this.render_template();
-            window.dispatchEvent(new Event('resize'));
+            this.l2_visit_nav_state();
         }
         if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
             this.show_template();
-            window.dispatchEvent(new Event('resize'));
         }
         if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
             this.hide_template();
         }
     }
 
+    l2_visit_nav_state(){
+        switch (localStorage.getItem("l2-visit-nav")) {
+            case "eco":
+                this.show_visit_view_eco();
+                break;
+
+            case "historic":
+                this.show_visit_view_historic();
+                break;
+
+            case "islands":
+                this.show_visit_view_islands();
+                break;
+
+            case "mountains":
+                this.show_visit_view_mountains();
+                break;
+            default:
+                this.show_visit_view_islands();
+        }
+    }
     
     show_visit_view_eco() {
+        localStorage.setItem("l2-visit-nav", "eco");
         this.shadowRoot.querySelector("l2-visit-stage").setAttribute( "display-view", "Eco");
         this.shadowRoot.querySelector("l2-visit-nav").setAttribute( "selected-button", "Eco");
     }
 
     show_visit_view_historic() {
+        localStorage.setItem("l2-visit-nav", "historic");
         this.shadowRoot.querySelector("l2-visit-stage").setAttribute( "display-view", "Historic");
         this.shadowRoot.querySelector("l2-visit-nav").setAttribute( "selected-button", "Historic");
     }
 
     show_visit_view_islands() {
+        localStorage.setItem("l2-visit-nav", "islands");
         this.shadowRoot.querySelector("l2-visit-stage").setAttribute( "display-view", "Islands");
         this.shadowRoot.querySelector("l2-visit-nav").setAttribute( "selected-button", "Islands");
     }
 
     show_visit_view_mountains() {
+        localStorage.setItem("l2-visit-nav", "mountains");
         this.shadowRoot.querySelector("l2-visit-stage").setAttribute( "display-view", "Mountains");
         this.shadowRoot.querySelector("l2-visit-nav").setAttribute( "selected-button", "Mountains");
     }

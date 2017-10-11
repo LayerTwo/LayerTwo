@@ -27,44 +27,78 @@ export class l2_sections_world_main extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
             this.render_template();
-            window.dispatchEvent(new Event('resize'));
+            this.l2_world_nav_state();
         }
         if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
             this.show_template();
-            window.dispatchEvent(new Event('resize'));
         }
         if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
             this.hide_template();
         }
     }
 
+    l2_world_nav_state(){
+        switch (localStorage.getItem("l2-world-nav")) {
+            case "assemblies":
+                this.show_world_view_assemblies();
+                break;
+
+            case "events":
+                this.show_world_view_events();
+                break;
+
+            case "goals":
+                this.show_world_view_goals();
+                break;
+
+            case "problems":
+                this.show_world_view_problems();
+                break;
+
+            case "projects":
+                this.show_world_view_projects();
+                break;
+
+            case "status":
+                this.show_world_view_status();
+                break;
+            default:
+                this.show_world_view_status();
+        }
+    }
     
     show_world_view_assemblies() {
+        localStorage.setItem("l2-world-nav", "assemblies");
         this.shadowRoot.querySelector("l2-world-stage").setAttribute( "display-view", "Assemblies");
         this.shadowRoot.querySelector("l2-world-nav").setAttribute( "selected-button", "Assemblies");
     }
 
     show_world_view_events() {
+        localStorage.setItem("l2-world-nav", "events");
         this.shadowRoot.querySelector("l2-world-stage").setAttribute( "display-view", "Events");
         this.shadowRoot.querySelector("l2-world-nav").setAttribute( "selected-button", "Events");
     }
 
     show_world_view_goals() {
+        localStorage.setItem("l2-world-nav", "goals");
         this.shadowRoot.querySelector("l2-world-stage").setAttribute( "display-view", "Goals");
         this.shadowRoot.querySelector("l2-world-nav").setAttribute( "selected-button", "Goals");
     }
 
     show_world_view_problems() {
+        localStorage.setItem("l2-world-nav", "problems");
         this.shadowRoot.querySelector("l2-world-stage").setAttribute( "display-view", "Problems");
         this.shadowRoot.querySelector("l2-world-nav").setAttribute( "selected-button", "Problems");
     }
 
     show_world_view_projects() {
+        localStorage.setItem("l2-world-nav", "projects");
         this.shadowRoot.querySelector("l2-world-stage").setAttribute( "display-view", "Projects");
         this.shadowRoot.querySelector("l2-world-nav").setAttribute( "selected-button", "Projects");
     }
 
     show_world_view_status() {
+        localStorage.setItem("l2-world-nav", "status");
         this.shadowRoot.querySelector("l2-world-stage").setAttribute( "display-view", "Status");
         this.shadowRoot.querySelector("l2-world-nav").setAttribute( "selected-button", "Status");
     }

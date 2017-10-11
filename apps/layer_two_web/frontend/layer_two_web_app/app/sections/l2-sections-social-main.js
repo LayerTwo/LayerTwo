@@ -27,44 +27,78 @@ export class l2_sections_social_main extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
             this.render_template();
-            window.dispatchEvent(new Event('resize'));
+            this.l2_social_nav_state();
         }
         if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
             this.show_template();
-            window.dispatchEvent(new Event('resize'));
         }
         if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
             this.hide_template();
         }
     }
 
+    l2_social_nav_state(){
+        switch (localStorage.getItem("l2-social-nav")) {
+            case "channels":
+                this.show_social_view_channels();
+                break;
+
+            case "events":
+                this.show_social_view_events();
+                break;
+
+            case "friends":
+                this.show_social_view_friends();
+                break;
+
+            case "interests":
+                this.show_social_view_interests();
+                break;
+
+            case "views":
+                this.show_social_view_views();
+                break;
+
+            case "status":
+                this.show_social_view_status();
+                break;
+            default:
+                this.show_social_view_status();
+        }
+    }
     
     show_social_view_channels() {
+        localStorage.setItem("l2-social-nav", "channels");
         this.shadowRoot.querySelector("l2-social-stage").setAttribute( "display-view", "Channels");
         this.shadowRoot.querySelector("l2-social-nav").setAttribute( "selected-button", "Channels");
     }
 
     show_social_view_events() {
+        localStorage.setItem("l2-social-nav", "events");
         this.shadowRoot.querySelector("l2-social-stage").setAttribute( "display-view", "Events");
         this.shadowRoot.querySelector("l2-social-nav").setAttribute( "selected-button", "Events");
     }
 
     show_social_view_friends() {
+        localStorage.setItem("l2-social-nav", "friends");
         this.shadowRoot.querySelector("l2-social-stage").setAttribute( "display-view", "Friends");
         this.shadowRoot.querySelector("l2-social-nav").setAttribute( "selected-button", "Friends");
     }
 
     show_social_view_interests() {
+        localStorage.setItem("l2-social-nav", "interests");
         this.shadowRoot.querySelector("l2-social-stage").setAttribute( "display-view", "Interests");
         this.shadowRoot.querySelector("l2-social-nav").setAttribute( "selected-button", "Interests");
     }
 
     show_social_view_views() {
+        localStorage.setItem("l2-social-nav", "views");
         this.shadowRoot.querySelector("l2-social-stage").setAttribute( "display-view", "Views");
         this.shadowRoot.querySelector("l2-social-nav").setAttribute( "selected-button", "Views");
     }
 
     show_social_view_status() {
+        localStorage.setItem("l2-social-nav", "status");
         this.shadowRoot.querySelector("l2-social-stage").setAttribute( "display-view", "Status");
         this.shadowRoot.querySelector("l2-social-nav").setAttribute( "selected-button", "Status");
     }

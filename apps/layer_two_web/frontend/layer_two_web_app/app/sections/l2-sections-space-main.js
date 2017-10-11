@@ -11,6 +11,7 @@ export class l2_sections_space_main extends HTMLElement {
         this.addEventListener("l2-space-nav Goals", this.show_space_view_goals);
         this.addEventListener("l2-space-nav Missions", this.show_space_view_missions);
         this.addEventListener("l2-space-nav Projects", this.show_space_view_projects);
+        this.addEventListener("l2-space-nav Events", this.show_space_view_events);
         this.addEventListener("l2-space-nav Status", this.show_space_view_status);
     }
 
@@ -25,34 +26,68 @@ export class l2_sections_space_main extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
             this.render_template();
-            window.dispatchEvent(new Event('resize'));
+            this.l2_space_nav_state();
         }
         if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
             this.show_template();
-            window.dispatchEvent(new Event('resize'));
         }
         if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
             this.hide_template();
         }
     }
 
+    l2_space_nav_state(){
+        switch (localStorage.getItem("l2-space-nav")) {
+            case "goals":
+                this.show_space_view_goals();
+                break;
+
+            case "missions":
+                this.show_space_view_missions();
+                break;
+
+            case "events":
+                this.show_space_view_events();
+                break;
+
+            case "projects":
+                this.show_space_view_projects();
+                break;
+
+            case "status":
+                this.show_space_view_status();
+                break;
+            default:
+                this.show_space_view_status();
+        }
+    }
     
     show_space_view_goals() {
+        localStorage.setItem("l2-space-nav", "goals");
         this.shadowRoot.querySelector("l2-space-stage").setAttribute( "display-view", "Goals");
         this.shadowRoot.querySelector("l2-space-nav").setAttribute( "selected-button", "Goals");
     }
 
+    show_space_view_events() {
+        localStorage.setItem("l2-space-nav", "events");
+        this.shadowRoot.querySelector("l2-space-stage").setAttribute( "display-view", "Events");
+        this.shadowRoot.querySelector("l2-space-nav").setAttribute( "selected-button", "Events");
+    }
+
     show_space_view_missions() {
+        localStorage.setItem("l2-space-nav", "missions");
         this.shadowRoot.querySelector("l2-space-stage").setAttribute( "display-view", "Missions");
         this.shadowRoot.querySelector("l2-space-nav").setAttribute( "selected-button", "Missions");
     }
 
     show_space_view_projects() {
+        localStorage.setItem("l2-space-nav", "projects");
         this.shadowRoot.querySelector("l2-space-stage").setAttribute( "display-view", "Projects");
         this.shadowRoot.querySelector("l2-space-nav").setAttribute( "selected-button", "Projects");
     }
 
     show_space_view_status() {
+        localStorage.setItem("l2-space-nav", "status");
         this.shadowRoot.querySelector("l2-space-stage").setAttribute( "display-view", "Status");
         this.shadowRoot.querySelector("l2-space-nav").setAttribute( "selected-button", "Status");
     }

@@ -29,6 +29,7 @@ export class l2_sections_local_main extends HTMLElement {
         if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
             this.render_template();
             window.dispatchEvent(new Event('resize'));
+            this.l2_local_nav_state();
         }
         if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
             this.show_template();
@@ -39,38 +40,79 @@ export class l2_sections_local_main extends HTMLElement {
         }
     }
 
+    l2_local_nav_state(){
+        switch (localStorage.getItem("l2-local-nav")) {
+            case "authorities":
+                this.show_local_view_authorities();
+                break;
+
+            case "businesses":
+                this.show_local_view_businesses();
+                break;
+
+            case "events":
+                this.show_local_view_events();
+                break;
+
+            case "goals":
+                this.show_local_view_goals();
+                break;
+
+            case "problems":
+                this.show_local_view_problems();
+                break;
+
+            case "projects":
+                this.show_local_view_projects();
+                break;
+
+            case "status":
+                this.show_local_view_status();
+                break;
+            default:
+                this.show_local_view_status();
+        }
+    }
+
     
     show_local_view_authorities() {
+        localStorage.setItem("l2-local-nav", "authorities");
         this.shadowRoot.querySelector("l2-local-stage").setAttribute( "display-view", "Authorities");
         this.shadowRoot.querySelector("l2-local-nav").setAttribute( "selected-button", "Authorities");
     }
 
     show_local_view_businesses() {
+        localStorage.setItem("l2-local-nav", "businesses");
         this.shadowRoot.querySelector("l2-local-stage").setAttribute( "display-view", "Businesses");
         this.shadowRoot.querySelector("l2-local-nav").setAttribute( "selected-button", "Businesses");
     }
 
     show_local_view_events() {
+        localStorage.setItem("l2-local-nav", "events");
         this.shadowRoot.querySelector("l2-local-stage").setAttribute( "display-view", "Events");
         this.shadowRoot.querySelector("l2-local-nav").setAttribute( "selected-button", "Events");
     }
 
     show_local_view_goals() {
+        localStorage.setItem("l2-local-nav", "goals");
         this.shadowRoot.querySelector("l2-local-stage").setAttribute( "display-view", "Goals");
         this.shadowRoot.querySelector("l2-local-nav").setAttribute( "selected-button", "Goals");
     }
 
     show_local_view_problems() {
+        localStorage.setItem("l2-local-nav", "problems");
         this.shadowRoot.querySelector("l2-local-stage").setAttribute( "display-view", "Problems");
         this.shadowRoot.querySelector("l2-local-nav").setAttribute( "selected-button", "Problems");
     }
 
     show_local_view_projects() {
+        localStorage.setItem("l2-local-nav", "projects");
         this.shadowRoot.querySelector("l2-local-stage").setAttribute( "display-view", "Projects");
         this.shadowRoot.querySelector("l2-local-nav").setAttribute( "selected-button", "Projects");
     }
 
     show_local_view_status() {
+        localStorage.setItem("l2-local-nav", "status");
         this.shadowRoot.querySelector("l2-local-stage").setAttribute( "display-view", "Status");
         this.shadowRoot.querySelector("l2-local-nav").setAttribute( "selected-button", "Status");
     }

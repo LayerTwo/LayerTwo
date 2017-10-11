@@ -43,7 +43,7 @@ export class l2_basic_button extends HTMLElement {
             user-select: none;
             display: grid;
             justify-items:center;
-            box-shadow: 0 0 7px -1px grey;
+            box-shadow: 0 0 5px -1px grey;
             ${this.button_background_color}
             transition: background 0.3s;
         }`
@@ -54,6 +54,7 @@ export class l2_basic_button extends HTMLElement {
             letter-spacing: 0.07em;
             font-family: 'Open Sans SemiBold';
             font-size: 1.3vw;
+            padding-right: 0.5vw;
         }`
     }
 

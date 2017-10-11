@@ -2,6 +2,7 @@ import { l2_space_goals_view } from "./goals/l2-space-goals-view.js"
 import { l2_space_missions_view } from "./missions/l2-space-missions-view.js"
 import { l2_space_projects_view } from "./projects/l2-space-projects-view.js"
 import { l2_space_status_view } from "./status/l2-space-status-view.js"
+import { l2_space_events_view } from "./events/l2-space-events-view.js"
 
 export class l2_space_stage extends HTMLElement {
     constructor() {
@@ -39,6 +40,13 @@ export class l2_space_stage extends HTMLElement {
             this.shadowRoot.querySelector('l2-space-projects-view').setAttribute('show-template', 'false');
         }
 
+        if (name === 'display-view' && newValue === 'Events') {
+            this.shadowRoot.querySelector('l2-space-events-view').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-space-events-view').setAttribute('show-template', 'true');
+        } else {
+            this.shadowRoot.querySelector('l2-space-events-view').setAttribute('show-template', 'false');
+        }
+
         if (name === 'display-view' && newValue === 'Status') {
             this.shadowRoot.querySelector('l2-space-status-view').setAttribute('render-template', 'true');
             this.shadowRoot.querySelector('l2-space-status-view').setAttribute('show-template', 'true');
@@ -58,6 +66,7 @@ export class l2_space_stage extends HTMLElement {
     template() {
         return `
         <style>${this.l2_space_stage_style_show()}</style>
+        <l2-space-events-view></l2-space-events-view>
         <l2-space-goals-view></l2-space-goals-view>
         <l2-space-missions-view></l2-space-missions-view>
         <l2-space-projects-view></l2-space-projects-view>

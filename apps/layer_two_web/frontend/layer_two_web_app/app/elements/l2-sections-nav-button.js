@@ -138,7 +138,7 @@ export class l2_sections_nav_button extends l2_basic_button{
             letter-spacing: 0.07em;
             font-family: 'Open Sans SemiBold';
             font-size: 1.3vw;
-            margin-right: 0.4vw;
+            padding-right: 0.5vw;
         }`;
     }
 

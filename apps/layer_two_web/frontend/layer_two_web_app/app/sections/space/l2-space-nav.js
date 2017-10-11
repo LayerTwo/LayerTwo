@@ -33,6 +33,12 @@ export class l2_space_nav extends HTMLElement {
         } else {
             this.shadowRoot.querySelector("#l2-space-nav-Projects").setAttribute("selected", "false");
         }
+        
+        if (name === 'selected-button' && newValue === 'Events') {
+            this.shadowRoot.querySelector("#l2-space-nav-Events").setAttribute("selected", "true");
+        } else {
+            this.shadowRoot.querySelector("#l2-space-nav-Events").setAttribute("selected", "false");
+        }
 
         if (name === 'selected-button' && newValue === 'Status') {
             this.shadowRoot.querySelector("#l2-space-nav-Status").setAttribute("selected", "true");
@@ -58,6 +64,7 @@ export class l2_space_nav extends HTMLElement {
         <style>${this.l2_space_nav_style_show()}</style>
         <div></div>
         <l2-sections-nav-button nav-section="l2-space-nav" name="Status"></l2-sections-nav-button>
+        <l2-sections-nav-button nav-section="l2-space-nav" name="Events"></l2-sections-nav-button>
         <l2-sections-nav-button nav-section="l2-space-nav" name="Missions"></l2-sections-nav-button>
         <l2-sections-nav-button nav-section="l2-space-nav" name="Projects"></l2-sections-nav-button>
         <l2-sections-nav-button nav-section="l2-space-nav" name="Goals"></l2-sections-nav-button>
