@@ -111,9 +111,8 @@ export class l2_main extends HTMLElement {
     l2_main_default_style() {
         return `
         :host {
-            display: grid;
-            grid-template-columns: auto;
-            grid-template-rows: minmax(auto, max-content) auto minmax(auto, max-content);
+            display: flex;
+            flex-direction: column;
             height: 100%;
             background: white;
         }`;

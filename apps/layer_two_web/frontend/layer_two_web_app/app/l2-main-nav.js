@@ -68,17 +68,18 @@ export class l2_main_nav extends HTMLElement {
         return `
         :host {
            z-index: 700;
-           display: grid;
-           grid-template-columns: 0.4fr repeat(8, minmax(min-content, auto)) 0.4fr;
-           grid-gap: 0.7vw;
+           display: flex;
+           flex-wrap: wrap;
+           justify-content: center;
            background: white;
+           padding-top: 1.5vh;
+           padding-bottom: 1.5vh;
        }`;
     }
 
     template() {
         return `
         <style>${this.l2_main_nav_default_style()}</style>
-        <div id="grid spacer"></div>
         <l2-main-nav-button nav-section="l2-main-nav" name="Personal"></l2-main-nav-button>
         <l2-main-nav-button nav-section="l2-main-nav" name="Social"></l2-main-nav-button>
         <l2-main-nav-button nav-section="l2-main-nav" name="Local"></l2-main-nav-button>

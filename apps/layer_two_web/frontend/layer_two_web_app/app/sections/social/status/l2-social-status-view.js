@@ -1,3 +1,5 @@
+import {l2_basic_social_stage} from "../../../prototypes/l2-basic-social-stage.js"
+
 export class l2_social_status_view extends HTMLElement {
     constructor() {
         super();
@@ -17,11 +19,9 @@ export class l2_social_status_view extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
             this.render_template();
-            window.dispatchEvent(new Event('resize'));
         }
         if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
             this.show_template();
-            window.dispatchEvent(new Event('resize'));
         }
         if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
             this.hide_template();
@@ -54,17 +54,20 @@ export class l2_social_status_view extends HTMLElement {
     l2_social_view_style_show(){
         return `
         :host {
-            display: grid;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
             height: 100%;
             background: white;
-        }`
-        ;
+            padding-right: 1vw;
+            padding-left: 1vw;
+        }`;
     }
 
     template() {
         return `<template id="l2-social-view-template">
         <style>${this.l2_social_view_style_show()}</style>
-        <h6>social status<h6>
+        <l2-basic-social-stage></l2-basic-social-stage>
         </template>
         `;
     }

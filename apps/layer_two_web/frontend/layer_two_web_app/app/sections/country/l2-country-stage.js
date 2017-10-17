@@ -75,6 +75,9 @@ export class l2_country_stage extends HTMLElement {
     l2_country_stage_style_show(){
         return `
         :host {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
             height: 100%;
             background: white;
         }`;

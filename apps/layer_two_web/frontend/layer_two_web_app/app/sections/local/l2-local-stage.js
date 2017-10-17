@@ -76,6 +76,9 @@ export class l2_local_stage extends HTMLElement {
     l2_local_stage_style_show(){
         return `
         :host {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
             height: 100%;
             background: white;
         }`

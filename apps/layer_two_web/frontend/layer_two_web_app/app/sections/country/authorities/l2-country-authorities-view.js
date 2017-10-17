@@ -54,7 +54,9 @@ export class l2_country_authorities_view extends HTMLElement {
     l2_country_view_style_show(){
         return `
         :host {
-            display: grid;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
             height: 100%;
             background: white;
         }`

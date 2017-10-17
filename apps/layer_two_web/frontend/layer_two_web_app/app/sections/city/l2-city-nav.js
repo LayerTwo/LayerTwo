@@ -67,18 +67,19 @@ export class l2_city_nav extends HTMLElement {
     l2_city_nav_style_show(){
         return `
         :host {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             z-index: 500;
-            grid-template-rows: 0.2fr repeat(9, min-content) 0.2fr;
-            grid-gap: 1.5vh;
             background: white;
+            padding-left: 1vw;
+            padding-right: 1vw;
+            justify-content: center;
         }`;
     }
 
     template() {
         return `
         <style>${this.l2_city_nav_style_show()}</style>
-        <div></div>
         <l2-sections-nav-button nav-section="l2-city-nav" name="Status"></l2-sections-nav-button>
         <l2-sections-nav-button nav-section="l2-city-nav" name="Events"></l2-sections-nav-button>
         <l2-sections-nav-button nav-section="l2-city-nav" name="Leisure"></l2-sections-nav-button>

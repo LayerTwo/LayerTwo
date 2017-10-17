@@ -17,11 +17,9 @@ export class l2_social_views_view extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
             this.render_template();
-            window.dispatchEvent(new Event('resize'));
         }
         if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
             this.show_template();
-            window.dispatchEvent(new Event('resize'));
         }
         if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
             this.hide_template();
@@ -54,7 +52,9 @@ export class l2_social_views_view extends HTMLElement {
     l2_social_view_style_show(){
         return `
         :host {
-            display: grid;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
             height: 100%;
             background: white;
         }`

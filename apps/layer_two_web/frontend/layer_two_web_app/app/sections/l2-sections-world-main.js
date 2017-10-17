@@ -130,8 +130,9 @@ export class l2_sections_world_main extends HTMLElement {
     l2_sections_world_main_style_show(){
         return `
         :host {
-            display: grid;
-            grid-template-columns: min-content auto;
+            display: flex;
+            flex-grow: 1;
+            flex-direction: row;
             height: 100%;
             background: white;
         }`;

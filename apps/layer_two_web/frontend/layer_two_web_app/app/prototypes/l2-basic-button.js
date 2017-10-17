@@ -40,10 +40,11 @@ export class l2_basic_button extends HTMLElement {
 
     basic_button_container_style(){
         return `#basic_button_container {
+            min-width: 9vw;
             user-select: none;
-            display: grid;
-            justify-items:center;
-            box-shadow: 0 0 5px -1px grey;
+            display: flex;
+            justify-content: center;
+            border-radius: 3px;
             ${this.button_background_color}
             transition: background 0.3s;
         }`
@@ -51,10 +52,11 @@ export class l2_basic_button extends HTMLElement {
 
     basic_button_name_style(){
         return `#basic_button_name {
-            letter-spacing: 0.07em;
-            font-family: 'Open Sans SemiBold';
-            font-size: 1.3vw;
-            padding-right: 0.5vw;
+            letter-spacing: 0.05em;
+            font-family: arial, sans-serif;
+            font-size: 1.5vw;
+            padding-right: 0.3vw;
+            padding-left: 0.3vw;
         }`
     }
 
@@ -64,17 +66,11 @@ export class l2_basic_button extends HTMLElement {
             margin: 0px;
             padding: 0px;
         }
-        
-        @font-face {
-            font-family: "Open Sans SemiBold";
-            src: url("/fonts/OpenSans-SemiBold.ttf") format("truetype");
-        }
 
         ${this.basic_button_container_style()}            
 
         #basic_button {
-            display: grid;
-            grid-template-columns: min-content 1fr;
+            display: flex;
             align-items: center;
         }
         
@@ -83,6 +79,7 @@ export class l2_basic_button extends HTMLElement {
         #button_svg_icon {
             width: 2.5vw;
             min-width: 2em;
+            border-radius: 3px;
          }
 
         #basic_button_container:hover {

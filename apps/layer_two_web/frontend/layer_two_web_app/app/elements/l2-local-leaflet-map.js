@@ -18,7 +18,7 @@ export class l2_local_leaflet_map extends l2_basic_leaflet_map {
 
         #l2-basic-leaflet-map {
             height: 100%;
-            border-radius: 1em;
+            border-radius: 0.3em;
             box-shadow: 0px 0px 5px black;
          }`
      }
