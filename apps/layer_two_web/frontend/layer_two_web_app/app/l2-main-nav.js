@@ -67,11 +67,12 @@ export class l2_main_nav extends HTMLElement {
     l2_main_nav_default_style(){
         return `
         :host {
-           z-index: 700;
-           display: flex;
-           flex-wrap: wrap;
-           justify-content: center;
-           background: white;
+            z-index: 300;
+            display: grid;
+            grid-template-columns: repeat(8, auto);
+            grid-column-gap: 1vw;
+            justify-content: center;
+            background: white;
            padding-top: 1.5vh;
            padding-bottom: 1.5vh;
        }`;

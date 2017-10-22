@@ -1,9 +1,9 @@
-import { l2_social_channels_view } from "./channels/l2-social-channels-view.js"
-import { l2_social_events_view } from "./events/l2-social-events-view.js"
-import { l2_social_friends_view } from "./friends/l2-social-friends-view.js"
-import { l2_social_interests_view } from "./interests/l2-social-interests-view.js"
-import { l2_social_views_view } from "./views/l2-social-views-view.js"
-import { l2_social_status_view } from "./status/l2-social-status-view.js"
+import { l2_social_channels_main } from "./channels/l2-social-channels-main.js"
+import { l2_social_events_main } from "./events/l2-social-events-main.js"
+import { l2_social_friends_main } from "./friends/l2-social-friends-main.js"
+import { l2_social_interests_main } from "./interests/l2-social-interests-main.js"
+import { l2_social_views_main } from "./views/l2-social-views-main.js"
+import { l2_social_status_main } from "./status/l2-social-status-main.js"
 
 export class l2_social_stage extends HTMLElement {
     constructor() {
@@ -21,45 +21,45 @@ export class l2_social_stage extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'display-view' && newValue === 'Channels') {
-            this.shadowRoot.querySelector('l2-social-channels-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-social-channels-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-social-channels-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-social-channels-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-social-channels-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-social-channels-main').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'Events') {
-            this.shadowRoot.querySelector('l2-social-events-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-social-events-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-social-events-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-social-events-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-social-events-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-social-events-main').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'Friends') {
-            this.shadowRoot.querySelector('l2-social-friends-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-social-friends-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-social-friends-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-social-friends-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-social-friends-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-social-friends-main').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'Interests') {
-            this.shadowRoot.querySelector('l2-social-interests-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-social-interests-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-social-interests-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-social-interests-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-social-interests-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-social-interests-main').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'Views') {
-            this.shadowRoot.querySelector('l2-social-views-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-social-views-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-social-views-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-social-views-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-social-views-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-social-views-main').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'Status') {
-            this.shadowRoot.querySelector('l2-social-status-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-social-status-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-social-status-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-social-status-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-social-status-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-social-status-main').setAttribute('show-template', 'false');
         }
     }
 
@@ -77,14 +77,14 @@ export class l2_social_stage extends HTMLElement {
     template() {
         return `
         <style>${this.l2_social_stage_style_show()}</style>
-        <l2-social-channels-view></l2-social-channels-view>
-        <l2-social-businesses-view></l2-social-businesses-view>
-        <l2-social-events-view></l2-social-events-view>
-        <l2-social-friends-view></l2-social-friends-view>
-        <l2-social-interests-view></l2-social-interests-view>
-        <l2-social-views-view></l2-social-views-view>
-        <l2-social-projects-view></l2-social-projects-view>
-        <l2-social-status-view></l2-social-status-view>
+        <l2-social-channels-main></l2-social-channels-main>
+        <l2-social-businesses-main></l2-social-businesses-main>
+        <l2-social-events-main></l2-social-events-main>
+        <l2-social-friends-main></l2-social-friends-main>
+        <l2-social-interests-main></l2-social-interests-main>
+        <l2-social-views-main></l2-social-views-main>
+        <l2-social-projects-main></l2-social-projects-main>
+        <l2-social-status-main></l2-social-status-main>
         `;
     }
 

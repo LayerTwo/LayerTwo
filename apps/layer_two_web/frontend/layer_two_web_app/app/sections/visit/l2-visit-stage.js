@@ -1,7 +1,7 @@
-import { l2_visit_eco_view } from "./eco/l2-visit-eco-view.js"
-import { l2_visit_historic_view } from "./historic/l2-visit-historic-view.js"
-import { l2_visit_islands_view } from "./islands/l2-visit-islands-view.js"
-import { l2_visit_mountains_view } from "./mountains/l2-visit-mountains-view.js"
+import { l2_visit_eco_main } from "./eco/l2-visit-eco-main.js"
+import { l2_visit_historic_main } from "./historic/l2-visit-historic-main.js"
+import { l2_visit_islands_main } from "./islands/l2-visit-islands-main.js"
+import { l2_visit_mountains_main } from "./mountains/l2-visit-mountains-main.js"
 
 export class l2_visit_stage extends HTMLElement {
     constructor() {
@@ -19,31 +19,31 @@ export class l2_visit_stage extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'display-view' && newValue === 'Eco') {
-            this.shadowRoot.querySelector('l2-visit-eco-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-visit-eco-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-visit-eco-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-visit-eco-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-visit-eco-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-visit-eco-main').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'Historic') {
-            this.shadowRoot.querySelector('l2-visit-historic-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-visit-historic-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-visit-historic-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-visit-historic-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-visit-historic-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-visit-historic-main').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'Islands') {
-            this.shadowRoot.querySelector('l2-visit-islands-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-visit-islands-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-visit-islands-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-visit-islands-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-visit-islands-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-visit-islands-main').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'Mountains') {
-            this.shadowRoot.querySelector('l2-visit-mountains-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-visit-mountains-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-visit-mountains-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-visit-mountains-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-visit-mountains-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-visit-mountains-main').setAttribute('show-template', 'false');
         }
     }
 
@@ -61,10 +61,10 @@ export class l2_visit_stage extends HTMLElement {
     template() {
         return `
         <style>${this.l2_visit_stage_style_show()}</style>
-        <l2-visit-eco-view></l2-visit-eco-view>
-        <l2-visit-historic-view></l2-visit-historic-view>
-        <l2-visit-islands-view></l2-visit-islands-view>
-        <l2-visit-mountains-view></l2-visit-mountains-view>
+        <l2-visit-eco-main></l2-visit-eco-main>
+        <l2-visit-historic-main></l2-visit-historic-main>
+        <l2-visit-islands-main></l2-visit-islands-main>
+        <l2-visit-mountains-main></l2-visit-mountains-main>
         `;
     }
 

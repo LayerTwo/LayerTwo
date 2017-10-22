@@ -1,8 +1,8 @@
-import { l2_space_goals_view } from "./goals/l2-space-goals-view.js"
-import { l2_space_missions_view } from "./missions/l2-space-missions-view.js"
-import { l2_space_projects_view } from "./projects/l2-space-projects-view.js"
-import { l2_space_status_view } from "./status/l2-space-status-view.js"
-import { l2_space_events_view } from "./events/l2-space-events-view.js"
+import { l2_space_goals_main } from "./goals/l2-space-goals-main.js"
+import { l2_space_missions_main } from "./missions/l2-space-missions-main.js"
+import { l2_space_projects_main } from "./projects/l2-space-projects-main.js"
+import { l2_space_status_main } from "./status/l2-space-status-main.js"
+import { l2_space_events_main } from "./events/l2-space-events-main.js"
 
 export class l2_space_stage extends HTMLElement {
     constructor() {
@@ -20,38 +20,38 @@ export class l2_space_stage extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'display-view' && newValue === 'Goals') {
-            this.shadowRoot.querySelector('l2-space-goals-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-space-goals-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-space-goals-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-space-goals-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-space-goals-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-space-goals-main').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'Missions') {
-            this.shadowRoot.querySelector('l2-space-missions-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-space-missions-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-space-missions-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-space-missions-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-space-missions-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-space-missions-main').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'Projects') {
-            this.shadowRoot.querySelector('l2-space-projects-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-space-projects-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-space-projects-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-space-projects-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-space-projects-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-space-projects-main').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'Events') {
-            this.shadowRoot.querySelector('l2-space-events-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-space-events-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-space-events-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-space-events-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-space-events-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-space-events-main').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'Status') {
-            this.shadowRoot.querySelector('l2-space-status-view').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-space-status-view').setAttribute('show-template', 'true');
+            this.shadowRoot.querySelector('l2-space-status-main').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-space-status-main').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-space-status-view').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-space-status-main').setAttribute('show-template', 'false');
         }
     }
 
@@ -69,11 +69,11 @@ export class l2_space_stage extends HTMLElement {
     template() {
         return `
         <style>${this.l2_space_stage_style_show()}</style>
-        <l2-space-events-view></l2-space-events-view>
-        <l2-space-goals-view></l2-space-goals-view>
-        <l2-space-missions-view></l2-space-missions-view>
-        <l2-space-projects-view></l2-space-projects-view>
-        <l2-space-status-view></l2-space-status-view>
+        <l2-space-events-main></l2-space-events-main>
+        <l2-space-goals-main></l2-space-goals-main>
+        <l2-space-missions-main></l2-space-missions-main>
+        <l2-space-projects-main></l2-space-projects-main>
+        <l2-space-status-main></l2-space-status-main>
         `;
     }
 

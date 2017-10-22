@@ -55,10 +55,12 @@ export class l2_social_nav extends HTMLElement {
     l2_social_nav_style_show(){
         return `
         :host {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-rows: repeat(6, min-content);
+            grid-row-gap: 1.5vh;
             z-index: 500;
             background: white;
+            padding-top: 4vh;
             padding-left: 1vw;
             padding-right: 1vw;
             justify-content: center;

@@ -8,7 +8,7 @@ export class l2_basic_button extends HTMLElement {
         this.setAttribute("id", `${this.button_nav_section}-${this.button_name}`);
         this.setAttribute("selected", "false");
         this.addEventListener("click", event => this.emit_button_clicked_event());
-        this.addEventListener('touchstart', event => this.emit_button_clicked_event());
+        this.addEventListener('touchstart', event => this.emit_button_clicked_event(), {passive: true});
     }
 
     static get observedAttributes() {
@@ -84,7 +84,7 @@ export class l2_basic_button extends HTMLElement {
 
         #basic_button_container:hover {
             cursor: pointer;
-            color: white;
+            color: black;
             background: DeepSkyBlue;
         }
         

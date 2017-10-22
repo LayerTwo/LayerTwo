@@ -82,9 +82,6 @@ export class l2_main_stage extends HTMLElement {
     l2_main_stage_default_style(){
         return `
         :host {
-            display: flex;
-            flex-direction: row;
-            flex-grow: 1;
             background: white;
             margin: 0px;
             padding: 0px;
