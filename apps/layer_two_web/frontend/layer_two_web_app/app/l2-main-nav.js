@@ -70,11 +70,7 @@ export class l2_main_nav extends HTMLElement {
             z-index: 300;
             display: grid;
             grid-template-columns: repeat(8, auto);
-            grid-column-gap: 1vw;
-            justify-content: center;
             background: white;
-           padding-top: 1.5vh;
-           padding-bottom: 1.5vh;
        }`;
     }
 

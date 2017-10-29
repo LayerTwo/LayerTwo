@@ -1,6 +1,6 @@
-import {l2_basic_button} from "../prototypes/l2-basic-button.js"
+import {l2_basic_main_button} from "../prototypes/l2-basic-main-button.js"
 
-export class l2_main_nav_button extends l2_basic_button{
+export class l2_main_nav_button extends l2_basic_main_button{
 
     render_button_svg_icon(){
         switch (this.button_name) {

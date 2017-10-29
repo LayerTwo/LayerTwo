@@ -8,7 +8,7 @@ export class l2_local_problems_main extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.setAttribute("render-template", "false");
         this.setAttribute("show-template", "false");
-        this.addEventListener("l2-local-problems-nav Problems List", this.show_local_view_problems_list);
+        this.addEventListener("l2-local-problems-nav List Problems", this.show_local_view_list_problems);
         this.addEventListener("l2-local-problems-nav Submit Problem", this.show_local_view_submit_problem);
     }
 
@@ -37,21 +37,21 @@ export class l2_local_problems_main extends HTMLElement {
 
     l2_local_problems_nav_state() {
         switch (localStorage.getItem("l2-local-problems-nav")) {
-            case "problems-list":
-                this.show_local_view_problems_list();
+            case "list-problems":
+                this.show_local_view_list_problems();
             break;
 
             case "submit-problem":
                 this.show_local_view_submit_problem();
                 break;
             default:
-                this.show_local_view_problems_list();
+                this.show_local_view_list_problems();
         }
     }
 
-    show_local_view_problems_list() {
-        localStorage.setItem("l2-local-problems-nav", "problems-list");
-        this.shadowRoot.querySelector("l2-local-problems-stage").setAttribute("display-view", "problems-list");
+    show_local_view_list_problems() {
+        localStorage.setItem("l2-local-problems-nav", "list-problems");
+        this.shadowRoot.querySelector("l2-local-problems-stage").setAttribute("display-view", "list-problems");
         this.shadowRoot.querySelector("l2-local-problems-nav").setAttribute("selected-button", "Problems List");
     }
 

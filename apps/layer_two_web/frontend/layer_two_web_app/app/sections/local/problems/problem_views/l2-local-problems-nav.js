@@ -15,10 +15,10 @@ export class l2_local_problems_nav extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'selected-button' && newValue === 'Problems List') {
-            this.shadowRoot.querySelector("#l2-local-problems-nav-Problems-List").setAttribute("selected", "true");
+        if (name === 'selected-button' && newValue === 'List Problems') {
+            this.shadowRoot.querySelector("#l2-local-problems-nav-List-Problems").setAttribute("selected", "true");
         } else {
-            this.shadowRoot.querySelector("#l2-local-problems-nav-Problems-List").setAttribute("selected", "false");
+            this.shadowRoot.querySelector("#l2-local-problems-nav-List-Problems").setAttribute("selected", "false");
         }
 
         if (name === 'selected-button' && newValue === 'Submit Problem') {
@@ -34,17 +34,19 @@ export class l2_local_problems_nav extends HTMLElement {
             z-index: 300;
             display: grid;
             grid-template-columns: auto auto;
-            grid-column-gap: 1vw;
             justify-content: center;
             background: white;
-            padding-bottom: 0.5vh;
+            padding-top: 2vh;
+            padding-bottom: 1vh;
+            padding-left: 1vw;
+            padding-right: 1vw;
         }`;
     }
 
     template() {
         return `
         <style>${this.l2_local_view_style_show()}</style>  
-        <l2-view-button nav-section="l2-local-problems-nav" name="Problems List"></l2-view-button>
+        <l2-view-button nav-section="l2-local-problems-nav" name="List Problems"></l2-view-button>
         <l2-view-button nav-section="l2-local-problems-nav" name="Submit Problem"></l2-view-button>
         `;
     }

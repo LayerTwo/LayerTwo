@@ -1,6 +1,6 @@
 import {l2_local_leaflet_map} from "../../../../../elements/l2-local-leaflet-map.js"
 
-export class l2_local_problems_list extends HTMLElement {
+export class l2_local_list_problems extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -70,11 +70,11 @@ export class l2_local_problems_list extends HTMLElement {
     template() {
         return `<template id="l2-local-view-template">
         <style>${this.l2_local_view_style_show()}</style>
-        <h6>Problems List</h6>
+        <h6>List Problems</h6>
         </template>
         `;
     }
 
 }
 
-customElements.define("l2-local-problems-list", l2_local_problems_list)
+customElements.define("l2-local-list-problems", l2_local_list_problems)

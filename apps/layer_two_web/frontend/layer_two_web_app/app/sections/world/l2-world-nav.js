@@ -58,12 +58,9 @@ export class l2_world_nav extends HTMLElement {
         :host {
             display: grid;
             grid-template-rows: repeat(6, min-content);
-            grid-row-gap: 1.5vh;
             z-index: 500;
             background: white;
-            padding-top: 4vh;
-            padding-left: 1vw;
-            padding-right: 1vw;
+            padding-top: 2vh;
             justify-content: center;
         }`;
     }

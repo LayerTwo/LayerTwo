@@ -1,4 +1,4 @@
-import { l2_local_problems_list } from "./problems_list/l2-local-problems-list.js"
+import { l2_local_problems_list } from "./list_problems/l2-local-list-problems.js"
 import { l2_local_submit_problem } from "./submit_problem/l2-local-submit-problem.js"
 
 
@@ -19,11 +19,11 @@ export class l2_local_problems_stage extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'display-view' && newValue === 'problems-list') {
-            this.shadowRoot.querySelector('l2-local-problems-list').setAttribute('render-template', 'true');
-            this.shadowRoot.querySelector('l2-local-problems-list').setAttribute('show-template', 'true');
+        if (name === 'display-view' && newValue === 'list-problems') {
+            this.shadowRoot.querySelector('l2-local-list-problems').setAttribute('render-template', 'true');
+            this.shadowRoot.querySelector('l2-local-list-problems').setAttribute('show-template', 'true');
         } else {
-            this.shadowRoot.querySelector('l2-local-problems-list').setAttribute('show-template', 'false');
+            this.shadowRoot.querySelector('l2-local-list-problems').setAttribute('show-template', 'false');
         }
 
         if (name === 'display-view' && newValue === 'submit-problem') {
@@ -48,7 +48,7 @@ export class l2_local_problems_stage extends HTMLElement {
     template() {
         return `
         <style>${this.l2_local_view_style_show()}</style>
-        <l2-local-problems-list></l2-local-problems-list>
+        <l2-local-list-problems></l2-local-list-problems>
         <l2-local-submit-problem></l2-local-submit-problem>
         `;
     }

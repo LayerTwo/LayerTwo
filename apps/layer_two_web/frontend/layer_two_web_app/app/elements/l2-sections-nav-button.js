@@ -1,20 +1,9 @@
-import {l2_basic_button} from "../prototypes/l2-basic-button.js"
+import {l2_basic_sections_button} from "../prototypes/l2-basic-sections-button.js"
 
-export class l2_sections_nav_button extends l2_basic_button{
+export class l2_sections_nav_button extends l2_basic_sections_button{
 
     constructor(){
         super();
-    }
-
-    attributeChangedCallback(name, oldValue, newValue) {
-        if(name === 'selected' && oldValue === 'false' && newValue === 'true'){
-            this.button_background_color = "background: DeepSkyBlue;";
-            this.update_button_style();
-        }
-        if(name === 'selected' && oldValue === 'true' && newValue === 'false'){
-            this.button_background_color = "background: white;";
-            this.update_button_style();
-        }
     }
     
     render_button_svg_icon(){
@@ -135,27 +124,6 @@ export class l2_sections_nav_button extends l2_basic_button{
             default:
                 return `<circle cx="0" cy="0" r="200"`;
         }
-    }
-
-    basic_button_container_style(){
-        return `#basic_button_container {
-            user-select: none;
-            display: flex;
-            justify-items:start;
-            border-radius: 3px;
-            ${this.button_background_color}
-            transition: background 0.3s;
-        }`;
-    }
-
-    basic_button_name_style(){
-        return `#basic_button_name {
-            letter-spacing: 0.05em;
-            font-family: arial, sans-serif;
-            font-size: 1.5vw;
-            padding-right: 0.3vw;
-            padding-left: 0.3vw;
-        }`;
     }
 
     render_initial_button() {
