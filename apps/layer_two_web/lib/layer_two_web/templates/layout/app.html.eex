@@ -32,6 +32,7 @@
       .input_fields {
         width: 15.3em;
         font-family: arial, sans-serif;
+        font-size: calc(8px + 0.7vw);
         padding-left: 0.3em;
         margin-top: 0.5vh;
         margin-bottom: 0.5vh;
@@ -60,7 +61,7 @@
         }
         
       #logo_text {
-        font-size: 2em;
+        font-size: calc(8px + 2.5vw);
         padding-bottom: 0.05em;
         }
       
@@ -74,7 +75,7 @@
         margin-top: 0.4em;
         font-family: arial, sans-serif;
         color: black;
-        font-size: 1em;
+        font-size: calc(8px + 0.7vw);
         background: white;
         box-shadow: 0 0 1px 0px;
         border-style: none;
@@ -96,7 +97,7 @@
         }
         
       #copyright_text {
-        font-size: 0.7em;
+        font-size: calc(8px + 0.5vw);
         }
         
     </style>

@@ -1,4 +1,4 @@
-import { l2_local_problems_list } from "./list_problems/l2-local-list-problems.js"
+import { l2_local_list_problems } from "./list_problems/l2-local-list-problems.js"
 import { l2_local_submit_problem } from "./submit_problem/l2-local-submit-problem.js"
 
 
@@ -40,7 +40,6 @@ export class l2_local_problems_stage extends HTMLElement {
             display: flex;
             flex-direction: column;
             flex-grow: 1;
-            height: 100%;
             background: white;
         }`;
     }

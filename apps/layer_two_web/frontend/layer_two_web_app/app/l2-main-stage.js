@@ -84,8 +84,8 @@ export class l2_main_stage extends HTMLElement {
         :host {
             background: white;
             margin: 0px;
-            padding: 0px;
-            height: 100%;
+            padding-top: 2vh;
+            padding-bottom: 1vh;
         }`;
     }
 

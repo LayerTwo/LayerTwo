@@ -18,12 +18,13 @@ export class l2_local_submit_problem extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
-            window.dispatchEvent(new Event('resize'));
             this.render_template();
+            window.dispatchEvent(new Event('resize'));
         }
         if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
-            window.dispatchEvent(new Event('resize'));
-            this.show_template();            
+            
+            this.show_template();
+            
         }
         if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
             this.hide_template();

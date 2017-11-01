@@ -3,6 +3,7 @@ export class l2_basic_view_button extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
         this.svg_background_color = "background: none;";
+        this.border_bottom_style = "border-bottom-style: solid;";
         this.button_name = this.getAttribute('name');
         this.button_nav_section = this.getAttribute('nav-section');
         this.setAttribute("id", `${this.button_nav_section}-${this.button_name.replace(/\s+/g, '-')}`);
@@ -26,10 +27,12 @@ export class l2_basic_view_button extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         if(name === 'selected' && oldValue === 'false' && newValue === 'true'){
             this.svg_background_color = "background: gold;";
+            this.border_bottom_style = "border-bottom-style: unset;";
             this.update_button_style();
         }
         if(name === 'selected' && oldValue === 'true' && newValue === 'false'){
             this.svg_background_color = "background: none;";
+            this.border_bottom_style = "border-bottom-style: solid;";
             this.update_button_style();
         }
     }
@@ -49,6 +52,7 @@ export class l2_basic_view_button extends HTMLElement {
             border-left-style: solid;
             border-right-style: solid;
             border-top-style: solid;
+            ${this.border_bottom_style}
             border-color: LightGrey;
             border-width: thin;
             min-width: 9vw;
@@ -71,7 +75,7 @@ export class l2_basic_view_button extends HTMLElement {
         #basic_button_name {
             letter-spacing: 0.05em;
             font-family: arial, sans-serif;
-            font-size: 1.5vw;
+            font-size: calc(6px + 0.7vw);
             padding-right: 0.3vw;
             padding-left: 0.3vw;
         }
@@ -89,7 +93,7 @@ export class l2_basic_view_button extends HTMLElement {
             background: gold;
         }
         
-        @media screen and (max-width:500px){
+        @media screen and (max-width:550px){
             #basic_button_name {
                 letter-spacing: 0.05em;
                 font-family: arial, sans-serif;

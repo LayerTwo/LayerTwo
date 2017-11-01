@@ -22,13 +22,13 @@ export class l2_local_problems_main extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
-            this.render_template();
             window.dispatchEvent(new Event('resize'));
+            this.render_template();
             this.l2_local_problems_nav_state();
         }
         if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
-            this.show_template();
             window.dispatchEvent(new Event('resize'));
+            this.show_template();
         }
         if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
             this.hide_template();
@@ -52,7 +52,7 @@ export class l2_local_problems_main extends HTMLElement {
     show_local_view_list_problems() {
         localStorage.setItem("l2-local-problems-nav", "list-problems");
         this.shadowRoot.querySelector("l2-local-problems-stage").setAttribute("display-view", "list-problems");
-        this.shadowRoot.querySelector("l2-local-problems-nav").setAttribute("selected-button", "Problems List");
+        this.shadowRoot.querySelector("l2-local-problems-nav").setAttribute("selected-button", "List Problems");
     }
 
     show_local_view_submit_problem() {

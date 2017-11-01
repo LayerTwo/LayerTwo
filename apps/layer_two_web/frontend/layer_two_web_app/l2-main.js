@@ -1,6 +1,7 @@
 import { l2_main_nav } from "./app/l2-main-nav.js"
 import { l2_main_stage } from "./app/l2-main-stage.js"
 import { l2_main_copyright } from "./app/l2-main-copyright.js"
+import { l2_basic_ws } from "./app/prototypes/l2-basic-ws.js"
 
 export class l2_main extends HTMLElement {
     constructor() {
@@ -112,8 +113,7 @@ export class l2_main extends HTMLElement {
         return `
         :host {
             display: grid;
-            grid-template-columns: auto;
-            grid-template-rows: minmax(auto, max-content) auto minmax(auto, max-content);
+            grid-template-rows: min-content auto min-content min-content;
             height: 100%;
             background: white;
         }`;
@@ -125,6 +125,7 @@ export class l2_main extends HTMLElement {
         <l2-main-nav></l2-main-nav>
         <l2-main-stage></l2-main-stage>
         <l2-main-copyright></l2-main-copyright>
+        <l2-basic-ws></l2-basic-ws>
         `;
     }
 

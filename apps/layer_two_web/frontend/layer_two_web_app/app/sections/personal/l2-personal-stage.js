@@ -69,7 +69,6 @@ export class l2_personal_stage extends HTMLElement {
             display: flex;
             flex-direction: column;
             flex-grow: 1;
-            height: 100%;
             background: white;
         }`;
     }

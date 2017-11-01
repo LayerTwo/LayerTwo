@@ -27,13 +27,13 @@ export class l2_sections_local_main extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         if(name === 'render-template' && oldValue === 'false' && newValue === 'true'){
-            this.render_template();
             window.dispatchEvent(new Event('resize'));
+            this.render_template();
             this.l2_local_nav_state();
         }
         if(name === 'show-template' && oldValue === 'false' && newValue === 'true'){
-            this.show_template();
             window.dispatchEvent(new Event('resize'));
+            this.show_template();            
         }
         if(name === 'show-template' && oldValue === 'true' && newValue === 'false'){
             this.hide_template();

@@ -12,13 +12,15 @@ export class l2_main_copyright extends HTMLElement {
         return `
         :host {
            display: grid;
-           justify-content: center;
+           justify-content: end;
+           align-self: end;
            background: white;
            margin: 0px;
        }
 
        #copyright_text{
-           font-size: 0.5em;
+           font-size: calc(8px + 0.5vw);
+           padding-right: 1vw;
        }`;
     }
 

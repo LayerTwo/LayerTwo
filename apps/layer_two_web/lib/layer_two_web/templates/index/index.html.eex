@@ -10,9 +10,9 @@
             </svg>Layer Two</div>
             <div id="login_form_fields">
             <%= form_for  @conn, "/", [as: :login_form], fn form_data -> %>
-            <%= email_input form_data, :email, placeholder: "E-mail", class: "input_fields", required: "true" %>
+            <%= email_input form_data, :email, placeholder: "E-mail", class: "input_fields", required: "true", autocomplete: "username" %>
             <br>
-            <%= password_input form_data, :password, placeholder: "Password", class: "input_fields", required: "true" %>
+            <%= password_input form_data, :password, placeholder: "Password", class: "input_fields", required: "true", autocomplete: "current-password" %>
             <br>
             <%= submit "Enter", id: "submit_button" %>
             <% end %>

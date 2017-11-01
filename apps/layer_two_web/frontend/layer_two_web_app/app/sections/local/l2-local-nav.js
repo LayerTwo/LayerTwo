@@ -65,7 +65,6 @@ export class l2_local_nav extends HTMLElement {
             grid-template-rows: repeat(7, min-content);
             z-index: 500;
             background: white;
-            padding-top: 2vh;
             justify-content: center;
         }`;
     }

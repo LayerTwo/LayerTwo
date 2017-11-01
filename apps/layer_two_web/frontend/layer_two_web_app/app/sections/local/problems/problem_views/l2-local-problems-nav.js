@@ -34,10 +34,8 @@ export class l2_local_problems_nav extends HTMLElement {
             z-index: 300;
             display: grid;
             grid-template-columns: auto auto;
-            justify-content: center;
+            justify-content: start;
             background: white;
-            padding-top: 2vh;
-            padding-bottom: 1vh;
             padding-left: 1vw;
             padding-right: 1vw;
         }`;
