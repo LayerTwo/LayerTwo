@@ -11,7 +11,7 @@ config :layer_two_web, LayerTwoWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/rollup/bin/rollup", "-c", "-w", cd: Path.expand("../frontend", __DIR__)]]
+  watchers: [node: ["node_modules/rollup/bin/rollup", "-c", "-w", cd: Path.expand("../frontend/user", __DIR__)]]
 
 # ## SSL Support
 #
@@ -36,6 +36,7 @@ config :layer_two_web, LayerTwoWeb.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/layer_two_web/views/.*(ex)$},
+      ~r{lib/layer_two_web/channels/.*(ex)$},
       ~r{lib/layer_two_web/templates/.*(eex)$}
     ]
   ]

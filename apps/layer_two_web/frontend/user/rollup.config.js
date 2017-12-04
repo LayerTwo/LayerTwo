@@ -5,11 +5,11 @@ import commonjs from 'rollup-plugin-commonjs';
 
 
 export default {
-    input: 'layer_two_web_app/l2-main.js',
+    input: 'layer_two_user_ui/l2-user-main.js',
     output: { 
-    file: '../priv/static/js/l2-main.js',
+    file: '../../priv/static/js/l2-user-main.js',
     format: 'iife',
-    name: 'l2_web_app'
+    name: 'l2_user_ui'
     },
     watch: {
         useChokidar: false

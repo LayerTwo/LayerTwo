@@ -1,7 +1,7 @@
 import { l2_main_nav } from "./app/l2-main-nav.js"
 import { l2_main_stage } from "./app/l2-main-stage.js"
 import { l2_main_copyright } from "./app/l2-main-copyright.js"
-import { l2_basic_ws } from "./app/prototypes/l2-basic-ws.js"
+import { l2_init_websocket } from "./app/websocket/l2-init-websocket.js"
 
 export class l2_main extends HTMLElement {
     constructor() {
@@ -15,6 +15,7 @@ export class l2_main extends HTMLElement {
         this.addEventListener("l2-main-nav World", this.show_main_stage_world);
         this.addEventListener("l2-main-nav Space", this.show_main_stage_space);
         this.addEventListener("l2-main-nav Visit", this.show_main_stage_visit);
+        
     }
 
     connectedCallback() {
@@ -125,7 +126,7 @@ export class l2_main extends HTMLElement {
         <l2-main-nav></l2-main-nav>
         <l2-main-stage></l2-main-stage>
         <l2-main-copyright></l2-main-copyright>
-        <l2-basic-ws></l2-basic-ws>
+        <l2-init-websocket></l2-init-websocket>
         `;
     }
 

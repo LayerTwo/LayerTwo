@@ -1,7 +1,7 @@
 defmodule LayerTwoWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :layer_two_web
 
-  socket "/socket", LayerTwoWeb.UserSocket
+  socket "/socket", LayerTwoWeb.L2Websocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -10,7 +10,6 @@ defmodule LayerTwoWeb.Endpoint do
   plug Plug.Static,
     at: "/", from: :layer_two_web, gzip: false,
     only: ~w(images js favicon.ico robots.txt)
-
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do

@@ -1,5 +1,6 @@
 import { l2_local_nav } from "./local/l2-local-nav.js"
 import { l2_local_stage } from "./local/l2-local-stage.js"
+import { l2_local_websocket } from "../../app/websocket/l2-local-websocket.js"
 
 
 export class l2_sections_local_main extends HTMLElement {
@@ -157,6 +158,7 @@ export class l2_sections_local_main extends HTMLElement {
         <style>${this.l2_sections_local_main_style_show()}</style>
         <l2-local-nav></l2-local-nav>
         <l2-local-stage></l2-local-stage>
+        <l2-local-websocket></l2-local-websocket>
         </template>
         `;
     }

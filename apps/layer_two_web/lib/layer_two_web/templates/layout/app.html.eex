@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Layer Two">
     <meta name="author" content="Dimitar Yosifov">
-    <%= tag :meta, name: 'user_token', content: @user_token %>
+    <%= tag :meta, name: 'entity_token', content: @entity_token %>
     <title>Layer Two</title>
     <link href="favicon.ico" rel="shortcut icon">
     <style>

@@ -1,8 +1,10 @@
-defmodule LayerTwoWeb.UserSocket do
+defmodule LayerTwoWeb.L2Websocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "users:*", LayerTwoWeb.UsersChannel
+  channel "l2_init:main", LayerTwoWeb.L2InitChannel
+
+  channel "l2_user:local", LayerTwoWeb.L2UserLocal
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
@@ -19,9 +21,11 @@ defmodule LayerTwoWeb.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(%{"user_token" => user_token}, socket) do
-    case Phoenix.Token.verify(socket, System.get_env("layertwo_token_salt"), user_token, max_age: 1209600) do
-    {:ok, _} -> {:ok, socket}
+  def connect(%{"entity_token" => entity_token}, socket) do
+    case Phoenix.Token.verify(socket, System.get_env("layertwo_token_salt"), entity_token, max_age: 1209600) do
+    {:ok, _} -> 
+      assign(socket, "entity_token", entity_token)
+      {:ok, socket}
     {:error, _} -> :error
   end
   end

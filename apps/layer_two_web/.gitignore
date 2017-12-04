@@ -11,4 +11,7 @@ erl_crash.dump
 npm-debug.log
 
 # Static artifacts
-/frontend/node_modules
+/frontend/user/node_modules
+/frontend/authorities/node_modules
+/frontend/tourism/node_modules
+/frontend/business/node_modules
