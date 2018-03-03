@@ -1,2 +1,2 @@
-geonames_id:ID,planet_name,:LABEL
-777777777,Earth,Planet
+geonames_id:ID,planet_name,planet_uuid,:LABEL
+777777777,Earth,56c77a7d-8b24-4ed4-9c9c-472270221824,Planet

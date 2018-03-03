@@ -1,0 +1,3 @@
+<script src="<%= static_path(@conn, "/js/l2-user-main.js") %>"></script>
+<%= tag :span, name: 'entity_ws_uuid', content: @entity_ws_uuid %>
+<l2-main></l2-main>

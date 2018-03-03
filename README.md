@@ -1,7 +1,7 @@
 ### WARNING! UNDER DEVELOPMENT! DO NOT USE!
 
 # ![Layer Two Logo](https://avatars3.githubusercontent.com/u/30439789?v=4&s=45 "Layer Two logo") Layer Two
-Layer Two is a social collaboration platform for modern communities.
+Layer Two is a social collaboration platform, for modern communities.
 </br>
 </br>
 ## Made possible with:
@@ -12,10 +12,13 @@ Layer Two is a social collaboration platform for modern communities.
 [<img src="https://raw.githubusercontent.com/phoenixframework/phoenix/master/priv/static/phoenix.png" height= 25>](http://www.phoenixframework.org/)
 </br>
 </br>
-[<img src="https://raw.githubusercontent.com/webcomponents/webcomponents-icons/master/logo/logo_256x256.png" height= 40>](https://developer.mozilla.org/en-US/docs/Web/Web_Components) [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components "Web Components")
+[<img src="https://raw.githubusercontent.com/webcomponents/webcomponents-icons/master/logo/logo_256x256.png" height= 35>](https://developer.mozilla.org/en-US/docs/Web/Web_Components) [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components "Web Components")
 </br>
 </br>
 [<img src="https://neo4j.com/wp-content/themes/neo4jweb/assets/images/neo4j-logo-2015.png" height= 35>](https://neo4j.com/)
+</br>
+</br>
+[<img src="https://wiki.openstreetmap.org/w/images/1/14/Scotland_logo_2012.png" height= 34>](https://www.openstreetmap.org) [OpenStreetMap](https://www.openstreetmap.org "OpenStreetMap")
 </br>
 </br>
 [<img src="http://leafletjs.com/docs/images/logo.png" height= 28>](http://leafletjs.com/)

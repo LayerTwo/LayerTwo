@@ -1,3 +1,0 @@
-defmodule LayerTwoDb do
-
-end
