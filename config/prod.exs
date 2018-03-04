@@ -15,7 +15,7 @@ use Mix.Config
 # which you typically run after static files are built.
 config :layertwo, LayertwoWeb.Endpoint,
   load_from_system_env: true,
-  url: [host: "layertwo.org", port: 80],
+  url: [host: "localhost", port: 443],
   https: [port: 443, keyfile: "priv/ssl/fake_cert.key", certfile: "priv/ssl/fake_cert.crt"],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json"
