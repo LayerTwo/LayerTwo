@@ -4,7 +4,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
   def get_entity_channel_permission_and_ws_uuid(socket) do
     entity_uuid = socket.assigns["entity_uuid"]
 
-    db_query = "MATCH (Entity {entity_uuid: {entity_param}}) 
+    db_query = "MATCH (Entity:Entity {entity_uuid: {entity_param}}) 
                 RETURN Entity.channel_city_local, Entity.entity_ws_uuid"
 
     db_query_params = %{entity_param: entity_uuid}
@@ -134,12 +134,12 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
     end
   end
 
-  def get_entity_init_local_problems(socket) do
+  def get_entity_local_problems(socket) do
     entity_uuid = socket.assigns["entity_uuid"]
 
     db_query =
-      "MATCH (Entity:Person{entity_uuid:{entity_param}})-[:ENTITY_IN]->(City:City) 
-       MATCH (:City{city_name: City.city_name, admin_0: City.admin_0})<-[:CITY_LOCAL]-(:CityLocal)<-[:LOCAL_PROBLEMS_IN]-(:LocalProblems)<-[:LOCAL_PROBLEM]-(LocalProblem:LocalProblem) 
+      "MATCH (Entity:Person{entity_uuid:{entity_param}})-[:ENTITY_IN]->(City:City)
+       MATCH (:City{city_name: City.city_name, admin_0: City.admin_0})<-[:CITY_LOCAL]-(:CityLocal)<-[:LOCAL_PROBLEMS_IN]-(:LocalProblems)<-[:LOCAL_PROBLEM]-(LocalProblem:LocalProblem)<-[:LOCAL_PROBLEM_AUTHOR]-(LocalProblemAuthor)
        WHERE Entity.entity_latitude-0.00075 <= LocalProblem.local_problem_latitude 
        AND Entity.entity_latitude+0.00075 >= LocalProblem.local_problem_latitude 
        AND Entity.entity_longitude-0.00100 <= LocalProblem.local_problem_longitude 
@@ -149,8 +149,8 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
               LocalProblem.local_problem_uuid, 
               LocalProblem.timestamp,
               LocalProblem.local_problem_latitude,
-              LocalProblem.local_problem_longitude 
-       LIMIT 100"
+              LocalProblem.local_problem_longitude,
+              LocalProblemAuthor.entity_uuid"
 
     db_query_params = %{entity_param: entity_uuid}
 
@@ -158,13 +158,78 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
     db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
 
     case db_query_result do
-      {:ok, []} -> local_problems_init_list = "none"
-                  {:ok, socket, local_problems_init_list}
+      {:ok, []} -> local_problems_list = "none"
+                  {:ok, socket, local_problems_list}
       
       {:error, _reason} -> {:error, socket}
 
-      {:ok, local_problems_init_list} -> {:ok, socket, local_problems_init_list}
+      {:ok, local_problems_list} -> {:ok, socket, local_problems_list}
     end
+  end
+
+  def get_local_problem_author_uuid(local_problem_uuid, socket) do
+      db_query =
+      "MATCH (:LocalProblem {local_problem_uuid: {local_problem_uuid}})<-[:LOCAL_PROBLEM_AUTHOR]-(LocalProblemAuthor) 
+       RETURN LocalProblemAuthor.entity_uuid"
+  
+    db_query_params = %{local_problem_uuid: local_problem_uuid}
+  
+    db_conn = Bolt.Sips.conn()
+    db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+  
+    case db_query_result do
+      {:ok, []} -> {:error, socket}
+      
+      {:error, _reason} -> {:error, socket}
+  
+      {:ok,[%{
+           "LocalProblemAuthor.entity_uuid" => db_local_problem_author_uuid
+            }]} ->
+        {:ok, socket, db_local_problem_author_uuid}
+    end
+  end
+
+  def get_local_problem_city_uuid(local_problem_uuid, socket) do
+    db_query =
+    "MATCH (:LocalProblem {local_problem_uuid: {local_problem_uuid}})-[:LOCAL_PROBLEM]->(:LocalProblems)-[:LOCAL_PROBLEMS_IN]->(:CityLocal)-[:CITY_LOCAL]->(LocalProblemCity)
+     RETURN LocalProblemCity.city_uuid"
+
+  db_query_params = %{local_problem_uuid: local_problem_uuid}
+
+  db_conn = Bolt.Sips.conn()
+  db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+
+  case db_query_result do
+    {:ok, []} -> {:error, socket}
+    
+    {:error, _reason} -> {:error, socket}
+
+    {:ok,[%{
+         "LocalProblemCity.city_uuid" => db_local_problem_city_uuid
+          }]} ->
+      {:ok, socket, db_local_problem_city_uuid}
+    end
+  end
+
+  def delete_local_problem(local_problem_uuid, socket) do
+    db_query =
+    "MATCH (LocalProblem:LocalProblem{local_problem_uuid:{local_problem_uuid}}) DETACH DELETE LocalProblem RETURN true"
+
+  db_query_params = %{local_problem_uuid: local_problem_uuid}
+
+  db_conn = Bolt.Sips.conn()
+  db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+
+  case db_query_result do
+    {:ok, []} -> {:error, socket}
+    
+    {:error, _reason} -> {:error, socket}
+
+    {:ok,[%{
+         "true" => db_local_problem_deletion_result
+          }]} ->
+      {:ok, socket, db_local_problem_deletion_result}
+  end
   end
 
   def get_list_of_entities(city_uuid, local_problem_latitude_float_valid, local_problem_longitude_float_valid, socket) do

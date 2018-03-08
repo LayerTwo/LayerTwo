@@ -38,7 +38,7 @@ Person
   "channel_visit": "allowed"
 }
 
-MATCH (City:City{city_uuid: ""}) CREATE (Entity:Person{entity_uuid: "", entity_type: "Person", entity_name: "", entity_password: "", entity_latitude: , entity_longitude: , entity_email: "", entity_basic_info_version: "", channel_init: "allowed", channel_personal: "allowed", channel_social: "allowed", channel_city_local: "allowed", channel_city: "allowed", channel_country: "allowed", channel_world: "allowed", channel_space: "allowed", channel_visit: "allowed"})-[:ENTITY_IN]->(City) return Entity;
+MATCH (City:City{city_uuid: ""}) CREATE (:Entity:Person{entity_uuid: "", entity_ws_uuid: "", entity_type: "Person", entity_name: "", entity_password: "", entity_latitude: , entity_longitude: , entity_email: "", entity_basic_info_version: "", channel_init: "allowed", channel_personal: "allowed", channel_social: "allowed", channel_city_local: "allowed", channel_city: "allowed", channel_country: "allowed", channel_world: "allowed", channel_space: "allowed", channel_visit: "allowed"})-[:ENTITY_IN]->(City);
 
 City_Local, City, Country, World
 

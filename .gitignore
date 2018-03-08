@@ -24,4 +24,3 @@ erl_crash.dump
 /priv/ssl/fake_cert.key
 
 /priv/static/js/l2-user-main.js
-/lib/layertwo_frontend/user/layer_two_user_ui/app/prototypes/l2-bing-map-dev-key.js
