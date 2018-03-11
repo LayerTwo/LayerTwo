@@ -12,25 +12,25 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
   end
 
 
-  def handle_in("l2-city-local-problem-form-data-submit", 
+  def handle_in("l2-city-local-problem-form-data-submit",
                 %{"problem_title" => local_problem_title,
-                "problem_importance" => local_problem_importance, 
-                "problem_description" => local_problem_description, 
-                "problem_latitude" => local_problem_latitude, 
-                "problem_longitude" => local_problem_longitude}, 
-                socket) 
+                "problem_importance" => local_problem_importance,
+                "problem_description" => local_problem_description,
+                "problem_latitude" => local_problem_latitude,
+                "problem_longitude" => local_problem_longitude},
+                socket)
     do
     with {:ok, socket, local_problem_title_valid} <- check_if_local_problem_title_valid(local_problem_title, socket),
-         {:ok, socket, local_problem_description_valid} <- check_if_local_problem_description_valid(local_problem_description, socket),    
+         {:ok, socket, local_problem_description_valid} <- check_if_local_problem_description_valid(local_problem_description, socket),
          {:ok, socket, local_problem_importance_int_valid} <-LayertwoSanitize.SanitizeIo.convert_importance_string_to_int(local_problem_importance, socket),
          {:ok, socket, local_problem_latitude_float_valid} <- LayertwoSanitize.SanitizeIo.convert_latitude_string_to_float(local_problem_latitude, socket),
          {:ok, socket, local_problem_longitude_float_valid} <- LayertwoSanitize.SanitizeIo.convert_longitude_string_to_float(local_problem_longitude, socket),
          {:ok, socket} <- check_if_local_problem_location_valid(local_problem_latitude_float_valid, local_problem_longitude_float_valid, socket),
-         {:ok, socket, city_uuid} <- LayertwoDb.ChannelCityLocalQueries.save_local_problem_db(local_problem_title_valid, 
+         {:ok, socket, city_uuid} <- LayertwoDb.ChannelCityLocalQueries.save_local_problem_db(local_problem_title_valid,
                                                                                               local_problem_importance_int_valid,
                                                                                               local_problem_description_valid,
-                                                                                              local_problem_latitude_float_valid, 
-                                                                                              local_problem_longitude_float_valid, 
+                                                                                              local_problem_latitude_float_valid,
+                                                                                              local_problem_longitude_float_valid,
                                                                                               socket),
          {:ok, socket} <- notify_entities(city_uuid, local_problem_latitude_float_valid, local_problem_longitude_float_valid, socket)
     do
@@ -38,6 +38,48 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
       {:noreply, socket}
     else
       {:error, socket} -> push socket, "l2-city-local-problem-submission-failed", %{}
+      {:noreply, socket}
+    end
+  end
+
+
+  def handle_in("l2-city-local-problem-update-form-data-submit",
+                %{"problem_uuid" => local_problem_uuid,
+                "problem_title" => local_problem_title,
+                "problem_importance" => local_problem_importance,
+                "problem_description" => local_problem_description,
+                "problem_latitude" => local_problem_latitude,
+                "problem_longitude" => local_problem_longitude},
+                socket)
+    do
+    with {:ok, socket, db_local_problem_author_uuid} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_author_uuid(local_problem_uuid, socket),
+         {:ok, socket} <- check_local_problem_author_uuid(db_local_problem_author_uuid, socket),
+         {:ok, socket, local_problem_title_valid} <- check_if_local_problem_title_valid(local_problem_title, socket),
+         {:ok, socket, local_problem_description_valid} <- check_if_local_problem_description_valid(local_problem_description, socket),
+         {:ok, socket, local_problem_importance_int_valid} <-LayertwoSanitize.SanitizeIo.convert_importance_string_to_int(local_problem_importance, socket),
+         {:ok, socket, local_problem_latitude_float_valid} <- LayertwoSanitize.SanitizeIo.convert_latitude_string_to_float(local_problem_latitude, socket),
+         {:ok, socket, local_problem_longitude_float_valid} <- LayertwoSanitize.SanitizeIo.convert_longitude_string_to_float(local_problem_longitude, socket),
+         {:ok, socket} <- check_if_local_problem_location_valid(local_problem_latitude_float_valid, local_problem_longitude_float_valid, socket),
+         {:ok, socket, city_uuid, local_problem_uuid_safe} <- LayertwoDb.ChannelCityLocalQueries.update_local_problem_db(local_problem_uuid,
+                                                                                              local_problem_title_valid,
+                                                                                              local_problem_importance_int_valid,
+                                                                                              local_problem_description_valid,
+                                                                                              local_problem_latitude_float_valid,
+                                                                                              local_problem_longitude_float_valid,
+                                                                                              socket),
+         {:ok, socket} <- notify_entities_update_local_problem(city_uuid,
+                                          local_problem_uuid_safe,
+                                          local_problem_title_valid,
+                                          local_problem_importance_int_valid,
+                                          local_problem_description_valid,
+                                          local_problem_latitude_float_valid,
+                                          local_problem_longitude_float_valid,
+                                          socket)
+    do
+      push socket, "l2-city-local-problem-edit-success", %{}
+      {:noreply, socket}
+    else
+      {:error, socket} -> push socket, "l2-city-local-problem-edit-failed", %{}
       {:noreply, socket}
     end
   end
@@ -52,16 +94,16 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
     else
       {:error, socket} -> {:noreply, socket}
     end
-    
+
   end
-  
+
   def handle_in("city-local-problem-description-request", %{"local_problem_uuid" => local_problem_uuid}, socket ) do
     with {:ok, socket, db_entity_latitude, db_entity_longitude} <- LayertwoDb.ChannelCityLocalQueries.get_entity_latitude_longitude(socket),
          {:ok, socket, db_local_problem_latitude, db_local_problem_longitude} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_latitude_longitude(local_problem_uuid, socket),
-         {:ok, socket} <- check_city_local_problem_range_valid(db_local_problem_latitude, 
-                                                               db_local_problem_longitude, 
-                                                               db_entity_latitude, 
-                                                               db_entity_longitude, 
+         {:ok, socket} <- check_city_local_problem_range_valid(db_local_problem_latitude,
+                                                               db_local_problem_longitude,
+                                                               db_entity_latitude,
+                                                               db_entity_longitude,
                                                                socket),
          {:ok, socket, db_local_problem_description} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_description(local_problem_uuid, socket),
          {:ok, socket, local_problem_description_safe} <- LayertwoSanitize.SanitizeIo.escape_html(db_local_problem_description, socket)
@@ -127,15 +169,15 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
     end
   end
 
-  def check_if_local_problem_location_valid(local_problem_latitude_float_valid, 
-                                            local_problem_longitude_float_valid, 
-                                            socket) 
+  def check_if_local_problem_location_valid(local_problem_latitude_float_valid,
+                                            local_problem_longitude_float_valid,
+                                            socket)
     do
     with {:ok, socket, db_entity_latitude, db_entity_longitude} <- LayertwoDb.ChannelCityLocalQueries.get_entity_latitude_longitude(socket),
-         {:ok, socket} <- check_city_local_problem_range_valid(local_problem_latitude_float_valid, 
-                                                          local_problem_longitude_float_valid, 
-                                                          db_entity_latitude, 
-                                                          db_entity_longitude, 
+         {:ok, socket} <- check_city_local_problem_range_valid(local_problem_latitude_float_valid,
+                                                          local_problem_longitude_float_valid,
+                                                          db_entity_latitude,
+                                                          db_entity_longitude,
                                                           socket)
     do
       {:ok, socket}
@@ -144,11 +186,11 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
     end
   end
 
-  def check_city_local_problem_range_valid(local_problem_latitude_float_valid, 
-                                           local_problem_longitude_float_valid, 
-                                           db_entity_latitude, 
-                                           db_entity_longitude, 
-                                           socket) 
+  def check_city_local_problem_range_valid(local_problem_latitude_float_valid,
+                                           local_problem_longitude_float_valid,
+                                           db_entity_latitude,
+                                           db_entity_longitude,
+                                           socket)
     do
     if ((db_entity_latitude-0.00075) <= local_problem_latitude_float_valid &&
         (db_entity_latitude+0.00075) >= local_problem_latitude_float_valid &&
@@ -174,7 +216,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                                                                                                            else
                                                                                                             map_add_is_author = Map.put(each_problem,"LocalProblem.author", "false")
                                                                                                             Map.drop(each_problem, ["LocalProblemAuthor.entity_uuid"])
-                                                                                                           end        
+                                                                                                           end
                                                                                         end)
       {:ok, socket, local_problems_list_safe_including_is_author}
     end
@@ -191,8 +233,36 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
     end
   end
 
+  def notify_entities_update_local_problem(city_uuid,
+                      local_problem_uuid_safe,
+                      local_problem_title_valid,
+                      local_problem_importance_int_valid,
+                      local_problem_description_valid,
+                      local_problem_latitude_float_valid,
+                      local_problem_longitude_float_valid,
+                      socket)
+  do
+    with {:ok, socket, local_problem_title_valid_safe, local_problem_description_valid_safe} <- LayertwoSanitize.SanitizeIo.sanitize_local_problem_update(local_problem_title_valid,
+                                                                                                                              local_problem_description_valid,
+                                                                                                                              socket),
+         {:ok, socket, notify_entities_list} <- LayertwoDb.ChannelCityLocalQueries.get_list_of_entities(city_uuid, local_problem_latitude_float_valid, local_problem_longitude_float_valid, socket),
+         {:ok, socket} <- broadcast_local_problem_update_notification(notify_entities_list,
+                                                                      local_problem_uuid_safe,
+                                                                      local_problem_title_valid_safe,
+                                                                      local_problem_importance_int_valid,
+                                                                      local_problem_description_valid_safe,
+                                                                      local_problem_latitude_float_valid,
+                                                                      local_problem_longitude_float_valid,
+                                                                      socket)
+    do
+      {:ok, socket}
+    else
+      {:error, socket} -> {:error, socket}
+    end
+  end
+
   def broadcast_new_local_problem_notification(notify_entities_list, socket) do
-    if(notify_entities_list !== "none") 
+    if(notify_entities_list !== "none")
     do
       Enum.map(notify_entities_list, fn(each_entity) -> LayertwoWeb.Endpoint.broadcast("l2_city_local:"<>each_entity["Entity.entity_ws_uuid"], "l2-city-local-update-problems-list", %{}) end)
       {:ok, socket}
@@ -201,8 +271,33 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
     end
   end
 
+  def broadcast_local_problem_update_notification(notify_entities_list,
+                                                  local_problem_uuid_safe,
+                                                  local_problem_title_valid_safe,
+                                                  local_problem_importance_int_valid,
+                                                  local_problem_description_valid_safe,
+                                                  local_problem_latitude_float_valid,
+                                                  local_problem_longitude_float_valid,
+                                                  socket)
+  do
+      if(notify_entities_list !== "none")
+      do
+        Enum.map(notify_entities_list, fn(each_entity) ->
+          LayertwoWeb.Endpoint.broadcast("l2_city_local:"<>each_entity["Entity.entity_ws_uuid"],
+                                         "l2-city-local-update-local-problem", %{"local_problem_uuid" => local_problem_uuid_safe,
+                                                                           "local_problem_title" => local_problem_title_valid_safe,
+                                                                           "local_problem_importance" => local_problem_importance_int_valid,
+                                                                           "local_problem_description" => local_problem_description_valid_safe,
+                                                                           "local_problem_latitude" => local_problem_latitude_float_valid,
+                                                                           "local_problem_longitude" => local_problem_longitude_float_valid}) end)
+        {:ok, socket}
+      else
+      {:ok, socket}
+      end
+  end
+
   def broadcast_local_problem_delete_notification(notify_entities_list, local_problem_uuid, socket) do
-    if(notify_entities_list !== "none") 
+    if(notify_entities_list !== "none")
     do
       Enum.map(notify_entities_list, fn(each_entity) -> LayertwoWeb.Endpoint.broadcast("l2_city_local:"<>each_entity["Entity.entity_ws_uuid"], "l2-city-local-problem-delete-problem-uuid", %{"local_problem_uuid" => local_problem_uuid}) end)
       {:ok, socket}
@@ -210,5 +305,5 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
       {:ok, socket}
     end
   end
-  
+
 end

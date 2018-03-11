@@ -82,4 +82,13 @@ defmodule LayertwoSanitize.SanitizeIo do
       :error
     end
   end
+
+  def sanitize_local_problem_update(local_problem_title_valid,
+                                    local_problem_description_valid,
+                                    socket)
+  do
+    local_problem_title_valid_safe = escape_html_simple(local_problem_title_valid)
+    local_problem_description_valid_safe = escape_html_simple(local_problem_description_valid)
+    {:ok, socket, local_problem_title_valid_safe, local_problem_description_valid_safe}
+  end
 end

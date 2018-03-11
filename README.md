@@ -1,5 +1,3 @@
-### WARNING! UNDER DEVELOPMENT! DO NOT USE!
-
 # ![Layer Two Logo](https://avatars3.githubusercontent.com/u/30439789?v=4&s=45 "Layer Two logo") Layer Two
 Layer Two is a social collaboration platform, for modern communities.
 </br>
