@@ -7,7 +7,7 @@ use Mix.Config
 
 # Configures the endpoint
 config :layertwo, LayertwoWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "layertwo.heroku.com"],
   secret_key_base: System.get_env("layertwo_secret_key_base"),
   render_errors: [view: LayertwoWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Layertwo.PubSub,

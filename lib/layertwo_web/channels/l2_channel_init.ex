@@ -1,7 +1,7 @@
 defmodule LayertwoWeb.L2ChannelInit do
     use LayertwoWeb, :channel
-  
-  
+
+
     def join("l2_init:" <> entity_ws_uuid, _message, socket) do
       with {:ok, socket} <- LayertwoAuth.ChannelAuth.check_if_channel_init_join_allowed(entity_ws_uuid, socket)
            do
@@ -30,30 +30,37 @@ defmodule LayertwoWeb.L2ChannelInit do
     end
 
     def handle_in("update_entity_basic_info_request", _message, socket) do
-      with {:ok, socket, 
-                 db_entity_info_version_number, 
-                 db_entity_name, 
-                 db_entity_latitude, 
-                 db_entity_longitude, 
-                 db_city_latitude, 
-                 db_city_longitude, 
-                 db_country_latitude, 
+      with {:ok, socket,
+                 db_entity_info_version_number,
+                 db_entity_name,
+                 db_entity_latitude,
+                 db_entity_longitude,
+                 db_city_local_default_zoom,
+                 db_city_latitude,
+                 db_city_longitude,
+                 db_city_default_zoom,
+                 db_country_latitude,
                  db_country_longitude,
+                 db_country_default_zoom,
                  db_ws_city_uuid,
                  db_ws_country_uuid
                  } <- LayertwoDb.ChannelInitQueries.get_entity_basic_info(socket)
         do
-          push socket, "update_entity_basic_info", %{"error" => "false", 
+          push socket, "update_entity_basic_info", %{"error" => "false",
                                                      "entity_basic_info_version" => db_entity_info_version_number,
                                                      "entity_name" => db_entity_name,
-                                                     "entity_latitude" => db_entity_latitude, 
-                                                     "entity_longitude" => db_entity_longitude, 
-                                                     "city_latitude" => db_city_latitude, 
-                                                     "city_longitude" => db_city_longitude, 
-                                                     "country_latitude" => db_country_latitude, 
+                                                     "entity_latitude" => db_entity_latitude,
+                                                     "entity_longitude" => db_entity_longitude,
+                                                     "city_latitude" => db_city_latitude,
+                                                     "city_longitude" => db_city_longitude,
+                                                     "country_latitude" => db_country_latitude,
                                                      "country_longitude" => db_country_longitude,
                                                      "city_ws_uuid" => db_ws_city_uuid,
-                                                     "country_ws_uuid" => db_ws_country_uuid}
+                                                     "country_ws_uuid" => db_ws_country_uuid,
+                                                     "city_local_default_zoom" => db_city_local_default_zoom,
+                                                     "city_default_zoom" => db_city_default_zoom,
+                                                     "country_default_zoom" => db_country_default_zoom
+                                                    }
           {:noreply, socket}
         else
           {:error, socket} -> push socket, "update_entity_basic_info", %{"error" => "Unable to retrieve data!"}
@@ -82,4 +89,4 @@ defmodule LayertwoWeb.L2ChannelInit do
     end
 
 end
-  
+
