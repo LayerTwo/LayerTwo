@@ -7,19 +7,17 @@ use Mix.Config
 
 # Configures the endpoint
 config :layertwo, LayertwoWeb.Endpoint,
-  url: [host: "layertwo.heroku.com"],
-  secret_key_base: System.get_env("layertwo_secret_key_base"),
+  url: [host: System.get_env("HOST_NAME")],
+  secret_key_base: System.get_env("LAYERTWO_SECRET_KEY_BASE"),
   render_errors: [view: LayertwoWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Layertwo.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 
 config :bolt_sips, Bolt,
-  hostname: 'localhost',
-  basic_auth: [username: "neo4j", password: System.get_env("layertwo_neo4j_pass")],
-  port: 7687,
-  pool_size: 5,
-  max_overflow: 1
+  url: System.get_env("GRAPHENEDB_BOLT_URL"),
+  basic_auth: [username: System.get_env("GRAPHENEDB_BOLT_USER"), password: System.get_env("GRAPHENEDB_BOLT_PASSWORD")],
+  ssl: true
 
 # Configures Elixir's Logger
 config :logger, :console,

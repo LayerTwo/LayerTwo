@@ -19,8 +19,6 @@ erl_crash.dump
 /lib/layertwo_frontend/tourism/node_modules
 /lib/layertwo_frontend/business/node_modules
 
-# Fake Cert Ignore
+# Developer SSL key
 /priv/ssl/fake_cert.crt
 /priv/ssl/fake_cert.key
-
-/priv/static/js/l2-user-main.js

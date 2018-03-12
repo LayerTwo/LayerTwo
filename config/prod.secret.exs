@@ -9,4 +9,4 @@ use Mix.Config
 # kept out of version control and might be hard to recover
 # or recreate for your teammates (or yourself later on).
 config :layertwo, LayertwoWeb.Endpoint,
-  secret_key_base: System.get_env("layertwo_secret_key_base")
+  secret_key_base: System.get_env("LAYERTWO_SECRET_KEY_BASE")

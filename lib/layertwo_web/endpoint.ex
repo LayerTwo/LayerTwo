@@ -35,8 +35,8 @@ defmodule LayertwoWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: System.get_env("layertwo_session_salt"),
-    signing_salt: System.get_env("layertwo_session_cookie_encrypt_salt")
+    key: System.get_env("LAYERTWO_SESSION_SALT"),
+    signing_salt: System.get_env("LAYERTWO_SESSION_COOKIE_ENCRYPT_SALT")
 
   plug LayertwoWeb.Router
 

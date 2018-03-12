@@ -21,7 +21,8 @@ defmodule LayertwoWeb.L2Websocket do
   channel "l2_visit:*", LayertwoWeb.L2ChannelVisit
 
   ## Transports
-  transport :websocket, Phoenix.Transports.WebSocket
+  transport :websocket, Phoenix.Transports.WebSocket,
+  timeout: 45_000
   # transport :longpoll, Phoenix.Transports.LongPoll
 
   # Socket params are passed from the client and can
@@ -36,7 +37,7 @@ defmodule LayertwoWeb.L2Websocket do
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
   def connect(%{"entity_token" => entity_token}, socket) do
-    case Phoenix.Token.verify(socket, System.get_env("layertwo_token_salt"), entity_token, max_age: 1209600) do
+    case Phoenix.Token.verify(socket, System.get_env("LAYERTWO_TOKEN_SALT"), entity_token, max_age: 1209600) do
     {:ok, entity_uuid} -> socket = assign(socket, "entity_uuid", entity_uuid)
                           {:ok, socket}
     {:error, _} -> :error
