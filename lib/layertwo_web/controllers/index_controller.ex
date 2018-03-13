@@ -22,6 +22,11 @@ defmodule LayertwoWeb.IndexController do
         end
   end
 
+  def handle_logout(conn, _params) do
+    conn = configure_session(conn, drop: true)
+    render conn, "index.html", entity_token: "none"
+  end
+
   def render_index_page(conn, _params) do
     with {:ok, conn} <- LayertwoAuth.IndexAuth.check_if_entity_logged_in(conn),
          {:ok, entity_type} <- LayertwoAuth.IndexAuth.get_entity_type_from_session(conn)
@@ -36,6 +41,6 @@ defmodule LayertwoWeb.IndexController do
       {:error, conn} -> render conn, "index.html", entity_token: "none"
     end
   end
-  
+
 
 end
