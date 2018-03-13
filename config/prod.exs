@@ -18,7 +18,7 @@ config :layertwo, LayertwoWeb.Endpoint,
   url: [scheme: "https", host: System.get_env("HOST_NAME"), port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
-  secret_key_base: Map.fetch!(System.get_env(), "LAYER_TWO_SECRET_KEY_BASE")
+  secret_key_base: Map.fetch!(System.get_env(), "LAYERTWO_SECRET_KEY_BASE")
 
 # Do not print debug messages in production
 config :logger, level: :info
