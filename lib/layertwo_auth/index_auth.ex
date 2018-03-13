@@ -23,7 +23,7 @@ defmodule LayertwoAuth.IndexAuth do
   end
 
   def assign_entity_token_to_session(conn, entity_uuid) do
-    entity_token = Phoenix.Token.sign(conn, System.get_env("layertwo_token_salt"), entity_uuid)
+    entity_token = Phoenix.Token.sign(conn, System.get_env("LAYERTWO_TOKEN_SALT"), entity_uuid)
     conn = put_session(conn, :entity_token, entity_token)
     {:ok, conn}
   end
@@ -34,7 +34,7 @@ defmodule LayertwoAuth.IndexAuth do
   end
 
   def check_if_entity_token_valid(conn) do
-    case Phoenix.Token.verify(conn, System.get_env("layertwo_token_salt"), get_session(conn, :entity_token), max_age: 86400) do
+    case Phoenix.Token.verify(conn, System.get_env("LAYERTWO_TOKEN_SALT"), get_session(conn, :entity_token), max_age: 86400) do
           {:ok, _} -> {:ok, conn}
           {:error, _} -> {:error, conn}
     end
