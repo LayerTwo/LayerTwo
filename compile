@@ -1,2 +1,2 @@
 cd $phoenix_dir
-mix "phx.digest"
+mix "${phoenix_ex}.digest"
