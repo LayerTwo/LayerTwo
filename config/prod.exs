@@ -15,10 +15,10 @@ use Mix.Config
 # which you typically run after static files are built.
 config :layertwo, LayertwoWeb.Endpoint,
   load_from_system_env: true,
-  url: [scheme: "https", host: "layertwo.herokuapp.com", port: 443],
+  url: [scheme: "https", host: "localhost", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
-  secret_key_base: Map.fetch!(System.get_env(), "LAYERTWO_SECRET_KEY_BASE")
+  secret_key_base: System.get_env("LAYERTWO_SECRET_KEY_BASE")
 
 # Do not print debug messages in production
 config :logger, level: :info
