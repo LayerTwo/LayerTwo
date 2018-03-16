@@ -107,5 +107,6 @@ LAYERTWO_TOKEN_SALT
 </br>
 MIX_ENV
 </br>
+
 ### Copyright and License
 Copyright (c) Dimitar Yosifov 2016. Layer Two source code is licensed under <a href="https://opensource.org/licenses/AGPL-3.0" target="_blank">AGPL3</a>
