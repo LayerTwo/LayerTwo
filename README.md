@@ -5,7 +5,7 @@ Layer Two is a social collaboration platform for modern communities.
 </br>
 </br>
 
-## Current State:
+## Current State: Prototype
 
 ##### Functional Sections:
 Personal: -
