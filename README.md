@@ -88,6 +88,7 @@ Chrome for iPhone version: 65+
 6. Browse to "LayerTwo\lib\layertwo_frontend\user" and run "npm install"
 7. Run mix deps.get in the root folder
 6. Environment Variables:
+</br>
 GRAPHENEDB_BOLT_PASSWORD
 </br>
 GRAPHENEDB_BOLT_URL
@@ -105,6 +106,7 @@ LAYERTWO_SESSION_SALT
 LAYERTWO_TOKEN_SALT
 </br>
 MIX_ENV
+</br>
 </br>
 
 ### Copyright and License
