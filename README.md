@@ -28,49 +28,62 @@ Chrome for Anrdoid version: 65+
 Chrome for iPhone version: 65+
 
 ## Made possible with:
-&#10014; [The Good Lord](https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV)
+&#10014; <a href="https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV" target="_blank">The Good Lord</a>
 
-[<img src="https://elixir-lang.org/images/logo/logo.png" height= 30>](https://elixir-lang.org/)
+<a href="https://elixir-lang.org/"  target="_blank">
+<img border="0" alt="Elixir" src="https://elixir-lang.org/images/logo/logo.png" width="11%" height="11%"></a>
 </br>
 </br>
-[<img src="https://raw.githubusercontent.com/phoenixframework/phoenix/master/priv/static/phoenix.png" height= 25>](http://www.phoenixframework.org/)
+<a href="http://www.phoenixframework.org/"  target="_blank">
+<img border="0" alt="Phoenix Framework" src="https://raw.githubusercontent.com/phoenixframework/phoenix/master/priv/static/phoenix.png" width="27%" height="27%"></a>
 </br>
 </br>
-[<img src="https://raw.githubusercontent.com/webcomponents/webcomponents-icons/master/logo/logo_256x256.png" height= 35>](https://developer.mozilla.org/en-US/docs/Web/Web_Components) [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components "Web Components")
+<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components"  target="_blank">
+<img border="0" alt="Web Components" src="https://raw.githubusercontent.com/webcomponents/webcomponents-icons/master/logo/logo_256x256.png" width="5%" height="5%"></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">Web Components</a>
 </br>
 </br>
-[<img src="https://neo4j.com/wp-content/themes/neo4jweb/assets/images/neo4j-logo-2015.png" height= 35>](https://neo4j.com/)
+<a href="https://neo4j.com/"  target="_blank">
+<img border="0" alt="Neo4j" src="https://neo4j.com/wp-content/themes/neo4jweb/assets/images/neo4j-logo-2015.png" width="12%" height="12%"></a>
 </br>
 </br>
-[<img src="https://wiki.openstreetmap.org/w/images/1/14/Scotland_logo_2012.png" height= 34>](https://www.openstreetmap.org) [OpenStreetMap](https://www.openstreetmap.org "OpenStreetMap")
+<a href="https://www.openstreetmap.org"  target="_blank">
+<img border="0" alt="Open Street Map" src="https://wiki.openstreetmap.org/w/images/1/14/Scotland_logo_2012.png" width="4.5%" height="4.5%">
+</a><a href="https://www.openstreetmap.org"  target="_blank">OpenStreetMap</a>
 </br>
 </br>
-[<img src="http://leafletjs.com/docs/images/logo.png" height= 28>](http://leafletjs.com/)
+<a href="http://leafletjs.com/"  target="_blank">
+<img border="0" alt="Leaflet" src="http://leafletjs.com/docs/images/logo.png" width="16%" height="16%"></a>
 </br>
 </br>
-[GeoNames](http://www.geonames.org/ "GeoNames")
+<a href="http://www.geonames.org/" target="_blank">GeoNames</a>
 </br>
 </br>
-[<img src="http://support.maxmind.com/wp-content/uploads/2015/07/logo.png" height= 45>](https://www.maxmind.com)
+<a href="https://www.maxmind.com"  target="_blank">
+<img border="0" alt="Max Minx" src="http://support.maxmind.com/wp-content/uploads/2015/07/logo.png" width="15%" height="15%"></a>
 </br>
 </br>
-[<img src="http://www.openoffice.org/marketing/art/galleries/logos/main/aoo4-main-tm-logo-rgb.png" height= 30>](http://www.openoffice.org/)
+<a href="http://www.openoffice.org/"  target="_blank">
+<img border="0" alt="Open Office" src="http://www.openoffice.org/marketing/art/galleries/logos/main/aoo4-main-tm-logo-rgb.png" width="15%" height="15%"></a>
 </br>
 </br>
-[<img src="https://download.blender.org/institute/logos/blender-socket.png" height= 35>](https://www.blender.org/)
+<a href="https://www.blender.org/"  target="_blank">
+<img border="0" alt="Blender" src="https://download.blender.org/institute/logos/blender-socket.png" width="15%" height="15%"></a>
 </br>
 </br>
-[<img src="https://media.inkscape.org/static/images/inkscape-logo.svg" height= 27>](https://inkscape.org/en/) [INKSCAPE](https://inkscape.org/en/ "INKSCAPE")
+<a href="https://inkscape.org/en/"  target="_blank">
+<img border="0" alt="Inkscape" src="https://media.inkscape.org/static/images/inkscape-logo.svg" width="4.5%" height="4.5%"></a><a href="https://inkscape.org/en/" target="_blank">INKSCAPE</a>
 </br>
 </br>
-[<img src="https://www.gimp.org/images/frontpage/wilber-big.png" height= 27>](https://www.gimp.org/) [GIMP](https://www.gimp.org/ "GIMP")
+<a href="https://www.gimp.org/"  target="_blank">
+<img border="0" alt="Gimp" src="https://www.gimp.org/images/frontpage/wilber-big.png" width="6%" height="6%"></a> <a href="https://www.gimp.org/" target="_blank">GIMP</a>
 </br>
 </br>
 ## How to use
-1. Install Elixir [link](https://elixir-lang.org/install.html "Elixir")
-2. Install Phoenix Framework [link](https://hexdocs.pm/phoenix/installation.html "Phoenix")
-3. Install Neo4j [link](https://neo4j.com/download/ "Neo4j")
-4. Seed the database [link](https://github.com/LayerTwo/LayerTwo/tree/master/dist/Assets/DB "Neo4j Seed")
+1. Install Elixir <a href="https://elixir-lang.org/install.html" target="_blank">link</a>
+2. Install Phoenix Framework <a href="https://hexdocs.pm/phoenix/installation.html" target="_blank">link</a>
+3. Install Neo4j <a href="https://neo4j.com/download/" target="_blank">link</a>
+4. Seed the database <a href="https://github.com/LayerTwo/LayerTwo/tree/master/dist/Assets/DB" target="_blank">link</a>
 5. Clone the repository
 6. Browse to "LayerTwo\lib\layertwo_frontend\user" and run "npm install"
 7. Run mix deps.get in the root folder
@@ -95,4 +108,4 @@ LAYERTWO_TOKEN_SALT
 MIX_ENV
 </br>
 ### Copyright and License
-Copyright (c) Dimitar Yosifov 2016. Layer Two source code is licensed under [AGPL3](https://opensource.org/licenses/AGPL-3.0)
+Copyright (c) Dimitar Yosifov 2016. Layer Two source code is licensed under <a href="https://opensource.org/licenses/AGPL-3.0" target="_blank">AGPL3</a>
