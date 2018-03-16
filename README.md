@@ -58,7 +58,6 @@ Chrome for iPhone version: 65+
 </br>
 <a href="http://www.geonames.org/" target="_blank">GeoNames</a>
 </br>
-</br>
 <a href="https://www.maxmind.com"  target="_blank">
 <img border="0" alt="Max Minx" src="http://support.maxmind.com/wp-content/uploads/2015/07/logo.png" width="15%" height="15%"></a>
 </br>
