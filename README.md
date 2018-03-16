@@ -1,7 +1,7 @@
 # ![Layer Two Logo](https://avatars3.githubusercontent.com/u/30439789?v=4&s=45 "Layer Two logo") Layer Two
 Layer Two is a social collaboration platform for modern communities.
 
-<img border="0" alt="Layer Two Desktop Screenshot" src="https://github.com/LayerTwo/LayerTwo/blob/master/dist/layertwoscr1.jpg?raw=true" width="60%" height="60%"><img border="0" alt="Layer Two Mobile Screenshot" src="https://github.com/LayerTwo/LayerTwo/blob/master/dist/layertwoscr2.jpg?raw=true" width="16.9%" height="16.9%">
+<img border="0" alt="Layer Two Desktop Screenshot" src="https://github.com/LayerTwo/LayerTwo/blob/master/dist/layertwoscr1.jpg?raw=true" width="60%" height="60%"> <img border="0" alt="Layer Two Mobile Screenshot" src="https://github.com/LayerTwo/LayerTwo/blob/master/dist/layertwoscr2.jpg?raw=true" width="16.9%" height="16.9%">
 </br>
 </br>
 
@@ -36,10 +36,15 @@ Chrome for iPhone version: 65+
 </br>
 Demo credentials request <a href="mailto:dimitaryosifov@outlook.com" target="_top">e-mail</a>
 
-## Made possible with:
+## Made possible thanks to:
 <a href="https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV" target="_blank">
 <img border="0" alt="The Good Lord" src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Coa_Illustration_Cross_Easter.svg" width="3%" height="3%" target="_blank">
 </a> <a href="https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV">The Good Lord</a>
+</br>
+</br>
+<a href="https://en.wikipedia.org/wiki/Samoa" target="_blank">
+<img border="0" alt="The Good Lord" src="http://www.kiwipacific.com/images/HLS-024.jpg" width="5%" height="5%" target="_blank">
+</a> <a href="https://en.wikipedia.org/wiki/Samoa">Western Samoa Teachers Choir</a>
 </br>
 </br>
 <a href="https://elixir-lang.org/"  target="_blank">
