@@ -27,6 +27,11 @@ Chrome for Anrdoid version: 65+
 </br>
 Chrome for iPhone version: 65+
 
+#### Limited Demo:
+<a href="https://layertwo.org" target="_blank">www.layertwo.org</a>
+</br>
+Demo credentials request <a href="mailto:dimitaryosifov@outlook.com" target="_top">e-mail</a>
+
 ## Made possible with:
 &#10014; <a href="https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV" target="_blank">The Good Lord</a>
 
