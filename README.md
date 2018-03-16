@@ -1,10 +1,10 @@
 # ![Layer Two Logo](https://avatars3.githubusercontent.com/u/30439789?v=4&s=45 "Layer Two logo") Layer Two
 Layer Two is a social collaboration platform for modern communities.
 
-<img border="0" alt="Layer Two Desktop Screenshot" src="https://github.com/LayerTwo/LayerTwo/blob/master/dist/layertwoscr1.jpg?raw=true" width="60%" height="60%">
-<img border="0" alt="Layer Two Mobile Screenshot" src="https://github.com/LayerTwo/LayerTwo/blob/master/dist/layertwoscr2.jpg?raw=true" width="16.9%" height="16.9%">
+<img border="0" alt="Layer Two Desktop Screenshot" src="https://github.com/LayerTwo/LayerTwo/blob/master/dist/layertwoscr1.jpg?raw=true" width="60%" height="60%"><img border="0" alt="Layer Two Mobile Screenshot" src="https://github.com/LayerTwo/LayerTwo/blob/master/dist/layertwoscr2.jpg?raw=true" width="16.9%" height="16.9%">
 </br>
 </br>
+
 ## Current State:
 
 ##### Functional Sections:
