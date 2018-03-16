@@ -31,7 +31,7 @@ Chrome for iPhone version: 65+
 &#10014; <a href="https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV" target="_blank">The Good Lord</a>
 
 <a href="https://elixir-lang.org/"  target="_blank">
-<img border="0" alt="Elixir" src="https://elixir-lang.org/images/logo/logo.png" width="11%" height="11%"></a>
+<img border="0" alt="Elixir" src="https://elixir-lang.org/images/logo/logo.png" width="10%" height="10%"></a>
 </br>
 </br>
 <a href="http://www.phoenixframework.org/"  target="_blank">
@@ -78,6 +78,7 @@ Chrome for iPhone version: 65+
 <img border="0" alt="Gimp" src="https://www.gimp.org/images/frontpage/wilber-big.png" width="6%" height="6%"></a> <a href="https://www.gimp.org/" target="_blank">GIMP</a>
 </br>
 </br>
+
 ## How to use
 1. Install Elixir <a href="https://elixir-lang.org/install.html" target="_blank">link</a>
 2. Install Phoenix Framework <a href="https://hexdocs.pm/phoenix/installation.html" target="_blank">link</a>
