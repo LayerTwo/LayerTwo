@@ -33,7 +33,7 @@ Chrome for iPhone version: 65+
 Demo credentials request <a href="mailto:dimitaryosifov@outlook.com" target="_top">e-mail</a>
 
 ## Made possible with:
-&#10014; <a href="https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV" target="_blank">The Good Lord</a>
+<span style="font-size: 230% !important;">&#10014;</span> <a href="https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV" target="_blank">The Good Lord</a>
 
 <a href="https://elixir-lang.org/"  target="_blank">
 <img border="0" alt="Elixir" src="https://elixir-lang.org/images/logo/logo.png" width="10%" height="10%"></a>
