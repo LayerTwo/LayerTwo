@@ -28,14 +28,15 @@ Chrome for Anrdoid version: 65+
 Chrome for iPhone version: 65+
 
 #### Limited Demo:
-<a href="https://layertwo.org" target="_blank">www.layertwo.org</a>
+
+<a href="https://www.layertwo.org" target="_blank">www.layertwo.org</a>
 </br>
 Demo credentials request <a href="mailto:dimitaryosifov@outlook.com" target="_top">e-mail</a>
 
 ## Made possible with:
-<a href="https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV">
+<a href="https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV" target="_blank">
 <img border="0" alt="The Good Lord" src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Coa_Illustration_Cross_Easter.svg" width="3%" height="3%" target="_blank">
-</a> <a href="https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV" target="_blank">The Good Lord</a>
+</a> <a href="https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV">The Good Lord</a>
 </br>
 </br>
 <a href="https://elixir-lang.org/"  target="_blank">
