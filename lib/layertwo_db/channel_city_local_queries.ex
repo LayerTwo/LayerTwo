@@ -152,7 +152,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
                                      local_problem_description:  {local_problem_description},
                                      local_problem_latitude: {local_problem_latitude},
                                      local_problem_longitude: {local_problem_longitude}}
-                RETURN City.city_uuid, LocalProblem.local_problem_uuid"
+                RETURN LocalProblem.local_problem_uuid"
 
     db_query_params = %{
       entity_param: entity_uuid,
@@ -170,8 +170,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
     case db_query_result do
       {:ok, []} -> {:error, socket}
       {:error, _reason} -> {:error, socket}
-      {:ok, [%{"City.city_uuid" => city_uuid,
-               "LocalProblem.local_problem_uuid" => ^local_problem_uuid}]} -> {:ok, socket, city_uuid, local_problem_uuid}
+      {:ok, [%{"LocalProblem.local_problem_uuid" => ^local_problem_uuid}]} -> {:ok, socket, local_problem_uuid}
     end
   end
 
@@ -229,6 +228,31 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
         {:ok, socket, db_local_problem_author_uuid}
     end
   end
+
+  def get_local_problem_author_city_latitude_longitude(local_problem_uuid, socket) do
+    db_query =
+    "MATCH (LocalProblem:LocalProblem {local_problem_uuid: {local_problem_uuid}})<-[:LOCAL_PROBLEM_AUTHOR]-(LocalProblemAuthor)-[:ENTITY_IN]->(LocalProblemCity)
+     RETURN LocalProblemAuthor.entity_uuid, LocalProblemCity.city_uuid, LocalProblem.local_problem_latitude, LocalProblem.local_problem_longitude"
+
+    db_query_params = %{local_problem_uuid: local_problem_uuid}
+
+    db_conn = Bolt.Sips.conn()
+    db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+
+      case db_query_result do
+        {:ok, []} -> {:error, socket}
+
+        {:error, _reason} -> {:error, socket}
+
+        {:ok,[%{
+           "LocalProblemAuthor.entity_uuid" => db_local_problem_author_uuid,
+           "LocalProblemCity.city_uuid" => city_uuid,
+           "LocalProblem.local_problem_latitude" => db_local_problem_original_latitude,
+           "LocalProblem.local_problem_longitude" => db_local_problem_original_longitude
+            }]} ->
+              {:ok, socket, db_local_problem_author_uuid, city_uuid, db_local_problem_original_latitude, db_local_problem_original_longitude}
+      end
+   end
 
   def get_local_problem_city_uuid(local_problem_uuid, socket) do
     db_query =
