@@ -6,8 +6,7 @@ defmodule LayertwoDb.IndexQueries do
       check_db_entity_query = "MATCH (Entity {entity_email: {email_param}}) return Entity.entity_email"
       check_db_entity_params = %{email_param: form_input_email}
 
-      db_conn = Bolt.Sips.conn
-      db_query_result = Bolt.Sips.query(db_conn, check_db_entity_query, check_db_entity_params)
+      db_query_result = Bolt.Sips.query(Bolt.Sips.conn, check_db_entity_query, check_db_entity_params)
 
       case db_query_result do
         {:ok, []} -> {:error, conn}
@@ -20,8 +19,7 @@ defmodule LayertwoDb.IndexQueries do
     check_db_entity_query = "MATCH (Entity {entity_uuid: {entity_param}}) return Entity.entity_type"
     check_db_entity_params = %{entity_param: entity_uuid}
 
-    db_conn = Bolt.Sips.conn
-    db_query_result = Bolt.Sips.query(db_conn, check_db_entity_query, check_db_entity_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, check_db_entity_query, check_db_entity_params)
 
     case db_query_result do
       {:ok, []} -> {:error, conn}
@@ -36,8 +34,7 @@ defmodule LayertwoDb.IndexQueries do
       get_db_password_query = "MATCH (Entity {entity_email: {email_param}}) return Entity.entity_password"
       get_db_password_params = %{email_param: form_input_email}
 
-      db_conn = Bolt.Sips.conn
-      password_query_result = Bolt.Sips.query(db_conn, get_db_password_query, get_db_password_params)
+      password_query_result = Bolt.Sips.query(Bolt.Sips.conn, get_db_password_query, get_db_password_params)
 
      case password_query_result do
        {:ok, []} -> {:error, conn}
@@ -48,13 +45,11 @@ defmodule LayertwoDb.IndexQueries do
 
    def get_entity_uuid(conn) do
         form_input_email = conn.params["login_form"]["email"]
-    
+
         get_db_entity_uuid_query = "MATCH (Entity {entity_email: {email_param}}) return Entity.entity_uuid"
         get_db_entity_uuid_params = %{email_param: form_input_email}
-    
-        db_conn = Bolt.Sips.conn
-    
-        uuid_query_result = Bolt.Sips.query(db_conn, get_db_entity_uuid_query, get_db_entity_uuid_params)
+
+        uuid_query_result = Bolt.Sips.query(Bolt.Sips.conn, get_db_entity_uuid_query, get_db_entity_uuid_params)
         case uuid_query_result do
           {:ok, []} -> {:error, conn}
           {:error, _} -> {:error, conn}
@@ -63,13 +58,11 @@ defmodule LayertwoDb.IndexQueries do
    end
 
       def get_entity_ws_uuid(conn, entity_uuid) do
-    
+
         get_db_entity_ws_uuid_query = "MATCH (Entity {entity_uuid: {uuid_param}}) return Entity.entity_ws_uuid"
         get_db_entity_ws_uuid_params = %{uuid_param: entity_uuid}
-    
-        db_conn = Bolt.Sips.conn
-    
-        uuid_query_result = Bolt.Sips.query(db_conn, get_db_entity_ws_uuid_query, get_db_entity_ws_uuid_params)
+
+        uuid_query_result = Bolt.Sips.query(Bolt.Sips.conn, get_db_entity_ws_uuid_query, get_db_entity_ws_uuid_params)
         case uuid_query_result do
           {:ok, []} -> {:error, conn}
           {:error, _} -> {:error, conn}

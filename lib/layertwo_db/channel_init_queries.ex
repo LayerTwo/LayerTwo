@@ -6,8 +6,7 @@ defmodule LayertwoDb.ChannelInitQueries do
 
     check_db_entity_params = %{entity_param: entity_uuid}
 
-    db_conn = Bolt.Sips.conn()
-    db_query_result = Bolt.Sips.query(db_conn, check_db_entity_query, check_db_entity_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, check_db_entity_query, check_db_entity_params)
 
     case db_query_result do
       {:ok, []} -> {:error, socket}
@@ -37,8 +36,7 @@ defmodule LayertwoDb.ChannelInitQueries do
 
     get_db_entity_params = %{entity_param: entity_uuid}
 
-    db_conn = Bolt.Sips.conn()
-    db_query_result = Bolt.Sips.query(db_conn, get_db_entity_query, get_db_entity_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, get_db_entity_query, get_db_entity_params)
 
     case db_query_result do
       {:ok, []} -> {:error, socket}
@@ -80,8 +78,7 @@ defmodule LayertwoDb.ChannelInitQueries do
 
     check_db_entity_params = %{entity_param: entity_uuid}
 
-    db_conn = Bolt.Sips.conn()
-    db_query_result = Bolt.Sips.query(db_conn, check_db_entity_query, check_db_entity_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, check_db_entity_query, check_db_entity_params)
 
     case db_query_result do
       {:ok, []} -> {:error, socket}

@@ -9,8 +9,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
 
     db_query_params = %{entity_param: entity_uuid}
 
-    db_conn = Bolt.Sips.conn()
-    db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
 
     case db_query_result do
       {:ok, []} -> {:error, socket}
@@ -30,8 +29,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
 
     db_query_params = %{entity_param: entity_uuid}
 
-    db_conn = Bolt.Sips.conn()
-    db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
 
     case db_query_result do
       {:ok, []} -> {:error, socket}
@@ -54,8 +52,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
 
     db_query_params = %{local_problem_uuid: local_problem_uuid}
 
-    db_conn = Bolt.Sips.conn()
-    db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
 
     case db_query_result do
       {:ok, []} -> {:error, socket}
@@ -78,8 +75,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
 
   db_query_params = %{local_problem_uuid: local_problem_uuid}
 
-  db_conn = Bolt.Sips.conn()
-  db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+  db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
 
   case db_query_result do
     {:ok, []} -> {:error, socket}
@@ -123,8 +119,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
       local_problem_longitude: local_problem_longitude_safe_float_valid,
       local_problems_name: local_problems_name}
 
-    db_conn = Bolt.Sips.conn()
-    db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
 
     case db_query_result do
       {:ok, []} -> {:error, socket}
@@ -151,8 +146,9 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
                                      local_problem_importance: {local_problem_importance},
                                      local_problem_description:  {local_problem_description},
                                      local_problem_latitude: {local_problem_latitude},
-                                     local_problem_longitude: {local_problem_longitude}}
-                RETURN LocalProblem.local_problem_uuid"
+                                     local_problem_longitude: {local_problem_longitude},
+                                     timestamp: timestamp()}
+                RETURN LocalProblem.local_problem_uuid, LocalProblem.timestamp"
 
     db_query_params = %{
       entity_param: entity_uuid,
@@ -164,13 +160,13 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
       local_problem_longitude: local_problem_longitude_safe_float_valid,
       local_problems_name: local_problems_name}
 
-    db_conn = Bolt.Sips.conn()
-    db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
 
     case db_query_result do
       {:ok, []} -> {:error, socket}
       {:error, _reason} -> {:error, socket}
-      {:ok, [%{"LocalProblem.local_problem_uuid" => ^local_problem_uuid}]} -> {:ok, socket, local_problem_uuid}
+      {:ok, [%{"LocalProblem.local_problem_uuid" => ^local_problem_uuid,
+                "LocalProblem.timestamp" => local_problem_timestamp}]} -> {:ok, socket, local_problem_uuid, local_problem_timestamp}
     end
   end
 
@@ -184,18 +180,24 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
        AND Entity.entity_latitude+0.00075 >= LocalProblem.local_problem_latitude
        AND Entity.entity_longitude-0.00100 <= LocalProblem.local_problem_longitude
        AND Entity.entity_longitude+0.00100 >= LocalProblem.local_problem_longitude
-       RETURN LocalProblem.local_problem_title,
-              LocalProblem.local_problem_importance,
-              LocalProblem.local_problem_uuid,
-              LocalProblem.timestamp,
-              LocalProblem.local_problem_latitude,
-              LocalProblem.local_problem_longitude,
-              LocalProblemAuthor.entity_uuid"
+       RETURN LocalProblem.local_problem_title
+              AS `ListElement.element_title`,
+              LocalProblem.local_problem_importance
+              AS `ListElement.element_importance`,
+              LocalProblem.local_problem_uuid
+              AS `ListElement.element_uuid`,
+              LocalProblem.timestamp
+              AS `ListElement.timestamp`,
+              LocalProblem.local_problem_latitude
+              AS `ListElement.element_latitude`,
+              LocalProblem.local_problem_longitude
+              AS `ListElement.element_longitude`,
+              LocalProblemAuthor.entity_uuid
+              AS `ListElementAuthor.entity_uuid`"
 
     db_query_params = %{entity_param: entity_uuid}
 
-    db_conn = Bolt.Sips.conn()
-    db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
 
     case db_query_result do
       {:ok, []} -> local_problems_list = "none"
@@ -214,8 +216,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
 
     db_query_params = %{local_problem_uuid: local_problem_uuid}
 
-    db_conn = Bolt.Sips.conn()
-    db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
 
     case db_query_result do
       {:ok, []} -> {:error, socket}
@@ -236,8 +237,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
 
     db_query_params = %{local_problem_uuid: local_problem_uuid}
 
-    db_conn = Bolt.Sips.conn()
-    db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
 
       case db_query_result do
         {:ok, []} -> {:error, socket}
@@ -261,8 +261,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
 
   db_query_params = %{local_problem_uuid: local_problem_uuid}
 
-  db_conn = Bolt.Sips.conn()
-  db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+  db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
 
   case db_query_result do
     {:ok, []} -> {:error, socket}
@@ -282,8 +281,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
 
   db_query_params = %{local_problem_uuid: local_problem_uuid}
 
-  db_conn = Bolt.Sips.conn()
-  db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+  db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
 
   case db_query_result do
     {:ok, []} -> {:error, socket}
@@ -311,8 +309,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
                         local_problem_latitude: local_problem_latitude_float_valid,
                         local_problem_longitude: local_problem_longitude_float_valid}
 
-    db_conn = Bolt.Sips.conn()
-    db_query_result = Bolt.Sips.query(db_conn, db_query, db_query_params)
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
 
     case db_query_result do
       {:ok, []} -> notify_entities_list = "none"

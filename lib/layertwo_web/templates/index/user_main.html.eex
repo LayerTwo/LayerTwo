@@ -1,4 +1,4 @@
 <script src="<%= static_path(@conn, "/js/l2-user-main.js") %>"></script>
 <script>window.csrfToken ="<%= Plug.CSRFProtection.get_csrf_token() %>"</script>
 <span name="entity_ws_uuid" content="<%= @entity_ws_uuid %>"></span>
-<l2-main></l2-main>
+<l2-user-main></l2-user-main>

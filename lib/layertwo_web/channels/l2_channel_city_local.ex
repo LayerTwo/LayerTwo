@@ -62,7 +62,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
          {:ok, socket, local_problem_longitude_float_valid} <- LayertwoSanitize.SanitizeIo.convert_longitude_string_to_float(local_problem_longitude, socket),
          {:ok, socket} <- check_if_local_problem_location_valid(local_problem_latitude_float_valid, local_problem_longitude_float_valid, socket),
          {:ok, socket, previously_affected_entities_list} <- LayertwoDb.ChannelCityLocalQueries.get_list_of_entities(city_uuid, db_local_problem_original_latitude, db_local_problem_original_longitude, socket),
-         {:ok, socket, local_problem_uuid_safe} <- LayertwoDb.ChannelCityLocalQueries.update_local_problem_db(local_problem_uuid,
+         {:ok, socket, local_problem_uuid_safe, local_problem_timestamp} <- LayertwoDb.ChannelCityLocalQueries.update_local_problem_db(local_problem_uuid,
                                                                                               local_problem_title_valid,
                                                                                               local_problem_importance_int_valid,
                                                                                               local_problem_description_valid,
@@ -76,26 +76,32 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                                                                local_problem_description_valid,
                                                                local_problem_latitude_float_valid,
                                                                local_problem_longitude_float_valid,
+                                                               local_problem_timestamp,
                                                                notify_entities_list,
                                                                previously_affected_entities_list,
                                                                socket)
     do
-      push socket, "l2-city-local-problem-edit-success", %{}
+      push socket, "l2-city-local-problem-update-success", %{}
       {:noreply, socket}
     else
-      {:error, socket} -> push socket, "l2-city-local-problem-edit-failed", %{}
+      {:error, socket} -> push socket, "l2-city-local-problem-update-failed", %{}
       {:noreply, socket}
     end
   end
 
+  def handle_in("l2-city-local-goals-list-request", %{}, socket)
+  do
+    {:reply, :ok, socket}
+  end
 
-  def handle_in("l2-city-local-list-problems-data-request", %{}, socket)
+
+  def handle_in("l2-city-local-problems-list-request", %{}, socket)
   do
     with {:ok, socket, local_problems_list} <- LayertwoDb.ChannelCityLocalQueries.get_entity_local_problems(socket),
          {:ok, socket, local_problems_list_safe_including_is_author} <- handle_local_problems_db_list(local_problems_list, socket)
     do
-      push socket, "l2-city-local-problems-list", %{"local_problems_list" => local_problems_list_safe_including_is_author}
-      {:noreply, socket}
+      push socket, "l2-city-local-problems-list-db", %{"local_problems_list" => local_problems_list_safe_including_is_author}
+      {:reply, :ok, socket}
     else
       {:error, socket} -> {:noreply, socket}
     end
@@ -114,14 +120,14 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
          {:ok, socket, db_local_problem_description} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_description(local_problem_uuid, socket),
          {:ok, socket, local_problem_description_safe} <- LayertwoSanitize.SanitizeIo.escape_html(db_local_problem_description, socket)
     do
-      push socket, "l2-city-local-db-problem-description", %{"local_problem_uuid" => local_problem_uuid, "local_problem_description" => local_problem_description_safe}
+      push socket, "l2-city-local-problem-description-db", %{"local_problem_uuid" => local_problem_uuid, "local_problem_description" => local_problem_description_safe}
       {:noreply, socket}
     else
     {:error, socket} -> {:noreply, socket}
     end
   end
 
-  def handle_in("l2-city-local-problem-delete-button-clicked", %{"local_problem_uuid" => local_problem_uuid}, socket)
+  def handle_in("delete-local-problem", %{"local_problem_uuid" => local_problem_uuid}, socket)
   do
     with {:ok, socket, db_local_problem_author_uuid} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_author_uuid(local_problem_uuid, socket),
          {:ok, socket} <- check_local_problem_author_uuid(db_local_problem_author_uuid, socket),
@@ -217,14 +223,15 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
       local_problems_list_safe = []
       {:ok, socket, local_problems_list_safe}
     else
-      local_problems_list_safe = Enum.map(local_problems_list, fn(each_problem) -> Map.put(each_problem,"LocalProblem.local_problem_title", LayertwoSanitize.SanitizeIo.escape_html_simple(each_problem["LocalProblem.local_problem_title"])) end)
-      local_problems_list_safe_including_is_author = Enum.map(local_problems_list_safe, fn(each_problem) -> if(each_problem["LocalProblemAuthor.entity_uuid"] === socket.assigns["entity_uuid"])
+      local_problems_list_safe = Enum.map(local_problems_list,
+                                          fn(each_problem) -> Map.put(each_problem,"ListElement.element_title", LayertwoSanitize.SanitizeIo.escape_html_simple(each_problem["ListElement.element_title"])) end)
+      local_problems_list_safe_including_is_author = Enum.map(local_problems_list_safe, fn(each_problem) -> if(each_problem["ListElementAuthor.entity_uuid"] === socket.assigns["entity_uuid"])
                                                                                                            do
-                                                                                                            map_add_is_author = Map.put(each_problem,"LocalProblem.author", "true")
-                                                                                                            Map.drop(map_add_is_author, ["LocalProblemAuthor.entity_uuid"])
+                                                                                                            map_add_is_author = Map.put(each_problem,"ListElement.author", "true")
+                                                                                                            Map.drop(map_add_is_author, ["ListElementAuthor.entity_uuid"])
                                                                                                            else
-                                                                                                            map_add_is_author = Map.put(each_problem,"LocalProblem.author", "false")
-                                                                                                            Map.drop(each_problem, ["LocalProblemAuthor.entity_uuid"])
+                                                                                                            map_add_is_author = Map.put(each_problem,"ListElement.author", "false")
+                                                                                                            Map.drop(map_add_is_author, ["ListElementAuthor.entity_uuid"])
                                                                                                            end
                                                                                         end)
       {:ok, socket, local_problems_list_safe_including_is_author}
@@ -248,6 +255,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                       local_problem_description_valid,
                       local_problem_latitude_float_valid,
                       local_problem_longitude_float_valid,
+                      local_problem_timestamp,
                       notify_entities_list,
                       previously_affected_entities_list,
                       socket)
@@ -263,6 +271,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                                                                        local_problem_description_valid_safe,
                                                                        local_problem_latitude_float_valid,
                                                                        local_problem_longitude_float_valid,
+                                                                       local_problem_timestamp,
                                                                        socket)
     do
       {:ok, socket}
@@ -317,18 +326,20 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                                                   local_problem_description_valid_safe,
                                                   local_problem_latitude_float_valid,
                                                   local_problem_longitude_float_valid,
+                                                  local_problem_timestamp,
                                                   socket)
   do
       if(notify_entities_list_update !== [])
       do
         Enum.map(notify_entities_list_update, fn(each_entity) ->
           LayertwoWeb.Endpoint.broadcast("l2_city_local:"<>each_entity["Entity.entity_ws_uuid"],
-                                         "l2-city-local-update-local-problem", %{"local_problem_uuid" => local_problem_uuid_safe,
-                                                                           "local_problem_title" => local_problem_title_valid_safe,
-                                                                           "local_problem_importance" => local_problem_importance_int_valid,
-                                                                           "local_problem_description" => local_problem_description_valid_safe,
-                                                                           "local_problem_latitude" => local_problem_latitude_float_valid,
-                                                                           "local_problem_longitude" => local_problem_longitude_float_valid}) end)
+                                         "l2-city-local-update-local-problem", %{"element_uuid" => local_problem_uuid_safe,
+                                                                           "element_title" => local_problem_title_valid_safe,
+                                                                           "element_importance" => local_problem_importance_int_valid,
+                                                                           "element_description" => local_problem_description_valid_safe,
+                                                                           "element_latitude" => local_problem_latitude_float_valid,
+                                                                           "element_longitude" => local_problem_longitude_float_valid,
+                                                                           "element_timestamp" => local_problem_timestamp}) end)
       end
 
       if(notify_entities_list_create !== [])
@@ -348,7 +359,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
   do
     if(notify_entities_list !== "none")
     do
-      Enum.map(notify_entities_list, fn(each_entity) -> LayertwoWeb.Endpoint.broadcast("l2_city_local:"<>each_entity["Entity.entity_ws_uuid"], "l2-city-local-problem-delete-problem-uuid", %{"local_problem_uuid" => local_problem_uuid}) end)
+      Enum.map(notify_entities_list, fn(each_entity) -> LayertwoWeb.Endpoint.broadcast("l2_city_local:"<>each_entity["Entity.entity_ws_uuid"], "delete-element", %{"element_uuid" => local_problem_uuid}) end)
       {:ok, socket}
     else
       {:ok, socket}
