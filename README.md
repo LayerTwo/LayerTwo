@@ -55,9 +55,8 @@ Demo credentials request <a href="mailto:dimitaryosifov@outlook.com" target="_to
 <img border="0" alt="Phoenix Framework" src="https://raw.githubusercontent.com/phoenixframework/phoenix/master/priv/static/phoenix.png" width="27%" height="27%"></a>
 </br>
 </br>
-<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components"  target="_blank">
-<img border="0" alt="Web Components" src="https://raw.githubusercontent.com/webcomponents/webcomponents-icons/master/logo/logo_256x256.png" width="5%" height="5%"></a>
-<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">Web Components</a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements"  target="_blank">
+<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements" target="_blank">Custom Elements</a>
 </br>
 </br>
 <a href="https://neo4j.com/"  target="_blank">
