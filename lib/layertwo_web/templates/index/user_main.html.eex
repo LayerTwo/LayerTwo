@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="/css/l2-user.css">
+<link rel="stylesheet" type="text/css" href="/css/leaflet.css">
 <script src="<%= static_path(@conn, "/js/l2-user-main.js") %>"></script>
 <script>window.csrfToken ="<%= Plug.CSRFProtection.get_csrf_token() %>"</script>
 <span name="entity_ws_uuid" content="<%= @entity_ws_uuid %>"></span>

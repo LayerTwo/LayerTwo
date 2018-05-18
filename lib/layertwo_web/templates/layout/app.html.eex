@@ -9,8 +9,6 @@
 <%= tag :meta, name: 'entity_token', content: @entity_token %>
     <title>Layer Two</title>
     <link href="favicon.ico" rel="shortcut icon">
-    <link rel="stylesheet" type="text/css" href="/css/l2-user.css">
-    <link rel="stylesheet" type="text/css" href="/css/leaflet.css">
     <style>
       * {
         margin: 0px;
