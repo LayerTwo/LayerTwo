@@ -279,6 +279,19 @@ l2-view-nav-button:hover {
     display: grid;
 }
 
+.list-projects-steps-heading-container {
+    grid-row: 3/4;
+    grid-column: 2;
+    display: grid;
+}
+
+.list-projects-steps-heading {
+    grid-row: 1;
+    grid-column: 1;
+    font-size: calc(6px + 1vw);
+    justify-self: center;
+}
+
 .list-map-list-container {
     grid-row: 2;
     grid-column: 1;
@@ -289,7 +302,32 @@ l2-view-nav-button:hover {
     overflow-x: hidden;
 }
 
+.list-projects-list-container {
+    grid-row: 2/5;
+    grid-column: 1;
+    width: 100%;
+    font-size: calc(6px + 0.7vw);
+    justify-self: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.list-projects-steps-container {
+    grid-row: 4/5;
+    grid-column: 2;
+    width: 100%;
+    font-size: calc(6px + 0.7vw);
+    justify-self: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 .list-map-map-container {
+    grid-row: 1/3;
+    grid-column: 2;
+}
+
+.list-projects-map-container {
     grid-row: 1/3;
     grid-column: 2;
 }
@@ -504,6 +542,35 @@ l2-list-element {
     grid-column: 1;
     justify-self: end;
     align-self: center;
+}
+
+.submit-form-project-description-heading {
+    font-size: calc(6px + 0.7vw);
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.submit-form-project-description-input {
+    font-size: calc(6px + 0.7vw);
+    grid-row: 3;
+    grid-column: 2;
+    resize: none;
+}
+
+.submit-form-associated-with {
+    font-size: calc(6px + 0.9vw);
+    grid-row: 4;
+    grid-column: 2;
+    justify-self: center;
+}
+
+.submit-form-associated-with-container {
+    font-size: calc(6px + 0.7vw);
+    grid-row: 5;
+    grid-column: 2;
+    text-align: center;
+    width: 100%;
+    background: #e9e9e9;
 }
 
 .submit-form-importance-slider {
@@ -741,6 +808,16 @@ l2-leaflet-map {
     padding: 0px;
 }
 
+l2-stage-list-and-projects {
+    grid-gap: 1%;
+    grid-template-rows: 0.07fr 1fr 0.07fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    padding-right: 1vw;
+    padding-top: 1vh;
+    padding-left: 1vw;
+}
+
 l2-stage-list-and-map {
     grid-gap: 1%;
     grid-template-rows: 0.07fr 1fr;
@@ -761,7 +838,7 @@ l2-list-count {
     font-size: calc(6px + 0.5vw);
 }
 
-l2-submit-form {
+l2-submit-problem-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100%;
@@ -770,7 +847,16 @@ l2-submit-form {
     padding-left: 1vw;
 }
 
-l2-edit-form {
+l2-submit-project-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    padding-right: 1vw;
+    padding-top: 1vh;
+    padding-left: 1vw;
+}
+
+l2-edit-problem-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100%;
@@ -825,12 +911,10 @@ l2-world-status {
 }
 
 .personal-svg {
-    height: 100%;
     width: 100%;
 }
 
 .social-svg {
-    height: 100%;
     width: 100%;
 }
 
@@ -1002,6 +1086,39 @@ l2-world-status {
         grid-column: 1;
     }
 
+    .list-projects-map-container {
+        grid-row: 5/6;
+        grid-column: 1;
+    }
+
+    .list-projects-steps-heading-container {
+        grid-column: 1;
+    }
+
+    .list-projects-steps-heading {
+        font-size: 4vw;
+    }
+
+    .list-projects-list-container {
+        grid-row: 2/3;
+        grid-column: 1;
+        width: 100%;
+        font-size: calc(6px + 0.7vw);
+        justify-self: center;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    
+    .list-projects-steps-container {
+        grid-row: 4/5;
+        grid-column: 1;
+        width: 100%;
+        font-size: calc(6px + 0.7vw);
+        justify-self: center;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
     .list-map-heading {
         font-size: 4vw;
     }
@@ -1071,16 +1188,21 @@ l2-world-status {
         grid-template-rows: 0.07fr 1fr 1fr;
     }
 
+    l2-stage-list-and-projects {
+        grid-template-rows: 0.07fr 1fr 0.07fr 1fr 1fr;
+        grid-template-columns: 1fr;
+    }
+
     l2-list-count {
         font-size: 3vw;
     }
 
-    l2-submit-form {
+    l2-submit-problem-form {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
     }
 
-    l2-edit-form {
+    l2-edit-problem-form {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
     }

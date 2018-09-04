@@ -1,11 +1,11 @@
-# ![Layer Two Logo](https://avatars3.githubusercontent.com/u/30439789?v=4&s=45 "Layer Two logo") Layer Two
-Layer Two is a social collaboration platform for modern communities.
+# <img border="0" alt="Layer Two Desktop Screenshot" src="https://github.com/yosifovdimitar/LayerTwo/blob/master/dist/Assets/LayerTwoLogo.png?raw=true" width="5%" height="5%"> Layer Two
+Layer Two is a social collaboration platform.
 
-<img border="0" alt="Layer Two Desktop Screenshot" src="https://github.com/LayerTwo/LayerTwo/blob/master/dist/layertwoscr1.jpg?raw=true" width="60%" height="60%"> <img border="0" alt="Layer Two Mobile Screenshot" src="https://github.com/LayerTwo/LayerTwo/blob/master/dist/layertwoscr2.jpg?raw=true" width="16.9%" height="16.9%">
+<img border="0" alt="Layer Two Desktop Screenshot" src="https://github.com/yosifovdimitar/LayerTwo/blob/master/dist/layertwoscr1.jpg?raw=true" width="60%" height="60%"> <img border="0" alt="Layer Two Mobile Screenshot" src="https://github.com/yosifovdimitar/LayerTwo/blob/master/dist/layertwoscr2.jpg?raw=true" width="16.9%" height="16.9%">
 </br>
 </br>
 
-## Current State: Prototype
+## Current State: Prototype - Development On Hold
 
 ##### Functional Sections:
 Personal: -
@@ -99,7 +99,7 @@ Demo credentials request <a href="mailto:dimitaryosifov@outlook.com" target="_to
 1. Install Elixir <a href="https://elixir-lang.org/install.html" target="_blank">link</a>
 2. Install Phoenix Framework <a href="https://hexdocs.pm/phoenix/installation.html" target="_blank">link</a>
 3. Install Neo4j <a href="https://neo4j.com/download/" target="_blank">link</a>
-4. Seed the database <a href="https://github.com/LayerTwo/LayerTwo/tree/master/dist/Assets/DB" target="_blank">link</a>
+4. Seed the database <a href="https://github.com/yosifovdimitar/LayerTwo/tree/master/dist/Assets/DB" target="_blank">link</a>
 5. Clone the repository
 6. Browse to "LayerTwo\lib\layertwo_frontend\user" and run "npm install"
 7. Run mix deps.get in the root folder
