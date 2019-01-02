@@ -84,6 +84,12 @@ html {
     background: rgba(255, 255, 0, 1);
 }
 
+.list-element-photo {
+    max-width: 80%;
+    justify-self: center;
+    border-radius: 0.7%;
+}
+
 .element_importance_4 {
     background: rgba(255, 0, 0, 1);
 }
@@ -502,7 +508,7 @@ l2-list-element {
     display: grid;
     grid-gap: 0.5vmin;
     grid-template-columns: max-content 1fr 1vw;
-    grid-template-rows: repeat(4, min-content) 0.9fr repeat(4, min-content);
+    grid-template-rows: repeat(4, min-content) 0.34fr min-content 0.63fr repeat(4, min-content);
 }
 
 .submit-form-heading {
@@ -618,6 +624,7 @@ l2-list-element {
 .submit-form-description-heading {
     grid-row: 5;
     justify-self: end;
+    align-self: center;
 }
 
 .submit-form-description-input {
@@ -627,8 +634,29 @@ l2-list-element {
     resize: none;
 }
 
-.submit-form-location-heading {
+.submit-form-photo-text {
+    font-size: calc(6px + 0.7vw);
     grid-row: 6;
+    grid-column: 1;
+    justify-self: end;
+    align-self: center;
+}
+
+.submit-form-photo-input {
+    font-size: calc(6px + 0.7vw);
+    grid-row: 6;
+    grid-column: 2;
+}
+
+.svg-photo-display {
+    grid-row: 7;
+    grid-column: 2;
+    width: 100%;
+    height: 100%;
+}
+
+.submit-form-location-heading {
+    grid-row: 8;
     grid-column: 1;
     justify-self: end;
     align-self: center;
@@ -636,7 +664,7 @@ l2-list-element {
 }
 
 .submit-form-latitude-heading {
-    grid-row: 7;
+    grid-row: 9;
     justify-self: end;
     align-self: center;
 }
@@ -644,12 +672,12 @@ l2-list-element {
 .submit-form-latitude-input {
     font-size: calc(6px + 0.8vw);
     text-align: right;
-    grid-row: 7;
+    grid-row: 9;
     grid-column: 2;
 }
 
 .submit-form-longitude-heading {
-    grid-row: 8;
+    grid-row: 10;
     justify-self: end;
     align-self: center;
 }
@@ -657,20 +685,20 @@ l2-list-element {
 .submit-form-longitude-input {
     font-size: calc(6px + 0.8vw);
     text-align: right;
-    grid-row: 8;
+    grid-row: 10;
     grid-column: 2;
 }
 
 .submit-form-gps-text {
     font-size: calc(6px + 0.75vw);
-    grid-row: 6;
+    grid-row: 8;
     grid-column: 2;
-    justify-self: end;
+    justify-self: start;
 }
 
 .submit-form-gps-button {
     font-size: calc(6px + 0.75vw);
-    grid-row: 6;
+    grid-row: 8;
     grid-column: 2;
     justify-self: end;
     align-self: center;
@@ -681,7 +709,7 @@ l2-list-element {
 }
 
 .submit-form-submit-button-container {
-    grid-row: 9;
+    grid-row: 11;
     grid-column: 2/3;
     display: grid;
     grid-gap: 0.5vmin;
@@ -970,7 +998,7 @@ l2-world-status {
 
 .l2-elements-list{
     display: grid;
-    grid-gap: 0.8vmax;
+    grid-gap: 6vh;
     margin-right: 1vmax;
     margin-left: 0.5vmax;
     padding-bottom: 100px;
@@ -1139,6 +1167,10 @@ l2-world-status {
         font-size: 4vw;
     }
 
+    .submit-form-title-input {
+        font-size: 3.5vw;
+    }
+
     .submit-form-description-input {
         font-size: 3.5vw;
     }
@@ -1155,6 +1187,14 @@ l2-world-status {
         font-size: 3.5vw;
     }
 
+    .submit-form-photo-text {
+        font-size: 3vw;
+    }
+
+    .submit-form-photo-input {
+        font-size: 3.4vw;
+    }
+
     .submit-form-location-heading {
         font-size: 3vw;
     }
@@ -1164,15 +1204,15 @@ l2-world-status {
     }
 
     .submit-form-gps-button {
-        font-size: 4vw;
+        font-size: 3.7vw;
     }
 
     .submit-form-latitude-input {
-        font-size: 3.5vw;
+        font-size: 3vw;
     }
 
     .submit-form-longitude-input {
-        font-size: 3.5vw;
+        font-size: 3vw;
     }
 
     .submit-form-submit-button {
@@ -1199,12 +1239,12 @@ l2-world-status {
 
     l2-submit-problem-form {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 1.3fr 0.7fr;
     }
 
     l2-edit-problem-form {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 1.3fr 0.7fr;
     }
 
     #l2-exit-warning-text{

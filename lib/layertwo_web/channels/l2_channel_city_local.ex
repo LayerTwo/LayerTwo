@@ -17,12 +17,14 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                 %{"problem_title" => local_problem_title,
                 "problem_importance" => local_problem_importance,
                 "problem_description" => local_problem_description,
+                "problem_photo" => local_problem_photo,
                 "problem_latitude" => local_problem_latitude,
                 "problem_longitude" => local_problem_longitude},
                 socket)
   do
     with {:ok, socket, local_problem_title_valid} <- check_if_local_problem_title_valid(local_problem_title, socket),
          {:ok, socket, local_problem_description_valid} <- check_if_local_problem_description_valid(local_problem_description, socket),
+         {:ok, socket, local_problem_photo_id} <- handle_local_problem_photo(local_problem_photo, socket),
          {:ok, socket, local_problem_importance_int_valid} <-LayertwoSanitize.SanitizeIo.convert_importance_string_to_int(local_problem_importance, socket),
          {:ok, socket, local_problem_latitude_float_valid} <- LayertwoSanitize.SanitizeIo.convert_latitude_string_to_float(local_problem_latitude, socket),
          {:ok, socket, local_problem_longitude_float_valid} <- LayertwoSanitize.SanitizeIo.convert_longitude_string_to_float(local_problem_longitude, socket),
@@ -32,6 +34,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                                                                                               local_problem_description_valid,
                                                                                               local_problem_latitude_float_valid,
                                                                                               local_problem_longitude_float_valid,
+                                                                                              local_problem_photo_id,
                                                                                               socket),
          {:ok, socket} <- notify_entities(city_uuid, local_problem_latitude_float_valid, local_problem_longitude_float_valid, socket)
     do
@@ -49,6 +52,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                 "problem_title" => local_problem_title,
                 "problem_importance" => local_problem_importance,
                 "problem_description" => local_problem_description,
+                "problem_photo" => local_problem_photo,
                 "problem_latitude" => local_problem_latitude,
                 "problem_longitude" => local_problem_longitude},
                 socket)
@@ -117,10 +121,10 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                                                                db_entity_latitude,
                                                                db_entity_longitude,
                                                                socket),
-         {:ok, socket, db_local_problem_description} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_description(local_problem_uuid, socket),
+         {:ok, socket, db_local_problem_description, db_local_problem_photo} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_description(local_problem_uuid, socket),
          {:ok, socket, local_problem_description_safe} <- LayertwoSanitize.SanitizeIo.escape_html(db_local_problem_description, socket)
     do
-      push socket, "l2-city-local-problem-description-db", %{"local_problem_uuid" => local_problem_uuid, "local_problem_description" => local_problem_description_safe}
+      push socket, "l2-city-local-problem-description-db", %{"local_problem_uuid" => local_problem_uuid, "local_problem_description" => local_problem_description_safe, "local_problem_photo" => db_local_problem_photo}
       {:noreply, socket}
     else
     {:error, socket} -> {:noreply, socket}
@@ -131,9 +135,10 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
   do
     with {:ok, socket, db_local_problem_author_uuid} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_author_uuid(local_problem_uuid, socket),
          {:ok, socket} <- check_local_problem_author_uuid(db_local_problem_author_uuid, socket),
-         {:ok, socket, db_local_problem_latitude, db_local_problem_longitude} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_latitude_longitude(local_problem_uuid, socket),
+         {:ok, socket, db_local_problem_latitude, db_local_problem_longitude, db_local_problem_photo_id} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_latitude_longitude_photo_id(local_problem_uuid, socket),
          {:ok, socket, db_local_problem_city_uuid} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_city_uuid(local_problem_uuid, socket),
          {:ok, socket, db_local_problem_deletion_result} <- LayertwoDb.ChannelCityLocalQueries.delete_local_problem(local_problem_uuid, socket),
+         {:ok, socket} <- delete_local_problem_photo(db_local_problem_photo_id, socket),
          {:ok, socket} <- handle_db_local_problem_deletion_result(db_local_problem_deletion_result, socket),
          {:ok, socket, notify_entities_list} <- LayertwoDb.ChannelCityLocalQueries.get_list_of_entities(db_local_problem_city_uuid, db_local_problem_latitude, db_local_problem_longitude, socket),
          {:ok, socket} <- broadcast_local_problem_delete_notification(notify_entities_list, local_problem_uuid, socket)
@@ -155,6 +160,12 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
     else
       {:error, socket}
     end
+  end
+
+  def delete_local_problem_photo(db_local_problem_photo_id, socket)
+  do
+    File.rm("priv/static/uploads/"<>db_local_problem_photo_id)
+    {:ok, socket}
   end
 
   def handle_db_local_problem_deletion_result(db_local_problem_deletion_result, socket) do
@@ -180,6 +191,22 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
     do
       {:ok, socket, local_problem_description}
     else
+    end
+  end
+
+  def handle_local_problem_photo(local_problem_photo, socket)
+  do
+    if(local_problem_photo !== "none")
+    do
+      {start, length} = :binary.match(local_problem_photo, ";base64,")
+      raw = :binary.part(local_problem_photo, start + length, byte_size(local_problem_photo) - start - length)
+      photo_binary = Base.decode64!(raw)
+      local_problem_photo_id = UUID.uuid4<>UUID.uuid4<>".gif"
+      File.write!("priv/static/uploads/"<>local_problem_photo_id,photo_binary,[:write])
+      {:ok, socket, local_problem_photo_id}
+    else
+      local_problem_photo_id = "none"
+      {:ok, socket, local_problem_photo_id}
     end
   end
 
