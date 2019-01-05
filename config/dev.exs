@@ -7,7 +7,8 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :layertwo, LayertwoWeb.Endpoint,
-  https: [port: 443, keyfile: "priv/ssl/fake_cert.key", certfile: "priv/ssl/fake_cert.crt", cipher_suite: :strong],
+  http: [port: 80],
+  https: [port: 443, keyfile: "priv/ssl/fake_cert.key", certfile: "priv/ssl/fake_cert.crt"],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   debug_errors: true,
   code_reloader: true,
