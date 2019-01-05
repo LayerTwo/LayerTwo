@@ -57,10 +57,11 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                 "problem_longitude" => local_problem_longitude},
                 socket)
     do
-    with {:ok, socket, db_local_problem_author_uuid, city_uuid, db_local_problem_original_latitude, db_local_problem_original_longitude} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_author_city_latitude_longitude(local_problem_uuid, socket),
+    with {:ok, socket, db_local_problem_author_uuid, city_uuid, db_local_problem_original_latitude, db_local_problem_original_longitude, db_local_problem_original_photo} <- LayertwoDb.ChannelCityLocalQueries.get_local_problem_author_city_latitude_longitude_photo(local_problem_uuid, socket),
          {:ok, socket} <- check_local_problem_author_uuid(db_local_problem_author_uuid, socket),
          {:ok, socket, local_problem_title_valid} <- check_if_local_problem_title_valid(local_problem_title, socket),
          {:ok, socket, local_problem_description_valid} <- check_if_local_problem_description_valid(local_problem_description, socket),
+         {:ok, socket, local_problem_photo_id} <- handle_local_problem_photo_update(local_problem_photo, db_local_problem_original_photo, socket),
          {:ok, socket, local_problem_importance_int_valid} <-LayertwoSanitize.SanitizeIo.convert_importance_string_to_int(local_problem_importance, socket),
          {:ok, socket, local_problem_latitude_float_valid} <- LayertwoSanitize.SanitizeIo.convert_latitude_string_to_float(local_problem_latitude, socket),
          {:ok, socket, local_problem_longitude_float_valid} <- LayertwoSanitize.SanitizeIo.convert_longitude_string_to_float(local_problem_longitude, socket),
@@ -72,6 +73,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                                                                                               local_problem_description_valid,
                                                                                               local_problem_latitude_float_valid,
                                                                                               local_problem_longitude_float_valid,
+                                                                                              local_problem_photo_id,
                                                                                               socket),
          {:ok, socket, notify_entities_list} <- LayertwoDb.ChannelCityLocalQueries.get_list_of_entities(city_uuid, local_problem_latitude_float_valid, local_problem_longitude_float_valid, socket),
          {:ok, socket} <- notify_entities_update_local_problem(local_problem_uuid_safe,
@@ -81,6 +83,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                                                                local_problem_latitude_float_valid,
                                                                local_problem_longitude_float_valid,
                                                                local_problem_timestamp,
+                                                               local_problem_photo_id,
                                                                notify_entities_list,
                                                                previously_affected_entities_list,
                                                                socket)
@@ -210,6 +213,32 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
     end
   end
 
+  def handle_local_problem_photo_update(local_problem_photo, db_local_problem_original_photo, socket)
+  do
+    case {local_problem_photo, db_local_problem_original_photo} do
+       {"no-change", _} -> local_problem_photo_id = db_local_problem_original_photo
+                           {:ok, socket, local_problem_photo_id}
+       {"none","none"} -> local_problem_photo_id = local_problem_photo
+                          {:ok, socket, local_problem_photo_id}
+       {"none", _} -> delete_local_problem_photo(db_local_problem_original_photo, socket)
+                      local_problem_photo_id = local_problem_photo
+                      {:ok, socket, local_problem_photo_id}
+       {_, "none"} -> {start, length} = :binary.match(local_problem_photo, ";base64,")
+                      raw = :binary.part(local_problem_photo, start + length, byte_size(local_problem_photo) - start - length)
+                      photo_binary = Base.decode64!(raw)
+                      local_problem_photo_id = UUID.uuid4<>UUID.uuid4<>".gif"
+                      File.write!("priv/static/uploads/"<>local_problem_photo_id,photo_binary,[:write])
+                      {:ok, socket, local_problem_photo_id}
+       {_, _} -> delete_local_problem_photo(db_local_problem_original_photo, socket)
+                 {start, length} = :binary.match(local_problem_photo, ";base64,")
+                 raw = :binary.part(local_problem_photo, start + length, byte_size(local_problem_photo) - start - length)
+                 photo_binary = Base.decode64!(raw)
+                 local_problem_photo_id = UUID.uuid4<>UUID.uuid4<>".gif"
+                 File.write!("priv/static/uploads/"<>local_problem_photo_id,photo_binary,[:write])
+                 {:ok, socket, local_problem_photo_id}
+    end
+  end
+
   def check_if_local_problem_location_valid(local_problem_latitude_float_valid,
                                             local_problem_longitude_float_valid,
                                             socket)
@@ -283,6 +312,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                       local_problem_latitude_float_valid,
                       local_problem_longitude_float_valid,
                       local_problem_timestamp,
+                      local_problem_photo_id,
                       notify_entities_list,
                       previously_affected_entities_list,
                       socket)
@@ -298,6 +328,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                                                                        local_problem_description_valid_safe,
                                                                        local_problem_latitude_float_valid,
                                                                        local_problem_longitude_float_valid,
+                                                                       local_problem_photo_id,
                                                                        local_problem_timestamp,
                                                                        socket)
     do
@@ -353,6 +384,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                                                   local_problem_description_valid_safe,
                                                   local_problem_latitude_float_valid,
                                                   local_problem_longitude_float_valid,
+                                                  local_problem_photo_id,
                                                   local_problem_timestamp,
                                                   socket)
   do
@@ -366,6 +398,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
                                                                            "element_description" => local_problem_description_valid_safe,
                                                                            "element_latitude" => local_problem_latitude_float_valid,
                                                                            "element_longitude" => local_problem_longitude_float_valid,
+                                                                           "element_photo" => local_problem_photo_id,
                                                                            "element_timestamp" => local_problem_timestamp}) end)
       end
 

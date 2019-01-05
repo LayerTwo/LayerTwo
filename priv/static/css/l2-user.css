@@ -649,10 +649,23 @@ l2-list-element {
 }
 
 .svg-photo-display {
+    width: 100%;
+    height: 100%;
+}
+
+.submit-form-photo-container {
     grid-row: 7;
     grid-column: 2;
     width: 100%;
     height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr min-content;
+}
+
+.form-remove-photo {
+    font-size: calc(6px + 0.7vw);
+    justify-self: end;
 }
 
 .submit-form-location-heading {
@@ -1091,6 +1104,9 @@ l2-world-status {
 
     .list-element-delete-button {
         font-size: 4vw;
+    }
+    .form-remove-photo {
+        font-size: 3.5vw;
     }
 
     .list-element-edit-button {

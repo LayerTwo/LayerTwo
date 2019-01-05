@@ -17,12 +17,12 @@ defmodule LayertwoSanitize.SanitizeIo do
   end
 
   def escape_html_simple(io_data) do
-    {:safe, io_data_safe} = Phoenix.HTML.html_escape(io_data)
+    io_data_safe = Phoenix.HTML.safe_to_string(Phoenix.HTML.html_escape(io_data))
     io_data_safe
   end
 
   def escape_html(io_data, socket) do
-    {:safe, io_data_safe} = Phoenix.HTML.html_escape(io_data)
+    io_data_safe = Phoenix.HTML.safe_to_string(Phoenix.HTML.html_escape(io_data))
     {:ok, socket, io_data_safe}
   end
 

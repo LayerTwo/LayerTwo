@@ -163,6 +163,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
         local_problem_description_valid,
         local_problem_latitude_safe_float_valid,
         local_problem_longitude_safe_float_valid,
+        local_problem_photo_id,
         socket)
     do
     entity_uuid = socket.assigns["entity_uuid"]
@@ -174,6 +175,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
                                      local_problem_description:  {local_problem_description},
                                      local_problem_latitude: {local_problem_latitude},
                                      local_problem_longitude: {local_problem_longitude},
+                                     local_problem_photo: {local_problem_photo},
                                      timestamp: timestamp()}
                 RETURN LocalProblem.local_problem_uuid, LocalProblem.timestamp"
 
@@ -185,6 +187,7 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
       local_problem_description: local_problem_description_valid,
       local_problem_latitude: local_problem_latitude_safe_float_valid,
       local_problem_longitude: local_problem_longitude_safe_float_valid,
+      local_problem_photo: local_problem_photo_id,
       local_problems_name: local_problems_name}
 
     db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
@@ -257,10 +260,10 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
     end
   end
 
-  def get_local_problem_author_city_latitude_longitude(local_problem_uuid, socket) do
+  def get_local_problem_author_city_latitude_longitude_photo(local_problem_uuid, socket) do
     db_query =
     "MATCH (LocalProblem:LocalProblem {local_problem_uuid: {local_problem_uuid}})<-[:LOCAL_PROBLEM_AUTHOR]-(LocalProblemAuthor)-[:ENTITY_IN]->(LocalProblemCity)
-     RETURN LocalProblemAuthor.entity_uuid, LocalProblemCity.city_uuid, LocalProblem.local_problem_latitude, LocalProblem.local_problem_longitude"
+     RETURN LocalProblemAuthor.entity_uuid, LocalProblemCity.city_uuid, LocalProblem.local_problem_latitude, LocalProblem.local_problem_longitude, LocalProblem.local_problem_photo"
 
     db_query_params = %{local_problem_uuid: local_problem_uuid}
 
@@ -275,9 +278,10 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
            "LocalProblemAuthor.entity_uuid" => db_local_problem_author_uuid,
            "LocalProblemCity.city_uuid" => city_uuid,
            "LocalProblem.local_problem_latitude" => db_local_problem_original_latitude,
-           "LocalProblem.local_problem_longitude" => db_local_problem_original_longitude
+           "LocalProblem.local_problem_longitude" => db_local_problem_original_longitude,
+           "LocalProblem.local_problem_photo" => db_local_problem_original_photo
             }]} ->
-              {:ok, socket, db_local_problem_author_uuid, city_uuid, db_local_problem_original_latitude, db_local_problem_original_longitude}
+              {:ok, socket, db_local_problem_author_uuid, city_uuid, db_local_problem_original_latitude, db_local_problem_original_longitude, db_local_problem_original_photo}
       end
    end
 
