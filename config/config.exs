@@ -20,6 +20,7 @@ config :bolt_sips, Bolt,
   basic_auth: [username: System.get_env("GRAPHENEDB_BOLT_USER"), password: System.get_env("GRAPHENEDB_BOLT_PASSWORD")],
   ssl: true
 
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

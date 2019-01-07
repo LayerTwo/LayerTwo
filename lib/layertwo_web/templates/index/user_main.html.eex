@@ -3,4 +3,6 @@
 <script src="/js/l2-user-main.js"></script>
 <script>window.csrfToken ="<%= Plug.CSRFProtection.get_csrf_token() %>"</script>
 <span name="entity_ws_uuid" content="<%= @entity_ws_uuid %>"></span>
+<span name="leaflet_app_id" content="<%= @leaflet_app_id %>"></span>
+<span name="leaflet_app_code" content="<%= @leaflet_app_code %>"></span>
 <l2-user-main></l2-user-main>

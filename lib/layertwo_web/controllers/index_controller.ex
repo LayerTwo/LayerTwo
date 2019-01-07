@@ -32,7 +32,7 @@ defmodule LayertwoWeb.IndexController do
          {:ok, entity_type} <- LayertwoAuth.IndexAuth.get_entity_type_from_session(conn)
     do
       case entity_type do
-        "Person" -> render conn, "user_main.html", %{entity_token: get_session(conn, :entity_token), entity_ws_uuid: get_session(conn, :entity_ws_uuid)}
+        "Person" -> render conn, "user_main.html", %{entity_token: get_session(conn, :entity_token), entity_ws_uuid: get_session(conn, :entity_ws_uuid), leaflet_app_id: System.get_env("LEAFLET_APP_ID"), leaflet_app_code: System.get_env("LEAFLET_APP_CODE")}
         "Authorities" -> render conn, "authorities_main.html", %{entity_token: get_session(conn, :entity_token), entity_ws_uuid: get_session(conn, :entity_ws_uuid)}
         "Business" -> render conn, "business_main.html", %{entity_token: get_session(conn, :entity_token), entity_ws_uuid: get_session(conn, :entity_ws_uuid)}
         "Tourism" -> render conn, "tourism_main.html", %{entity_token: get_session(conn, :entity_token), entity_ws_uuid: get_session(conn, :entity_ws_uuid)}
