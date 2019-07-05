@@ -156,6 +156,32 @@ defmodule LayertwoDb.ChannelCityLocalQueries do
     end
   end
 
+  def save_local_project(solutions_and_steps, associated_element, socket)
+  do
+    entity_uuid = socket.assigns["entity_uuid"]
+    local_problem_uuid = UUID.uuid4()
+    local_problems_name = "Local Problems"
+
+    db_query = "MATCH (Entity:Person {entity_uuid: {entity_param}})-[:ENTITY_IN]->(City:City)<-[:CITY_LOCAL]-(CityLocal:CityLocal)
+                             MERGE (LocalProblems:LocalProblems{name: {local_problems_name}})-[:LOCAL_PROBLEMS_IN]->(CityLocal)
+                             MERGE (Entity)-[:LOCAL_PROBLEM_AUTHOR]->(LocalProblem:LocalProblem {local_problem_uuid: {local_problem_uuid},
+                             local_problem_title: {local_problem_title}, local_problem_importance:{local_problem_importance}, local_problem_description: {local_problem_description},
+                             local_problem_latitude: {local_problem_latitude}, local_problem_longitude: {local_problem_longitude},
+                             timestamp: timestamp(), local_problem_photo:{local_problem_photo}})-[:LOCAL_PROBLEM]->(LocalProblems)
+                             RETURN LocalProblem.local_problem_title, City.city_uuid"
+
+    db_query_params = %{
+      entity_param: entity_uuid}
+
+    db_query_result = Bolt.Sips.query(Bolt.Sips.conn, db_query, db_query_params)
+
+    case db_query_result do
+      {:ok, []} -> {:error, socket}
+      {:error, _reason} -> {:error, socket}
+    end
+    
+  end
+
   def update_local_problem_db(
         local_problem_uuid,
         local_problem_title_valid,

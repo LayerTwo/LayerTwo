@@ -152,6 +152,17 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
     end
   end
 
+  def handle_in("l2-city-local-start-project", %{"solutions_and_steps" => solutions_and_steps,
+                                                  "associated_element" => associated_element}, socket)
+  do
+    with {:ok, socket} <- LayertwoDb.ChannelCityLocalQueries.save_local_project(solutions_and_steps, associated_element, socket)
+    do
+      {:reply, :ok, socket}
+    else
+      {:error, socket} -> {:noreply, socket}
+    end
+  end
+
   def handle_in(_arg, %{}, socket) do
     {:noreply, socket}
   end
