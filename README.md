@@ -36,7 +36,7 @@ Chrome for iPhone version: 65+
 </br>
 Demo credentials request <a href="mailto:dimitaryosifov@outlook.com" target="_top">e-mail</a>
 
-## Made possible thanks to:
+## Made possible with:
 </br>
 <a href="https://elixir-lang.org/"  target="_blank">
 <img border="0" alt="Elixir" src="https://elixir-lang.org/images/logo/logo.png" width="10%" height="10%"></a>
