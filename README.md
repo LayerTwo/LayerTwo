@@ -30,12 +30,6 @@ Chrome for Anrdoid version: 65+
 </br>
 Chrome for iPhone version: 65+
 
-#### Limited Demo:
-
-<a href="https://www.layertwo.org" target="_blank">www.layertwo.org</a>
-</br>
-Demo credentials request <a href="mailto:dimitaryosifov@outlook.com" target="_top">e-mail</a>
-
 ## Made possible with:
 </br>
 <a href="https://elixir-lang.org/"  target="_blank">
