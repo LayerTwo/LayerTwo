@@ -27,8 +27,8 @@ config :logger, level: :info
 #
      config :layertwo, LayertwoWeb.Endpoint,
        http: [port: 80],
-       url: [host: "layertwo.org", port: 443],
-       force_ssl: [hsts: true],
+       url: [host: "layertwo.herokuapp.com", port: 443],
+       force_ssl: [hsts: false],
        https: [
         :inet6,
          port: 443,
