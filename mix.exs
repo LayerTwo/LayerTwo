@@ -1,7 +1,7 @@
 defmodule Layertwo.MixProject do
   use Mix.Project
 
-  
+
   def project do
     [
       app: :layertwo,
@@ -41,7 +41,7 @@ defmodule Layertwo.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:uuid, "~> 1.1"},
-      {:bolt_sips, "~> 1.0.0-rc2"},
+      {:bolt_sips, "~> 2.0"},
       {:argon2_elixir, "~> 1.3"},
       {:comeonin, "~> 4.1"}
     ]
