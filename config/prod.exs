@@ -26,7 +26,7 @@ config :logger, level: :info
 # to the previous section and set your `:url` port to 443:
 #
      config :layertwo, LayertwoWeb.Endpoint,
-       http: [port: 80],
+       http: [port: System.get_env("PORT")],
        url: [host: "layertwo.herokuapp.com", port: 443],
        force_ssl: [hsts: false],
        https: [
