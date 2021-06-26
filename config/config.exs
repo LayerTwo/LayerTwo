@@ -16,8 +16,8 @@ config :layertwo, LayertwoWeb.Endpoint,
 
 
 config :bolt_sips, Bolt,
-  url: System.get_env("GRAPHENEDB_BOLT_URL"),
-  basic_auth: [username: System.get_env("GRAPHENEDB_BOLT_USER"), password: System.get_env("GRAPHENEDB_BOLT_PASSWORD")],
+  url: System.get_env("NEO4J_BOLT_URL"),
+  basic_auth: [username: System.get_env("NEO4J_BOLT_USER"), password: System.get_env("NEO4J_BOLT_PASSWORD")],
   ssl: true
 
 
