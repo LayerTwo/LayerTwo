@@ -90,11 +90,11 @@ Chrome for iPhone version: 65+
 7. Run mix deps.get in the root folder
 6. Environment Variables:
 </br>
-GRAPHENEDB_BOLT_PASSWORD
+NEO4J_BOLT_PASSWORD
 </br>
-GRAPHENEDB_BOLT_URL
+NEO4J_BOLT_URL
 </br>
-GRAPHENEDB_BOLT_USER
+NEO4J_BOLT_USER
 </br>
 HOST_NAME
 </br>
