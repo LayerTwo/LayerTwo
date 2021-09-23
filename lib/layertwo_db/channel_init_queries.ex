@@ -2,11 +2,14 @@ defmodule LayertwoDb.ChannelInitQueries do
   def get_basic_info_version_number(socket) do
     entity_uuid = socket.assigns["entity_uuid"]
 
-    check_db_entity_query = "MATCH (Entity {entity_uuid: {entity_param}}) return Entity.entity_basic_info_version"
+    check_db_entity_query = "MATCH (Entity {entity_uuid: $entity_param}) return Entity.entity_basic_info_version"
 
     check_db_entity_params = %{entity_param: entity_uuid}
 
     db_query_result = Bolt.Sips.query(Bolt.Sips.conn, check_db_entity_query, check_db_entity_params)
+
+    {queryStatus, %Bolt.Sips.Response{results: results}} = db_query_result
+    db_query_result = {queryStatus, results}
 
     case db_query_result do
       {:ok, []} -> {:error, socket}
@@ -18,7 +21,7 @@ defmodule LayertwoDb.ChannelInitQueries do
   def get_entity_basic_info(socket) do
     entity_uuid = socket.assigns["entity_uuid"]
 
-    get_db_entity_query = "MATCH (Entity {entity_uuid:{entity_param}})-[CURRENT_CITY]->(City:City)-[CITY_IN]->(Country:Country)
+    get_db_entity_query = "MATCH (Entity {entity_uuid: $entity_param})-[CURRENT_CITY]->(City:City)-[CITY_IN]->(Country:Country)
                            MATCH (City)<-[:CITY_LOCAL]-(CityLocal:CityLocal)
                            RETURN Entity.entity_basic_info_version,
                                   Entity.entity_name,
@@ -37,6 +40,9 @@ defmodule LayertwoDb.ChannelInitQueries do
     get_db_entity_params = %{entity_param: entity_uuid}
 
     db_query_result = Bolt.Sips.query(Bolt.Sips.conn, get_db_entity_query, get_db_entity_params)
+
+    {queryStatus, %Bolt.Sips.Response{results: results}} = db_query_result
+    db_query_result = {queryStatus, results}
 
     case db_query_result do
       {:ok, []} -> {:error, socket}
@@ -74,16 +80,19 @@ defmodule LayertwoDb.ChannelInitQueries do
   def get_entity_channel_permission_and_ws_uuid(socket) do
     entity_uuid = socket.assigns["entity_uuid"]
 
-    check_db_entity_query = "MATCH (Entity {entity_uuid: {entity_param}}) return Entity.channel_init, Entity.entity_ws_uuid"
+    check_db_entity_query = "MATCH (Entity {entity_uuid: $entity_param}) return Entity.channel_init, Entity.entity_ws_uuid"
 
     check_db_entity_params = %{entity_param: entity_uuid}
 
     db_query_result = Bolt.Sips.query(Bolt.Sips.conn, check_db_entity_query, check_db_entity_params)
 
+    {queryStatus, %Bolt.Sips.Response{results: results}} = db_query_result
+    db_query_result = {queryStatus, results}
+
     case db_query_result do
       {:ok, []} -> {:error, socket}
       {:error, _reason} -> {:error, socket}
-      {:ok, [%{"Entity.channel_init" => db_entity_channel_permission, "Entity.entity_ws_uuid" => db_entity_ws_uuid}]} -> {:ok, socket, db_entity_channel_permission, db_entity_ws_uuid}
+      {:ok, [%{"Entity.channel_init" => db_entity_channel_permission, "Entity.entity_ws_uuid" => db_entity_ws_uuid}]} ->{:ok, socket, db_entity_channel_permission, db_entity_ws_uuid}
     end
   end
 

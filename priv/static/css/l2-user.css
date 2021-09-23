@@ -1087,12 +1087,16 @@ l2-personal-status {
     display: flex;
     height: 100%;
     width: 100%;
+    padding-right: 1vw;
+    padding-left: 1vw;
 }
 
 l2-social-status {
     display: flex;
     height: 100%;
     width: 100%;
+    padding-right: 1vw;
+    padding-left: 1vw;
 }
 
 l2-local-status {

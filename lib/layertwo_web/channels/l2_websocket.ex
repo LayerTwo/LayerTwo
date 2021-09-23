@@ -20,7 +20,7 @@ defmodule LayertwoWeb.L2Websocket do
 
   channel "l2_visit:*", LayertwoWeb.L2ChannelVisit
 
-  
+
   # transport :longpoll, Phoenix.Transports.LongPoll
 
   # Socket params are passed from the client and can

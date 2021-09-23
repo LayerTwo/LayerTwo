@@ -1,15 +1,15 @@
-use Mix.Config
+import Config
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
-# with webpack to recompile .js and .css sources.
+# with esbuild to bundle .js and .css sources.
 config :layertwo, LayertwoWeb.Endpoint,
-  http: [port: 80],
-  https: [port: 443, keyfile: "priv/ssl/fake_cert.key", certfile: "priv/ssl/fake_cert.crt"],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  # Binding to loopback ipv4 address prevents access from other machines.
+  # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
+  http: [ip: {127, 0, 0, 1}, port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -43,10 +43,10 @@ config :layertwo, LayertwoWeb.Endpoint,
 config :layertwo, LayertwoWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css)$},
-      ~r{priv/gettext/.*(po)$},
-      ~r{lib/layertwo_web/views/.*(ex)$},
-      ~r{lib/layertwo_web/templates/.*(eex)$}
+      ~r"priv/static/.*(js|css)$",
+      ~r"priv/gettext/.*(po)$",
+      ~r"lib/layertwo_web/(live|views)/.*(ex)$",
+      ~r"lib/layertwo_web/templates/.*(eex)$"
     ]
   ]
 

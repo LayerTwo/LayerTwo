@@ -105,7 +105,7 @@
 
   <body>
       <main role="main">
-        <%= render @view_module, @view_template, assigns %>
+        <%= render view_module(@conn), view_template(@conn), assigns %>
       </main>
   </body>
 </html>

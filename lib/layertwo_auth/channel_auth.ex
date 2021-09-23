@@ -7,7 +7,8 @@ defmodule LayertwoAuth.ChannelAuth do
              do
              {:ok, socket}
              else
-             {:error, socket} -> {:error, socket}
+
+             {:error, socket} ->{:error, socket}
              end
     end
 
@@ -106,7 +107,7 @@ defmodule LayertwoAuth.ChannelAuth do
             {:error, socket}
         end
     end
-    
+
     def check_ws_uuid(entity_ws_uuid, db_entity_ws_uuid, socket) do
         if (entity_ws_uuid === db_entity_ws_uuid) do
             {:ok, socket}

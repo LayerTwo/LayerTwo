@@ -5,15 +5,19 @@ defmodule Layertwo.Application do
 
   use Application
 
+  @impl true
   def start(_type, _args) do
     import Supervisor.Spec
-    # List all child processes to be supervised
     children = [
-      # Start the endpoint when the application starts
       worker(Bolt.Sips, [Application.get_env(:bolt_sips, Bolt)]),
+      # Start the Telemetry supervisor
+      LayertwoWeb.Telemetry,
+      # Start the PubSub system
+      {Phoenix.PubSub, name: Layertwo.PubSub},
+      # Start the Endpoint (http/https)
       LayertwoWeb.Endpoint
-      # Starts a worker by calling: Layertwo.Worker.start_link(arg)
-      # {Layertwo.Worker, arg},
+      # Start a worker by calling: Layertwo.Worker.start_link(arg)
+      # {Layertwo.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -24,6 +28,7 @@ defmodule Layertwo.Application do
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
+  @impl true
   def config_change(changed, _new, removed) do
     LayertwoWeb.Endpoint.config_change(changed, removed)
     :ok

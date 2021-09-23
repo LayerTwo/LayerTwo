@@ -1,1 +1,0 @@
-neo4j-admin.bat import --database=layertwo.db --nodes import/city_local.csv --nodes import/cities.csv --nodes import/countries.csv --nodes import/planets.csv --relationships import/rel_city_to_country.csv --relationships import/rel_country_to_earth.csv --relationships import/rel_city_local_to_city.csv

@@ -1,6 +1,6 @@
 defmodule LayertwoAuth.IndexAuth do
   use LayertwoWeb, :controller
-  import Comeonin.Argon2
+  import Argon2
 
 
   def check_if_entity_logged_in(conn) do
@@ -80,11 +80,11 @@ defmodule LayertwoAuth.IndexAuth do
 
   def check_entity_password(conn, entity_hashed_password) do
        form_input_password = conn.params["login_form"]["password"]
-       check_password_result = checkpw(form_input_password, entity_hashed_password)
+       check_password_result = verify_pass(form_input_password, entity_hashed_password)
 
     case check_password_result do
         true -> {:ok, conn}
-        _ -> dummy_checkpw()
+        _ -> no_user_verify()
             {:error, conn}
     end
   end

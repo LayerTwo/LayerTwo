@@ -1,9 +1,19 @@
 defmodule LayertwoWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :layertwo
 
+  # The session will be stored in the cookie and signed,
+  # this means its contents can be read but not tampered with.
+  # Set :encryption_salt if you would also like to encrypt it.
+  @session_options [
+    store: :cookie,
+    key: System.get_env("LAYERTWO_SESSION_SALT"),
+    signing_salt: System.get_env("LAYERTWO_SESSION_COOKIE_ENCRYPT_SALT")
+  ]
+
   socket "/socket", LayertwoWeb.L2Websocket,
-    websocket: [max_frame_size: 2000],
-    longpoll: false
+  websocket: [max_frame_size: 2000],
+  websocket: [timeout: 45_000],
+  longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -23,8 +33,12 @@ defmodule LayertwoWeb.Endpoint do
     plug Phoenix.CodeReloader
   end
 
+  plug Phoenix.LiveDashboard.RequestLogger,
+    param_key: "request_logger",
+    cookie_key: "request_logger"
+
   plug Plug.RequestId
-  plug Plug.Logger
+  plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
@@ -33,14 +47,6 @@ defmodule LayertwoWeb.Endpoint do
 
   plug Plug.MethodOverride
   plug Plug.Head
-
-  # The session will be stored in the cookie and signed,
-  # this means its contents can be read but not tampered with.
-  # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: System.get_env("LAYERTWO_SESSION_SALT"),
-    signing_salt: System.get_env("LAYERTWO_SESSION_COOKIE_ENCRYPT_SALT")
-
+  plug Plug.Session, @session_options
   plug LayertwoWeb.Router
 end

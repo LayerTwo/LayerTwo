@@ -18,7 +18,8 @@ defmodule LayertwoWeb.IndexController do
         do
           redirect(conn, to: "/")
         else
-          {:error, conn} -> redirect(conn, to: "/")
+
+          {:error, conn} ->redirect(conn, to: "/")
         end
   end
 

@@ -89,4 +89,3 @@ defmodule LayertwoWeb.L2ChannelInit do
     end
 
 end
-

@@ -212,6 +212,7 @@ defmodule LayertwoWeb.L2ChannelCityLocal do
   do
     if(local_problem_photo !== "none")
     do
+    IO.inspect("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
       {start, length} = :binary.match(local_problem_photo, ";base64,")
       raw = :binary.part(local_problem_photo, start + length, byte_size(local_problem_photo) - start - length)
       photo_binary = Base.decode64!(raw)
