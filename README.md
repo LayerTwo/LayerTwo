@@ -1,7 +1,7 @@
-# <img border="0" alt="Layer Two Logo" src="https://github.com/yosifovdimitar/LayerTwo/blob/master/dist/LayerTwoLogo.png?raw=true" width="5%" height="5%"> Layer Two
+# <img border="0" alt="Layer Two Logo" src="https://github.com/yosifovdimitar/LayerTwo/blob/master/dist/LayerTwoLogo.png?raw=true" width="3%" height="3%"> Layer Two
 Layer Two is social collaboration platform.
 
-<img border="0" alt="Layer Two Desktop Screenshot" src="https://github.com/yosifovdimitar/LayerTwo/blob/master/dist/desktopscr.jpg?raw=true" width="60%" height="60%"> <img border="0" alt="Layer Two Mobile Screenshot" src="https://github.com/yosifovdimitar/LayerTwo/blob/master/dist/phonescr.jpg?raw=true" width="16.9%" height="16.9%">
+<img border="0" alt="Layer Two Desktop Screenshot" src="https://github.com/yosifovdimitar/LayerTwo/blob/master/dist/desktopscr.jpg?raw=true" width="60%" height="60%"> <img border="0" alt="Layer Two Mobile Screenshot" src="https://github.com/yosifovdimitar/LayerTwo/blob/master/dist/phonescr.jpg?raw=true" width="16.2%" height="16.2%">
 </br>
 </br>
 
