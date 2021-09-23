@@ -990,6 +990,7 @@ l2-section-nav {
     grid-auto-rows: min-content;
     z-index: 500;
     justify-content: center;
+    align-content: center;
 }
 
 l2-section-stage {
