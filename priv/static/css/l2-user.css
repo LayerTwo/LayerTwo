@@ -1015,14 +1015,16 @@ l2-view-nav {
     z-index: 300;
     display: grid;
     grid-auto-flow: column;
-    justify-content: start;
+    justify-content: center;
     padding-left: 1vw;
     padding-right: 1vw;
+    padding-top: 2vh;
 }
 
 l2-leaflet-map {
     margin: 0px;
     padding: 0px;
+    height: 98%;
 }
 
 l2-stage-list-and-projects {
