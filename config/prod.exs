@@ -12,7 +12,7 @@ import Config
 config :layertwo, LayertwoWeb.Endpoint,
     http: [port: {:system, "PORT"}],
     url: [scheme: "https", host: System.get_env("HOST_NAME"), port: 443],
-    force_ssl: [rewrite_on: [:x_forwarded_proto]],
+    force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
 # Do not print debug messages in production
 config :logger, level: :info
