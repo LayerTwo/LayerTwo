@@ -1085,16 +1085,18 @@ l2-edit-problem-form {
 
 l2-personal-status {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     height: 100%;
-    width: 100%;
     padding-right: 1vw;
     padding-left: 1vw;
 }
 
 l2-social-status {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     height: 100%;
-    width: 100%;
     padding-right: 1vw;
     padding-left: 1vw;
 }
@@ -1128,8 +1130,11 @@ l2-country-status {
 
 l2-world-status {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     height: 100%;
-    width: 100%;
+    padding-right: 1vw;
+    padding-left: 1vw;
 }
 
 .personal-svg {
