@@ -1139,10 +1139,12 @@ l2-world-status {
 
 .personal-svg {
     width: 100%;
+    height: 100%;
 }
 
 .social-svg {
     width: 100%;
+    height: 100%;
 }
 
 .l2-local-status-map {
